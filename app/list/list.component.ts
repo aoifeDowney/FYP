@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { ListViewEventData, RadListView } from "nativescript-ui-listview";
 import { View } from "tns-core-modules/ui/core/view";
 import { TextField } from "tns-core-modules/ui/text-field";
+import { Router } from "@angular/router";
 
 import { Grocery } from "../shared/grocery/grocery.model";
 import { GroceryService } from "../shared/grocery/grocery.service";
@@ -19,7 +20,8 @@ export class ListComponent implements OnInit {
     listLoaded = false;
     @ViewChild("groceryTextField", { static: false }) groceryTextField: ElementRef;
 
-    constructor(private groceryService: GroceryService) { }
+    constructor(private groceryService: GroceryService, private router: Router) { }
+    
 
     ngOnInit() {
         this.isLoading = true;
@@ -75,5 +77,9 @@ export class ListComponent implements OnInit {
                 let index = this.groceryList.indexOf(grocery);
                 this.groceryList.splice(index, 1);
             });
+    }
+    move() {
+        alert("Move!!!");
+        this.router.navigate(["/individualHome"]);
     }
 }
