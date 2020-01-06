@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     login() {
         this.userService.login(this.user)
             .subscribe(
-                () => this.router.navigate(["/list"]),
+                () => this.router.navigate(["/IndividualProfile"]),
                 (exception) => {
                     if (exception.error && exception.error.description) {
                         alert(exception.error.description);
