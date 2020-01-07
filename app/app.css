@@ -63,3 +63,7 @@
 .sidedrawer .sidedrawer-content .sidedrawer-list-item.selected Label {
   color:#3A53FF;
 }
+
+.sidedrawer-space {
+  margin-bottom: 25;
+}
