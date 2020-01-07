@@ -1,2 +1,12 @@
-<ActionBar title="Groceries"></ActionBar>
-<Label text="Hello world"></Label>
+<ActionBar title="RadSideDrawer" class="action-bar">
+	<ActionItem>
+		<StackLayout>
+			<Button class="fa" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+		</StackLayout>
+	</ActionItem>
+</ActionBar>
+
+<GridLayout class="page page-content" tkMainContent>
+	<Label class="page-icon fa" text="&#xf015;"></Label>
+	<Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+</GridLayout>

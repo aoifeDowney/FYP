@@ -4,6 +4,7 @@ import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
+import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";
@@ -15,7 +16,8 @@ import { routes, navigatableComponents } from "./app.routing";
     NativeScriptHttpClientModule,
     NativeScriptRouterModule,
     NativeScriptRouterModule.forRoot(routes),
-    NativeScriptUIListViewModule
+    NativeScriptUIListViewModule,
+    NativeScriptUISideDrawerModule
   ],
   declarations: [
     AppComponent,
