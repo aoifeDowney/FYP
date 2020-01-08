@@ -1,10 +1,17 @@
-.menu-icon {
-  font-size: 26; 
-  color: rgb(8, 1, 1);
-  padding-left: 13;
-  vertical-align: center;
+.menu-word {
+  margin-top: 20;
+  color: #c91010b2;
 } 
 
-.menu-colour {
-  background-color: white;
+.menu-icon {
+  margin-bottom: 25;
+  color: #c91010b2;
+}
+
+.bottom-navigation {
+  height: 52;
+  text-align: center;
+  background-color: #ffffff;
+  border-top-color: #dae1e7;
+  border-top-width: 1;
 }
