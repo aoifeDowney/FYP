@@ -1,12 +1,18 @@
-<ActionBar title="RadSideDrawer" class="action-bar">
-	<ActionItem>
-		<StackLayout>
-			<Button class="fa" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
-		</StackLayout>
-	</ActionItem>
-</ActionBar>
+<ActionBar title="RadSideDrawer" class="action-bar"></ActionBar>
 
-<GridLayout class="page page-content" tkMainContent>
-	<Label class="page-icon fa" text="&#xf015;"></Label>
-	<Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+<GridLayout height="40" verticalAlignment="bottom">
+	<GridLayout columns="*, *, *" height="60" backgroundColor="#0D0D12">
+        <GridLayout #tabHighlight col="0" backgroundColor="#F8A200"></GridLayout>
+		<GridLayout col="0" (tap)="selectTab(0)">
+			<Button class="fa" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+		</GridLayout>
+		<GridLayout col="1" (tap)="selectTab(1)">
+			<Label class="menu-colour" text="Transactions"></Label>
+		</GridLayout>
+		<GridLayout col="2" (tap)="selectTab(2)">
+			<Label class="menu-colour" text="Calender"></Label>
+		</GridLayout>
+	</GridLayout>
+
 </GridLayout>
+
