@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import * as app from "application";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "gr-app",
@@ -10,7 +11,7 @@ import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nat
 export class AppComponent implements OnInit {
   private _sideDrawerTransition: DrawerTransitionBase;
 
-  constructor(private routerExtensions: RouterExtensions) {
+  constructor(private routerExtensions: RouterExtensions, private router: Router) {
       // Use the component constructor to inject services.
   }
 
@@ -20,5 +21,10 @@ export class AppComponent implements OnInit {
 
   get sideDrawerTransition(): DrawerTransitionBase {
       return this._sideDrawerTransition;
+  }
+
+  personalProfile(): void {
+    alert("Opening Profile");
+    this.router.navigateByUrl("/Profile");
   }
 }
