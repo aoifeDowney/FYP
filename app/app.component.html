@@ -11,7 +11,7 @@
 			<StackLayout class="sidedrawer-content">
 				<GridLayout columns="auto, *" class="sidedrawer-list-item sidedrawer-space">
 					<Label col="0" text="&#xf007;" class="fa"></Label>
-					<Label col="1" text="My Profile" class="p-r-10" (tap)="personalProfile()"></Label>
+					<Label col="1" text="My Profile" class="p-r-10" [nsRouterLink]="['/Profile']"></Label>
 				</GridLayout>
 
 				<GridLayout columns="auto, *" class="sidedrawer-list-item sidedrawer-space">

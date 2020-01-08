@@ -7,7 +7,11 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 
 import { AppComponent } from "./app.component";
-import { routes, navigatableComponents } from "./app.routing";
+import { AppRoutingModule } from "./app.routing";
+
+import { LoginComponent } from "./login/login.component";
+import { IndividualProfileComponent } from "./IndividualProfile/IndividualProfile.component";
+import { ProfileComponent } from "./IndividualProfile/Profile/profile.component";
 
 @NgModule({
   imports: [
@@ -15,13 +19,15 @@ import { routes, navigatableComponents } from "./app.routing";
     NativeScriptFormsModule,
     NativeScriptHttpClientModule,
     NativeScriptRouterModule,
-    NativeScriptRouterModule.forRoot(routes),
     NativeScriptUIListViewModule,
-    NativeScriptUISideDrawerModule
+    NativeScriptUISideDrawerModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
-    ...navigatableComponents
+    LoginComponent,
+    IndividualProfileComponent,
+    ProfileComponent
   ],
   bootstrap: [AppComponent]
 })
