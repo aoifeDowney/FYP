@@ -1,37 +1,17 @@
-.add-bar {
-  background-color: #CB1D00;
-  padding: 5;
+.menu-word {
+  margin-top: 20;
+  color: #c91010b2;
+} 
+
+.menu-icon {
+  margin-bottom: 25;
+  color: #c91010b2;
 }
-.add-bar Image {
-  height: 25;
-  vertical-align: center;
-  margin-left: 10;
-  margin-right: 10;
-}
-.add-bar TextField {
-  padding: 10;
-}
-Label {
-  background-color: white;
-  border-bottom-width: 1;
-  border-bottom-color: gray;
-}
-.delete-view {
-  background-color: #CB1D00;
-  padding: 20;
-}
-.delete-view Image {
-  color: white;
-}
-ListView {
-  opacity: 0;
-}
-.visible {
-  animation-name: show;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-@keyframes show {
-  from { opacity: 0; }
-  to { opacity: 1; }
+
+.bottom-navigation {
+  height: 52;
+  text-align: center;
+  background-color: #ffffff;
+  border-top-color: #dae1e7;
+  border-top-width: 1;
 }

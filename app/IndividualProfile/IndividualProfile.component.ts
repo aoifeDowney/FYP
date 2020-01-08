@@ -1,19 +1,24 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
-
+import { Component, OnInit } from "@angular/core";
+import * as app from "application";
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
 @Component({
     selector: "gr-IndividualProfile",
     templateUrl: "./IndividualProfile.component.html",
     styleUrls: ["./IndividualProfile.component.css"]
 })
-export class IndividualProfileComponent {
-   
-    constructor(private router: Router) { }
-    
-    
-    move() {
-        alert("Move!!!");
-        this.router.navigate(["/individualHome"]);
+export class IndividualProfileComponent implements OnInit {
+
+    constructor() {
+        // Use the component constructor to inject providers.
+    }
+
+    ngOnInit(): void {
+        // Init your component properties here.
+    }
+
+    onDrawerButtonTap(): void {
+        const sideDrawer = <RadSideDrawer>app.getRootView();
+        sideDrawer.showDrawer();
     }
 }

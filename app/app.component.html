@@ -1,0 +1,26 @@
+
+<RadSideDrawer [drawerTransition]="sideDrawerTransition">
+	<GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
+		<StackLayout row="0" class="sidedrawer-header">
+			<Label class="sidedrawer-header-image fa" text="&#xf2bd;"></Label>
+			<Label class="sidedrawer-header-brand" text="User Name"></Label>
+			<Label class="footnote" text="username@mail.com"></Label>
+		</StackLayout>
+
+		<ScrollView row="1">
+			<StackLayout class="sidedrawer-content">
+				<GridLayout columns="auto, *" class="sidedrawer-list-item sidedrawer-space">
+					<Label col="0" text="&#xf007;" class="fa"></Label>
+					<Label col="1" text="My Profile" class="p-r-10" [nsRouterLink]="['/Profile']"></Label>
+				</GridLayout>
+
+				<GridLayout columns="auto, *" class="sidedrawer-list-item sidedrawer-space">
+					<Label col="0" text="&#xf015;" class="fa"></Label>
+					<Label col="1" text="House Finance" class="p-r-10"></Label>
+				</GridLayout>				
+			</StackLayout>
+		</ScrollView>
+	</GridLayout>
+
+	<page-router-outlet tkMainContent class="page page-content"></page-router-outlet>
+</RadSideDrawer>
