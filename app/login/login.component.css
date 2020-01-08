@@ -7,7 +7,7 @@ FlexboxLayout {
 StackLayout {
   width: 300;
   padding: 10 16;
-  background-color: #f0f0f0;
+  background-color: #f5effa;
 }
 Image {
   margin-bottom: 20;
@@ -17,17 +17,16 @@ Button, TextField {
   margin-bottom: 10;
 }
 .btn-primary {
-  background-color: #CB1D00;
+  background-color: rgb(112, 0, 203);
+  color: white;
   margin-left: 0;
   margin-right: 0;
 }
+
 TextField {
-  placeholder-color: #C4AFB4;
   color: black;
 }
-.dark {
-  background-color: #301217;
-}
-.dark TextField {
-  color:  #C4AFB4;
+
+.signup-text {
+  color: rgb(112, 0, 203);
 }
