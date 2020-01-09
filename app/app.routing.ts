@@ -5,11 +5,13 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { LoginComponent } from "./login/login.component";
 import { IndividualProfileComponent } from "./IndividualProfile/IndividualProfile.component";
 import { ProfileComponent } from "./IndividualProfile/Profile/profile.component";
+import { EditProfileComponent } from "./IndividualProfile/EditProfile/editprofile.component";
 
 const routes: Routes = [
     { path: "", component: ProfileComponent },
     { path: "IndividualProfile", component: IndividualProfileComponent },
-    { path: "Profile", component: ProfileComponent }
+    { path: "Profile", component: ProfileComponent },
+    { path: "EditProfile", component: EditProfileComponent }
 ];
 
 @NgModule({
