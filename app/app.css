@@ -2,16 +2,19 @@
   font-family: "FontAwesome";
 }
 
+ActionBar {
+  background-color: rgb(112, 0, 203);
+  color: white;
+}
+
 .page-content .page-placeholder {
   color: #D7D7D7;
   font-size: 20;
   vertical-align: center;
-  horizontal-align: center;
 }
 .page-content .page-icon {
   font-size: 72;
   vertical-align: top;
-  horizontal-align: center;
   color: #D7D7D7;
   margin-top: 20%;
 }
@@ -23,7 +26,7 @@
   color: #022734;
 }
 .sidedrawer.sidedrawer-left {
-  background-color: #3A53FF;
+  background-color: rgb(112, 0, 203);
 }
 .sidedrawer.sidedrawer-left .sidedrawer-header-image {
   color: #F8F8F8;
@@ -31,17 +34,19 @@
   width: 60;
   font-size: 60;
   padding: 0;
-  margin-bottom: 5;
+  margin-bottom: 45;
   margin-top: 20;
 }
 .sidedrawer.sidedrawer-left .footnote {
   color: rgba(255,255,255,0.5);
 }
 .sidedrawer .sidedrawer-header {
-  background-color: #3A53FF;
+  background-color: rgb(112, 0, 203);
 }
 .sidedrawer .sidedrawer-header .sidedrawer-header-brand {
   color: #fff;
+  margin-bottom: 10;
+  margin-left: 10;
 }
 .sidedrawer .sidedrawer-content{ 
   background-color: #fff;
@@ -61,9 +66,10 @@
   background-color: #F8F8F8;
 }
 .sidedrawer .sidedrawer-content .sidedrawer-list-item.selected Label {
-  color:#3A53FF;
+  color:rgb(112, 0, 203);
 }
 
-.sidedrawer-space {
+.sidedrawer-text {
   margin-top: 25;
+  font-size: 20;
 }

@@ -1,17 +1,17 @@
 .menu-word {
   margin-top: 20;
-  color: #c91010b2;
+  color: white
 } 
 
 .menu-icon {
   margin-bottom: 25;
-  color: #c91010b2;
+  color: white
 }
 
 .bottom-navigation {
   height: 52;
   text-align: center;
-  background-color: #ffffff;
+  background-color: rgb(112, 0, 203);
   border-top-color: #dae1e7;
   border-top-width: 1;
 }
