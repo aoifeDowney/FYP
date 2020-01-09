@@ -2,6 +2,11 @@
   font-family: "FontAwesome";
 }
 
+ActionBar {
+  background-color: rgb(112, 0, 203);
+  color: white;
+}
+
 .page-content .page-placeholder {
   color: #D7D7D7;
   font-size: 20;
@@ -29,7 +34,7 @@
   width: 60;
   font-size: 60;
   padding: 0;
-  margin-bottom: 5;
+  margin-bottom: 45;
   margin-top: 20;
 }
 .sidedrawer.sidedrawer-left .footnote {
@@ -40,6 +45,8 @@
 }
 .sidedrawer .sidedrawer-header .sidedrawer-header-brand {
   color: #fff;
+  margin-bottom: 10;
+  margin-left: 10;
 }
 .sidedrawer .sidedrawer-content{ 
   background-color: #fff;
