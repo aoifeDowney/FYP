@@ -21,4 +21,9 @@ export class EditProfileComponent implements OnInit {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
   }
+
+  updateName() {
+      alert("Change username");
+  }
+
 }
