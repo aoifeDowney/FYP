@@ -12,6 +12,7 @@ import { AppRoutingModule } from "./app.routing";
 import { LoginComponent } from "./login/login.component";
 import { IndividualProfileComponent } from "./IndividualProfile/IndividualProfile.component";
 import { ProfileComponent } from "./IndividualProfile/Profile/profile.component";
+import { EditProfileComponent } from "./IndividualProfile/EditProfile/editprofile.component";
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { ProfileComponent } from "./IndividualProfile/Profile/profile.component"
     AppComponent,
     LoginComponent,
     IndividualProfileComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProfileComponent
   ],
   bootstrap: [AppComponent]
 })

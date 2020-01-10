@@ -1,14 +1,17 @@
-<ActionBar title="My Profile"></ActionBar>
-    <GridLayout>
+<ActionBar title="Edit Profile"></ActionBar>
+ <GridLayout>
         <GridLayout rows="auto, auto, auto, auto,auto" columns="*">
+            <Label row="0" col="0" text="&#xf044;" class="fa image-edit-icon"></Label>
             <Image row="0" col="0" src="~/images/profilepic.png" stretch="aspectFill"
                    class="profilePic"></Image>
             <Label row="1" col="0" text="Username" class="title-profile"
                    textAlignment="center"></Label>
+            <Label row="1" col="0" text="&#xf044;" class="fa name-edit-icon" (tap)="updateName()"></Label>
             <GridLayout row="2" col="0" rows="auto, auto" columns="auto, auto"
                         class="additional-info">
                 <Label class="fa house-icon" text="&#xf015;"></Label>
                 <Label row="0" col="1" text="Household Name" class="fa description-aditional-info"></Label>
+                <Label row="0" col="1" text="&#xf044;" class="fa house-edit-icon"></Label>
             </GridLayout>
         </GridLayout>
         <GridLayout verticalAlignment="bottom">
@@ -28,4 +31,3 @@
 	        </GridLayout>
         </GridLayout>
     </GridLayout>
-

@@ -4,10 +4,10 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
 @Component({
   selector: "gr-profile",
-  templateUrl: "./profile.component.html",
-  styleUrls: ["./profile.component.css"]
+  templateUrl: "./editprofile.component.html",
+  styleUrls: ["./editprofile.component.css"]
 })
-export class ProfileComponent implements OnInit {
+export class EditProfileComponent implements OnInit {
 
   constructor() {
     // Use the component constructor to inject providers.
@@ -21,4 +21,9 @@ export class ProfileComponent implements OnInit {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
   }
+
+  updateName() {
+      alert("Change username");
+  }
+
 }
