@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
       return this._sideDrawerTransition;
   }
 
-  personalProfile(): void {
-    alert("Opening Profile");
-    this.router.navigateByUrl("/Profile");
+  closeSideDrawer(): void {
+    const sideDrawer = <RadSideDrawer>app.getRootView();
+    sideDrawer.closeDrawer();
   }
 }

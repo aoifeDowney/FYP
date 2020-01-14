@@ -3,6 +3,7 @@ import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as dialogs from "tns-core-modules/ui/dialogs";
 
+
 @Component({
   selector: "gr-profile",
   templateUrl: "./editprofile.component.html",
@@ -11,6 +12,7 @@ import * as dialogs from "tns-core-modules/ui/dialogs";
 
 export class EditProfileComponent implements OnInit {
 
+  //activeUser: any = Kinvey.User.getActiveUser();
   username: string = "Aoife";
 
   constructor() {

@@ -8,7 +8,7 @@ import { ProfileComponent } from "./IndividualProfile/Profile/profile.component"
 import { EditProfileComponent } from "./IndividualProfile/EditProfile/editprofile.component";
 
 const routes: Routes = [
-    { path: "", component: ProfileComponent },
+    { path: "", component: IndividualProfileComponent },
     { path: "IndividualProfile", component: IndividualProfileComponent },
     { path: "Profile", component: ProfileComponent },
     { path: "EditProfile", component: EditProfileComponent }
