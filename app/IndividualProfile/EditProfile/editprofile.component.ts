@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as dialogs from "tns-core-modules/ui/dialogs";
+import * as Kinvey from "kinvey-nativescript-sdk";
 
 
 @Component({
@@ -12,7 +13,7 @@ import * as dialogs from "tns-core-modules/ui/dialogs";
 
 export class EditProfileComponent implements OnInit {
 
-  //activeUser: any = Kinvey.User.getActiveUser();
+  //username: any = Kinvey.User.getActiveUser();
   username: string = "Aoife";
 
   constructor() {
