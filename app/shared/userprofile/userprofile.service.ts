@@ -34,6 +34,14 @@ export class UserProfileSerive {
         );
     }
 
+    update(profile: UserProfile): Observable <UserProfile> {
+        return this.http.put<UserProfile>(this.baseUrl, profile, {
+            headers: this.getCommonHeaders()}
+            ).pipe(
+                catchError(this.handleErrors)
+            );
+    }
+
     getCommonHeaders() {
         return {
             "Content-Type": "application/json",
