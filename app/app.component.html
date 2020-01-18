@@ -9,12 +9,12 @@
 			<StackLayout class="sidedrawer-content">
 				<GridLayout columns="auto, *" class="sidedrawer-list-item sidedrawer-text">
 					<Label col="0" text="&#xf015;" class="fa"></Label>
-					<Label col="1" text="Home" class="p-r-10" [nsRouterLink]="['/IndividualProfile']"></Label>
+					<Label col="1" text="Home" class="p-r-10" [nsRouterLink]="['/IndividualProfile']" (tap)="closeSideDrawer()"></Label>
 				</GridLayout>
 
 				<GridLayout columns="auto, *" class="sidedrawer-list-item sidedrawer-text">
 					<Label col="0" text="&#xf007;" class="fa"></Label>
-					<Label col="1" text="My Profile" class="p-r-10" [nsRouterLink]="['/Profile']"></Label>
+					<Label col="1" text="My Profile" class="p-r-10" [nsRouterLink]="['/Profile']" (tap)="closeSideDrawer()"></Label>
 				</GridLayout>
 
 				<GridLayout columns="auto, *" class="sidedrawer-list-item sidedrawer-text">
