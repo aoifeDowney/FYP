@@ -22,41 +22,73 @@ export class EditProfileComponent implements OnInit {
   profile: Array<UserProfile> = [];
 
   //username: any = Kinvey.User.getActiveUser();
-  username: string = "Aoife";
-  currentID: string;
+  //username: string;
+
+  tasks = [];
+  textFieldValue = "";
 
   constructor(private userProfileSerive: UserProfileSerive) {}
 
   ngOnInit(): void {
-        this.loadProfile();
-  }
-
-  loadProfile() {
-    this.userProfileSerive.load()
-            .subscribe(loadedProfile => {
-              loadedProfile.forEach((profileObject) => {
-                    this.profile.unshift(profileObject);
-                });
-            });
-  }
+    this.userProfileSerive.get().subscribe((data) => {
+        this.tasks = data;
+    }, () => {
+        alert({
+            title: "Tasks",
+            message: "An error occurred retrieving your data"
+        });
+    });
+}
 
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
   }
 
-  updateName() {
+  /*onButtonTap() {
+    if (this.textFieldValue.trim() === "") {
+        alert({
+            title: "Tasks",
+            message: "Please input a task.",
+            okButtonText: "OK"
+        });
+        return;
+    }
+
+    var task = {
+        name: this.textFieldValue,
+        completed: false
+    };
+
+    this.tasksService.save(task).then((newTask) => {
+        this.tasks.unshift(newTask);
+    })
+    this.textFieldValue = "";
+}*/
+
+  save() {
+    var task = {
+      Username: this.textFieldValue
+    };
+
+    this.userProfileSerive.save(task).then((newTask) => {
+      this.tasks.unshift(newTask);
+    })
+    this.textFieldValue = "";
+  }
+
+
+  updateName(task) {
       dialogs.prompt({
         title: "Update Name",
-        message: this.currentID,
         okButtonText: "Confirm",
         cancelButtonText: "Cancel",
         defaultText: "",
         inputType: dialogs.inputType.text
     }).then(result => {
-      let profileObj = new UserProfile(null, result.text);
-      this.userProfileSerive.update(profileObj);
-      //this.loadProfile();
+      const index = this.tasks.indexOf(task);
+      this.tasks[index].Username = result.text;
+      this.userProfileSerive.save(task);
     });
   }
 
