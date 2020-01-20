@@ -1,15 +1,18 @@
 <ActionBar title="Edit Profile"></ActionBar>
  <GridLayout>
-	<RadListView rows="auto, auto, auto, auto,auto" columns="*" [items]="tasks">
+	<RadListView [items]="tasks">
         <ng-template let-item="item">
-            <StackLayout>
+            <StackLayout rows="auto, auto, auto, auto,auto" columns="*">
 				<Label row="0" col="0" text="&#xf044;" class="fa image-edit-icon"></Label>
-				<Image row="0" col="0" src="~/images/profilepic.png" stretch="aspectFill" class="profilePic"></Image>
+				<Image row="0" col="0" [src]="item.picture" stretch="aspectFill" class="profilePic"></Image>
 				<Label row="1" col="0" [text]="item.Username" class="title-profile" textAlignment="center"></Label>
 				<Label row="1" col="0" text="&#xf044;" class="fa name-edit-icon" (tap)="updateName(item)"></Label>
+				<StackLayout row="2" col="0" rows="auto, auto" columns="auto, auto"
+                        class="additional-info">
 				<Label class="fa house-icon" text="&#xf015;"></Label>
                 <Label row="0" col="1" text="Household Name" class="fa description-aditional-info"></Label>
-                <Label row="0" col="1" text="&#xf044;" class="fa house-edit-icon"></Label>
+				<Label row="0" col="1" text="&#xf044;" class="fa house-edit-icon"></Label>
+				</StackLayout>
             </StackLayout>
         </ng-template>
     </RadListView>
