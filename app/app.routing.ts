@@ -7,8 +7,11 @@ import { IndividualProfileComponent } from "./IndividualProfile/IndividualProfil
 import { ProfileComponent } from "./IndividualProfile/Profile/profile.component";
 import { EditProfileComponent } from "./IndividualProfile/EditProfile/editprofile.component";
 
+import { BackendService } from "./shared/backend.service";
+
 const routes: Routes = [
-    { path: "", component: LoginComponent },
+    { path: "", redirectTo: BackendService.isUserLoggedIn() ? "/IndividualProfile" : "/login", pathMatch: "full" },
+    { path: "login", component: LoginComponent },
     { path: "IndividualProfile", component: IndividualProfileComponent },
     { path: "Profile", component: ProfileComponent },
     { path: "EditProfile", component: EditProfileComponent }
