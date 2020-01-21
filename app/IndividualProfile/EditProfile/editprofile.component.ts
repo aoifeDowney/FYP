@@ -26,6 +26,7 @@ export class EditProfileComponent implements OnInit {
 
   tasks = [];
   textFieldValue = "";
+  activeUser = Kinvey.User.getActiveUser();
 
   constructor(private userProfileSerive: UserProfileSerive) {}
 
@@ -44,27 +45,6 @@ export class EditProfileComponent implements OnInit {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
   }
-
-  /*onButtonTap() {
-    if (this.textFieldValue.trim() === "") {
-        alert({
-            title: "Tasks",
-            message: "Please input a task.",
-            okButtonText: "OK"
-        });
-        return;
-    }
-
-    var task = {
-        name: this.textFieldValue,
-        completed: false
-    };
-
-    this.tasksService.save(task).then((newTask) => {
-        this.tasks.unshift(newTask);
-    })
-    this.textFieldValue = "";
-}*/
 
   save() {
     var task = {

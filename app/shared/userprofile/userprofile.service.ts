@@ -1,13 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Observable, throwError } from "rxjs";
 import * as Kinvey from "kinvey-nativescript-sdk";
-
-import { Config } from "../config";
 
 @Injectable()
 export class UserProfileSerive {
-
-    baseUrl = Config.apiUrl + "appdata/" + Config.appKey + "/UserProfile";
 
     private dataStore;
 

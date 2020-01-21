@@ -1,4 +1,8 @@
-<ActionBar title="Edit Profile"></ActionBar>
+<ActionBar title="Edit Profile">
+	<ActionItem text="Logout" (tap)="logout()" ios.position="right">
+        <Label text="Logout" color="white"></Label>
+    </ActionItem>
+</ActionBar>
  <GridLayout>
 	<RadListView [items]="tasks">
         <ng-template let-item="item">
