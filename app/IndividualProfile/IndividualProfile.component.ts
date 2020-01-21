@@ -9,12 +9,20 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 })
 export class IndividualProfileComponent implements OnInit {
 
+
+    expensesChartData = [];
+
     constructor() {
-        // Use the component constructor to inject providers.
+
+        this.expensesChartData = [
+            { name: "Aoife", ammount: 90 },
+            { name: "Auto & Transport", ammount: 76 },
+            { name: "Communication", ammount: 60 },
+            { name: "Hotel", ammount: 44 }
+        ]
     }
 
     ngOnInit(): void {
-        // Init your component properties here.
     }
 
     onDrawerButtonTap(): void {

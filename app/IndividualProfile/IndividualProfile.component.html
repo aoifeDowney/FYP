@@ -1,4 +1,14 @@
 <ActionBar title="Transactions" class="action-bar"></ActionBar>
+<GridLayout class="page">
+	<GridLayout rows="160, 80, *">
+    <!-- Chart -->
+    <StackLayout row="0" class="balance-chart">
+        <app-expenses-chart [data]="expensesChartData"></app-expenses-chart>
+	</StackLayout>
+	</GridLayout>
+
+
+
 <GridLayout verticalAlignment="bottom">
 	<GridLayout columns="*, *, *" class="bottom-navigation">
 		<GridLayout col="0" (tap)="selectTab(0)">
@@ -14,5 +24,6 @@
 			<Button class="fa menu-icon" text="&#xf073;"></Button>
 		</GridLayout>
 	</GridLayout>
+</GridLayout>
 </GridLayout>
 
