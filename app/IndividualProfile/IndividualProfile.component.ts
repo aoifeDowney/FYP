@@ -15,10 +15,9 @@ export class IndividualProfileComponent implements OnInit {
     constructor() {
 
         this.expensesChartData = [
-            { name: "Aoife", ammount: 90 },
-            { name: "Auto & Transport", ammount: 76 },
-            { name: "Communication", ammount: 60 },
-            { name: "Hotel", ammount: 44 }
+            { name: "Rent", ammount: 90 },
+            { name: "Utility Bills", ammount: 76 },
+            { name: "House Shop", ammount: 60 }
         ]
     }
 
