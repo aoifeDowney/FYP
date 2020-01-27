@@ -1,39 +1,38 @@
 <ActionBar title="Edit Profile">
 	<ActionItem text="Logout" (tap)="logout()" ios.position="right">
-        <Label text="Logout" color="white"></Label>
-    </ActionItem>
+		<Label text="Logout" color="white"></Label>
+	</ActionItem>
 </ActionBar>
- <GridLayout class="page">
+<GridLayout class="page">
 	<RadListView [items]="tasks">
-        <ng-template let-item="item">
-            <StackLayout rows="auto, auto, auto, auto,auto" columns="*">
+		<ng-template let-item="item">
+			<StackLayout rows="auto, auto, auto, auto,auto" columns="*">
 				<Label row="0" col="0" text="&#xf044;" class="fa image-edit-icon"></Label>
 				<Image row="0" col="0" [src]="item.picture" stretch="aspectFill" class="profilePic"></Image>
 				<Label row="1" col="0" [text]="item.Username" class="title-profile" textAlignment="center"></Label>
 				<Label row="1" col="0" text="&#xf044;" class="fa name-edit-icon" (tap)="updateName(item)"></Label>
-				<StackLayout row="2" col="0" rows="auto, auto" columns="auto, auto"
-                        class="additional-info">
-				<Label class="fa house-icon" text="&#xf015;"></Label>
-                <Label row="0" col="1" text="Household Name" class="fa description-aditional-info"></Label>
-				<Label row="0" col="1" text="&#xf044;" class="fa house-edit-icon"></Label>
+				<StackLayout row="2" col="0" rows="auto, auto" columns="auto, auto" class="additional-info">
+					<Label class="fa house-icon" text="&#xf015;"></Label>
+					<Label row="0" col="1" text="Household Name" class="fa description-aditional-info"></Label>
+					<Label row="0" col="1" text="&#xf044;" class="fa house-edit-icon"></Label>
 				</StackLayout>
-            </StackLayout>
-        </ng-template>
-    </RadListView>
-        <GridLayout verticalAlignment="bottom">
-	        <GridLayout columns="*, *, *" class="bottom-navigation">
-		        <GridLayout col="0" (tap)="selectTab(0)">
-			        <Label class="menu-word" text="Menu"></Label>
-			        <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
-		        </GridLayout>
-		        <GridLayout col="1" (tap)="selectTab(1)">
-			        <Label class="menu-word" text="Profile" [nsRouterLink]="['/Profile']"></Label>
-			        <Button class="fa menu-icon" text="&#xf007;"></Button>
-		        </GridLayout>
-		        <GridLayout col="2" (tap)="selectTab(2)">
-			        <Label class="menu-word" text="Edit Profile" [nsRouterLink]="['/EditProfile']"></Label>
-			        <Button class="fa menu-icon" text="&#xf044;"></Button>
-		        </GridLayout>
-	        </GridLayout>
-        </GridLayout>
-    </GridLayout>
+			</StackLayout>
+		</ng-template>
+	</RadListView>
+	<GridLayout verticalAlignment="bottom">
+		<GridLayout columns="*, *, *" class="bottom-navigation">
+			<GridLayout col="0" (tap)="selectTab(0)">
+				<Label class="menu-word" text="Menu"></Label>
+				<Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+			</GridLayout>
+			<GridLayout col="1" (tap)="selectTab(1)">
+				<Label class="menu-word" text="Profile" [nsRouterLink]="['/Profile']"></Label>
+				<Button class="fa menu-icon" text="&#xf007;"></Button>
+			</GridLayout>
+			<GridLayout col="2" (tap)="selectTab(2)">
+				<Label class="menu-word" text="Edit Profile" [nsRouterLink]="['/EditProfile']"></Label>
+				<Button class="fa menu-icon" text="&#xf044;"></Button>
+			</GridLayout>
+		</GridLayout>
+	</GridLayout>
+</GridLayout>
