@@ -7,6 +7,10 @@ ActionBar {
   color: white;
 }
 
+.page {
+  background-color: #f1f5f8;
+}
+
 .page-content .page-placeholder {
   color: #D7D7D7;
   font-size: 20;
