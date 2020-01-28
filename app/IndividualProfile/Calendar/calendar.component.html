@@ -1,1 +1,28 @@
 <ActionBar title="Calendar" class="action-bar"></ActionBar>
+<GridLayout>
+    <GridLayout columns="*" rows="auto,auto,*,auto">
+        <StackLayout col="0" row="0" orientation="vertical">
+            <RadCalendar col="0" row="1" [monthViewStyle]='monthViewStyle()'
+            height="300">
+        </RadCalendar>
+        </StackLayout>
+
+    </GridLayout>
+
+    <GridLayout verticalAlignment="bottom">
+		<GridLayout columns="*, *, *" class="bottom-navigation">
+			<GridLayout col="0" (tap)="selectTab(0)">
+				<Label class="menu-word" text="Menu"></Label>
+				<Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+			</GridLayout>
+			<GridLayout col="1" (tap)="selectTab(1)">
+				<Label class="menu-word" text="Transactions" [nsRouterLink]="['/IndividualProfile']"></Label>
+				<Button class="fa menu-icon" text="&#xf15c;"></Button>
+			</GridLayout>
+			<GridLayout col="2" (tap)="selectTab(2)">
+				<Label class="menu-word" text="Calendar" [nsRouterLink]="['/Calendar']"></Label>
+				<Button class="fa menu-icon" text="&#xf073;"></Button>
+			</GridLayout>
+		</GridLayout>
+	</GridLayout>
+</GridLayout>

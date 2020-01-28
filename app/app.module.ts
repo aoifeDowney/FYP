@@ -6,6 +6,7 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 import { NativeScriptUIChartModule } from "nativescript-ui-chart/angular";
+import { NativeScriptUICalendarModule } from "nativescript-ui-calendar/angular";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app.routing";
@@ -26,6 +27,7 @@ import { CalendarComponent } from "./IndividualProfile/Calendar/calendar.compone
     NativeScriptUIListViewModule,
     NativeScriptUISideDrawerModule,
     NativeScriptUIChartModule,
+    NativeScriptUICalendarModule,
     AppRoutingModule
   ],
   declarations: [
