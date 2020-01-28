@@ -16,13 +16,60 @@ import {
     MonthCellStyle
 } from "nativescript-ui-calendar";
 
+import * as calendarModule from "nativescript-ui-calendar";
+
+
+import { TransactionsService } from "../../shared/transactions/transactions.service";
+
 @Component({
     selector: "gr-IndividualProfile",
     templateUrl: "./calendar.component.html",
-    styleUrls: ["./calendar.component.css"]
+    styleUrls: ["./calendar.component.css"],
+    providers: [TransactionsService]
 })
-export class CalendarComponent  {
- 
+export class CalendarComponent implements OnInit {
+
+    transactions = [];
+    calendarEvents = [];
+    payments = [];
+
+    constructor(private transactionsService: TransactionsService) {
+        let events = [];
+        let now = new Date();
+        let startDate;
+        let endDate;
+        let colors = [new Color(200, 188, 26, 214), new Color(220, 255, 109, 130), new Color(255, 55, 45, 255), new Color(199, 17, 227, 10), new Color(255, 255, 54, 3)];
+        for (let i = 1; i < 8; i++) {
+            startDate = new Date(now.getFullYear(), now.getMonth(), i * 2);
+            endDate = new Date(now.getFullYear(), now.getMonth(), (i * 2), 3);
+            let event = new calendarModule.CalendarEvent("event " + i, startDate, endDate, false, colors[i * 10 % (colors.length - 1)]);
+            events.push(event);
+            if (i % 3 == 0) {
+                event = new calendarModule.CalendarEvent("second " + i, startDate, endDate, true, colors[i * 5 % (colors.length - 1)]);
+                events.push(event);
+            }
+        }
+        this.calendarEvents = events;
+     }
+
+    ngOnInit(): void {
+        this.transactionsService.getHouseShopPrice().subscribe((data) => {
+            this.transactions = data;
+        }, () => {
+            alert({
+                title: "Transactions",
+                message: "An error occurred retrieving your data"
+            });
+        });
+    }
+
+   /* getTransactionsDate() {
+        this.transactionsService.getHouseShopPrice().subscribe((data) => {
+            this.payments = data.date;
+            console.log(this.payments);
+        })
+    }*/
+
     monthViewStyle() {
         const monthViewStyle = new CalendarMonthViewStyle();
         monthViewStyle.backgroundColor = new Color('rgb(255, 255, 255)');

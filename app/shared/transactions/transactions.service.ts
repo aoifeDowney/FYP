@@ -19,8 +19,7 @@ export class TransactionsService {
 
     getHouseShopPrice() {
         const query = new Kinvey.Query();
-        query.equalTo('type', 'HouseShop');
-        query.ascending('price');
+        query.equalTo('type', 'House Shop');
 
         return this.dataStore.find(query);
     }
