@@ -7,6 +7,7 @@ import { IndividualProfileComponent } from "./IndividualProfile/IndividualProfil
 import { ProfileComponent } from "./IndividualProfile/Profile/profile.component";
 import { EditProfileComponent } from "./IndividualProfile/EditProfile/editprofile.component";
 import { CalendarComponent } from "./IndividualProfile/Calendar/calendar.component";
+import { HouseProfileComponent } from "./HouseProfile/HouseProfile.component";
 
 import { BackendService } from "./shared/backend.service";
 
@@ -16,7 +17,8 @@ const routes: Routes = [
     { path: "IndividualProfile", component: IndividualProfileComponent },
     { path: "Profile", component: ProfileComponent },
     { path: "EditProfile", component: EditProfileComponent },
-    { path: "Calendar", component: CalendarComponent }
+    { path: "Calendar", component: CalendarComponent },
+    { path: "HouseProfile", component: HouseProfileComponent }
 ];
 
 @NgModule({

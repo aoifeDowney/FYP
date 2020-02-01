@@ -22,7 +22,7 @@ import * as calendarModule from "nativescript-ui-calendar";
 import { TransactionsService } from "../../shared/transactions/transactions.service";
 
 @Component({
-    selector: "gr-IndividualProfile",
+    selector: "gr-calendar",
     templateUrl: "./calendar.component.html",
     styleUrls: ["./calendar.component.css"],
     providers: [TransactionsService]
