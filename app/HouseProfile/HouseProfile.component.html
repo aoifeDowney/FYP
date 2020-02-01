@@ -1,5 +1,20 @@
 <ActionBar title="Finances" class="action-bar"></ActionBar>
-<GridLayout>
+<GridLayout class="page">
+    <GridLayout rows="auto,auto" class="rentCard">
+        <GridLayout row="1" class="card">
+            <Label row="0" text="Rent"></Label>
+        </GridLayout>
+    </GridLayout>
+    <GridLayout rows="auto,auto" class="utiltiyBillCard">
+        <GridLayout row="1" class="card">
+            <Label row="0" text="Utility Bills"></Label>
+        </GridLayout>
+    </GridLayout>
+    <GridLayout rows="auto,auto" class="shoppingCard">
+        <GridLayout row="1" class="card">
+            <Label row="0" text="Shopping List"></Label>
+        </GridLayout>
+    </GridLayout>
     <GridLayout verticalAlignment="bottom">
 		<GridLayout columns="*, *, *" class="bottom-navigation">
 			<GridLayout col="0" (tap)="selectTab(0)">
