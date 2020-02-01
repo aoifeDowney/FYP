@@ -11,7 +11,7 @@ import { UserProfileSerive } from "../../shared/userprofile/userprofile.service"
 
 
 @Component({
-  selector: "gr-profile",
+  selector: "gr-editprofile",
   templateUrl: "./editprofile.component.html",
   styleUrls: ["./editprofile.component.css"],
   providers: [UserProfileSerive]

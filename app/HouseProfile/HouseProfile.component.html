@@ -1,0 +1,15 @@
+<ActionBar title="Finances" class="action-bar"></ActionBar>
+<GridLayout>
+    <GridLayout verticalAlignment="bottom">
+		<GridLayout columns="*, *, *" class="bottom-navigation">
+			<GridLayout col="0" (tap)="selectTab(0)">
+				<Label class="menu-word" text="Menu"></Label>
+				<Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+			</GridLayout>
+			<GridLayout col="2" (tap)="selectTab(2)">
+				<Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']"></Label>
+				<Button class="fa menu-icon m-word" text="&#xf4d3;"></Button>
+			</GridLayout>
+		</GridLayout>
+	</GridLayout>
+</GridLayout>
