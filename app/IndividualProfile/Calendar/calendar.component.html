@@ -1,0 +1,55 @@
+<ActionBar title="Calendar" class="action-bar"></ActionBar>
+<GridLayout>
+    <GridLayout columns="*" rows="auto,auto,*,auto">
+        <StackLayout col="0" row="0" orientation="vertical">
+            <RadCalendar col="0" row="1" [monthViewStyle]='monthViewStyle()'
+            height="300" [eventSource]="calendarEvents" eventsViewMode="Inline" 
+            selectionMode="Single" 
+            viewMode="Month" 
+            transitionMode="Stack"
+            locale="en-US">
+        </RadCalendar>
+        </StackLayout>
+        <StackLayout col="0" row="2" class="p-t-30" orientation="vertical"
+        backgroundColor="#2C3251">
+        <ListView #listView [items]="transactions" backgroundColor="#2C3251"
+            separatorColor="transparent">
+            <ng-template let-item="item">
+                <GridLayout columns="30, *, 100" rows="auto, auto, auto"
+                    class="p-l-20" backgroundColor="#2C3251" (tap)="onItemTap(item.name)">
+                    <Image [src]="'~/images/' + item.tag" row="0" col="0"
+                        rowSpan="3" width="12" stretch="aspectFit"
+                        verticalAlignment="top" horizontalAlignment="left"
+                        android:style="margin-top: 5" ios:style="margin-top: 9"></Image>
+                    <Label [text]="item.name" row="0" col="1" class="h3"></Label>
+                    <Label [text]="item.price" row="0" col="2" class="h2 p-r-20"
+                        color="#89D5E2" horizontalAlignment="right"></Label>
+                        <Label [dates]="item.price" row="0" col="1" class="h3"></Label>
+                    <StackLayout class="hr-light m-y-20" row="2" col="1"
+                        colSpan="2" *ngIf="!item.last"></StackLayout>
+                    <StackLayout class="m-7-20" row="2" col="1" colSpan="2"
+                        *ngIf="item.last"></StackLayout>
+                </GridLayout>
+            </ng-template>
+        </ListView>
+    </StackLayout>
+
+    </GridLayout>
+
+    <GridLayout verticalAlignment="bottom">
+		<GridLayout columns="*, *, *" class="bottom-navigation">
+			<GridLayout col="0" (tap)="selectTab(0)">
+				<Label class="menu-word" text="Menu"></Label>
+				<Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+			</GridLayout>
+			<GridLayout col="1" (tap)="selectTab(1)">
+				<Label class="menu-word" text="Transactions" [nsRouterLink]="['/IndividualProfile']"></Label>
+				<Button class="fa menu-icon" text="&#xf15c;"></Button>
+			</GridLayout>
+			<GridLayout col="2" (tap)="selectTab(2)">
+				<Label class="menu-word" text="Calendar" [nsRouterLink]="['/Calendar']"></Label>
+				<Button class="fa menu-icon" text="&#xf073;"></Button>
+			</GridLayout>
+		</GridLayout>
+	</GridLayout>
+</GridLayout>
