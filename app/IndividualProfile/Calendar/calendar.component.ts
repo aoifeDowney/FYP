@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { Color } from "color";
@@ -28,6 +28,7 @@ import { TransactionsService } from "../../shared/transactions/transactions.serv
     providers: [TransactionsService]
 })
 export class CalendarComponent implements OnInit {
+    @Input() dates: [];
 
     transactions = [];
     calendarEvents = [];
@@ -39,7 +40,7 @@ export class CalendarComponent implements OnInit {
         let startDate;
         let endDate;
         let colors = [new Color(200, 188, 26, 214), new Color(220, 255, 109, 130), new Color(255, 55, 45, 255), new Color(199, 17, 227, 10), new Color(255, 255, 54, 3)];
-        for (let i = 1; i < 8; i++) {
+        for (let i = 1; i < 10; i++) {
             startDate = new Date(now.getFullYear(), now.getMonth(), i * 2);
             endDate = new Date(now.getFullYear(), now.getMonth(), (i * 2), 3);
             let event = new calendarModule.CalendarEvent("event " + i, startDate, endDate, false, colors[i * 10 % (colors.length - 1)]);
@@ -63,11 +64,12 @@ export class CalendarComponent implements OnInit {
         });
     }
 
-   /* getTransactionsDate() {
-        this.transactionsService.getHouseShopPrice().subscribe((data) => {
-            this.payments = data.date;
-            console.log(this.payments);
-        })
+    /*getTransactionsDate() {
+        for(let i = 0; i < this.transactions.length; i++) {
+            if(this.transactions[i].includes("-")) {
+                this.dates.push(this.transactions[i]);
+            }
+        }
     }*/
 
     monthViewStyle() {
