@@ -19,6 +19,7 @@ import { ExpensesChartComponent } from "./shared/components/expenses-chart.compo
 import { CalendarComponent } from "./IndividualProfile/Calendar/calendar.component";
 import { HouseProfileComponent } from "./HouseProfile/HouseProfile.component";
 import { RentComponent } from "./HouseProfile/rent/rent.component";
+import { UtilityBillComponent } from "./HouseProfile/utilityBill/utilityBill.component";
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { RentComponent } from "./HouseProfile/rent/rent.component";
     ExpensesChartComponent,
     CalendarComponent,
     HouseProfileComponent,
-    RentComponent
+    RentComponent,
+    UtilityBillComponent
   ],
   bootstrap: [AppComponent]
 })

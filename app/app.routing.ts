@@ -9,6 +9,7 @@ import { EditProfileComponent } from "./IndividualProfile/EditProfile/editprofil
 import { CalendarComponent } from "./IndividualProfile/Calendar/calendar.component";
 import { HouseProfileComponent } from "./HouseProfile/HouseProfile.component";
 import { RentComponent } from "./HouseProfile/rent/rent.component";
+import { UtilityBillComponent } from "./HouseProfile/utilityBill/utilityBill.component";
 
 import { BackendService } from "./shared/backend.service";
 
@@ -20,7 +21,8 @@ const routes: Routes = [
     { path: "EditProfile", component: EditProfileComponent },
     { path: "Calendar", component: CalendarComponent },
     { path: "HouseProfile", component: HouseProfileComponent },
-    { path: "Rent", component: RentComponent }
+    { path: "Rent", component: RentComponent },
+    { path: "UtilityBill", component: UtilityBillComponent }
 ];
 
 @NgModule({

@@ -5,22 +5,20 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { TransactionsService } from "../../shared/transactions/transactions.service";
 
 @Component({
-    selector: "gr-rent",
-    templateUrl: "./rent.component.html",
-    styleUrls: ["./rent.component.css"],
+    selector: "gr-utilityBill",
+    templateUrl: "./utilityBill.component.html",
+    styleUrls: ["./utilityBill.component.css"],
     providers: [TransactionsService]
 })
-export class RentComponent {
+export class UtilityBillComponent {
 
     transactions = [];
     transactionsNotPaid = [];
     paid = false;
     notPaid = false;
 
-    constructor(private transactionsService: TransactionsService) {}
-
-    ngOnInit(): void {
-        this.transactionsService.getRent().subscribe((data) => {
+    constructor(private transactionsService: TransactionsService) {
+        this.transactionsService.getUtilityBill().subscribe((data) => {
             this.transactions = data;
             if(this.transactions.length > 0) {
                 this.paid = true;
@@ -32,7 +30,7 @@ export class RentComponent {
             });
         });
 
-        this.transactionsService.getRentNotPaid().subscribe((data) => {
+        this.transactionsService.getUtilityBillNotPaid().subscribe((data) => {
             this.transactionsNotPaid = data;
             if(this.transactionsNotPaid.length > 0) {
                 this.notPaid = true;
@@ -43,6 +41,9 @@ export class RentComponent {
                 message: "An error occurred retrieving your data"
             });
         });
+    }
+
+    ngOnInit(): void {
     }
 
     onDrawerButtonTap(): void {
