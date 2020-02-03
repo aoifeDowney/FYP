@@ -10,11 +10,12 @@ import { CalendarComponent } from "./IndividualProfile/Calendar/calendar.compone
 import { HouseProfileComponent } from "./HouseProfile/HouseProfile.component";
 import { RentComponent } from "./HouseProfile/rent/rent.component";
 import { UtilityBillComponent } from "./HouseProfile/utilityBill/utilityBill.component";
+import { ShoppingComponent } from "./HouseProfile/shopping/shopping.component";
 
 import { BackendService } from "./shared/backend.service";
 
 const routes: Routes = [
-    { path: "", redirectTo: BackendService.isUserLoggedIn() ? "/Rent" : "/login", pathMatch: "full" },
+    { path: "", redirectTo: BackendService.isUserLoggedIn() ? "/Shopping" : "/login", pathMatch: "full" },
     { path: "login", component: LoginComponent },
     { path: "IndividualProfile", component: IndividualProfileComponent },
     { path: "Profile", component: ProfileComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
     { path: "Calendar", component: CalendarComponent },
     { path: "HouseProfile", component: HouseProfileComponent },
     { path: "Rent", component: RentComponent },
-    { path: "UtilityBill", component: UtilityBillComponent }
+    { path: "UtilityBill", component: UtilityBillComponent },
+    { path: "Shopping", component: ShoppingComponent }
 ];
 
 @NgModule({

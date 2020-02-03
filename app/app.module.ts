@@ -20,6 +20,7 @@ import { CalendarComponent } from "./IndividualProfile/Calendar/calendar.compone
 import { HouseProfileComponent } from "./HouseProfile/HouseProfile.component";
 import { RentComponent } from "./HouseProfile/rent/rent.component";
 import { UtilityBillComponent } from "./HouseProfile/utilityBill/utilityBill.component";
+import { ShoppingComponent } from "./HouseProfile/shopping/shopping.component";
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { UtilityBillComponent } from "./HouseProfile/utilityBill/utilityBill.com
     CalendarComponent,
     HouseProfileComponent,
     RentComponent,
-    UtilityBillComponent
+    UtilityBillComponent,
+    ShoppingComponent
   ],
   bootstrap: [AppComponent]
 })
