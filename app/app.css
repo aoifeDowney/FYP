@@ -3,7 +3,7 @@
 }
 
 ActionBar {
-  background-color: rgb(112, 0, 203);
+  background-color:  #8f91de;
   color: white;
 }
 
@@ -30,7 +30,7 @@ ActionBar {
   color: #022734;
 }
 .sidedrawer.sidedrawer-left {
-  background-color: rgb(112, 0, 203);
+  background-color: #8f91de;
 }
 .sidedrawer.sidedrawer-left .sidedrawer-header-image {
   color: #F8F8F8;
@@ -45,7 +45,7 @@ ActionBar {
   color: rgba(255,255,255,0.5);
 }
 .sidedrawer .sidedrawer-header {
-  background-color: rgb(112, 0, 203);
+  background-color: #8f91de;
 }
 .sidedrawer .sidedrawer-header .sidedrawer-header-brand {
   color: #fff;
@@ -70,7 +70,7 @@ ActionBar {
   background-color: #F8F8F8;
 }
 .sidedrawer .sidedrawer-content .sidedrawer-list-item.selected Label {
-  color:rgb(112, 0, 203);
+  color:#8f91de;
 }
 
 .sidedrawer-text {

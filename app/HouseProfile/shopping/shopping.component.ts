@@ -5,12 +5,12 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { TransactionsService } from "../../shared/transactions/transactions.service";
 
 @Component({
-    selector: "gr-utilityBill",
-    templateUrl: "./utilityBill.component.html",
-    styleUrls: ["./utilityBill.component.css"],
+    selector: "gr-shopping",
+    templateUrl: "./shopping.component.html",
+    styleUrls: ["./shopping.component.css"],
     providers: [TransactionsService]
 })
-export class UtilityBillComponent {
+export class ShoppingComponent {
 
     transactions = [];
     transactionsNotPaid = [];
@@ -20,26 +20,11 @@ export class UtilityBillComponent {
     constructor(private transactionsService: TransactionsService) {}
 
     ngOnInit(): void {
-        this.transactionsService.getUtilityBill().subscribe((data) => {
+        this.transactionsService.getHouseShop().subscribe((data) => {
             this.transactions = data;
-            if(this.transactions.length > 0) {
-                this.paid = true;
-            }
         }, () => {
             alert({
                 title: "Transactions",
-                message: "An error occurred retrieving your data"
-            });
-        });
-
-        this.transactionsService.getUtilityBillNotPaid().subscribe((data) => {
-            this.transactionsNotPaid = data;
-            if(this.transactionsNotPaid.length > 0) {
-                this.notPaid = true;
-            }
-        }, () => {
-            alert({
-                title: "Transactions Not Paid",
                 message: "An error occurred retrieving your data"
             });
         });

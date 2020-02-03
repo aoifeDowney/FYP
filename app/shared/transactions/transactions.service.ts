@@ -60,6 +60,14 @@ export class TransactionsService {
         return this.dataStore.find(query.and(secondQuery));
     }
 
+    getHouseShop() {
+        const query = new Kinvey.Query();
+        query.equalTo('type', 'House Shop');
+        const secondQuery = new Kinvey.Query();
+
+        return this.dataStore.find(query);
+    }
+
     save(task) {
         return this.dataStore.save(task);
     }
