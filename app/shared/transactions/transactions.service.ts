@@ -24,6 +24,24 @@ export class TransactionsService {
         return this.dataStore.find(query);
     }
 
+    getRent() {
+        const query = new Kinvey.Query();
+        query.equalTo('type', 'Rent');
+        const secondQuery = new Kinvey.Query();
+        secondQuery.equalTo('complete', true);
+
+        return this.dataStore.find(query.and(secondQuery));
+    }
+
+    getRentNotPaid() {
+        const query = new Kinvey.Query();
+        query.equalTo('type', 'Rent');
+        const secondQuery = new Kinvey.Query();
+        secondQuery.equalTo('complete', false);
+
+        return this.dataStore.find(query.and(secondQuery));
+    }
+
     save(task) {
         return this.dataStore.save(task);
     }
