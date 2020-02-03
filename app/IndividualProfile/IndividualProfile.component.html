@@ -8,8 +8,6 @@
 		<GridLayout row="1" class="balance-summary">
 		<StackLayout col="1">
 			<Label text="Expenses Total" class="expensesTotal"></Label>
-			<Label text="{{totalTransactions | number}}" class="ammount expensesFigure"></Label>
-			<Label *ngFor="let link of house"> {{ link }}</Label>
 		</StackLayout>
 		</GridLayout>
 		<StackLayout row="2">
@@ -26,8 +24,8 @@
 						</StackLayout>
 						<Label col="2" horizontal="right" class="ammount">
 							<FormattedString>
+								<Span text="Amount: €"></Span>
 								<Span [text]="item.price"></Span>
-								<Span class="icon fas fa-coins"></Span>
 							</FormattedString>
 						</Label>
 					</GridLayout>

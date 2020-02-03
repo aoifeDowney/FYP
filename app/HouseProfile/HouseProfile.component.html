@@ -2,7 +2,7 @@
 <GridLayout class="page">
     <GridLayout rows="auto,auto" class="rentCard">
         <GridLayout row="1" class="card">
-            <Label row="0" text="Rent"></Label>
+            <Label row="0" text="Rent" [nsRouterLink]="['/Rent']"></Label>
         </GridLayout>
     </GridLayout>
     <GridLayout rows="auto,auto" class="utiltiyBillCard">
@@ -22,7 +22,7 @@
 				<Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
 			</GridLayout>
 			<GridLayout col="2" (tap)="selectTab(2)">
-				<Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']"></Label>
+				<Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/Rent']"></Label>
 				<Button class="fa menu-icon m-word" text="&#xf4d3;"></Button>
 			</GridLayout>
 		</GridLayout>
