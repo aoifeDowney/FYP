@@ -1,0 +1,52 @@
+<ActionBar title="Add Expense" class="action-bar">
+    <ActionItem (tap)="onSave()" ios.systemIcon="3" ios.position="right"></ActionItem>
+</ActionBar>
+<GridLayout class="page">
+    <GridLayout rows="*" height="1500px">
+        <RadSideDrawer id="bottomDrawer" drawerContentSize="500" drawerLocation="Bottom">
+            <StackLayout tkDrawerContent class="bottom-drawer-content">
+                <FlexboxLayout flexDirection="row" class="category-drawer-item">
+                    <Label text="Select Category" class="category-drawer__title"></Label>
+                </FlexboxLayout>
+            </StackLayout>
+    
+            <ScrollView tkMainContent id="scrollContainer">
+    
+                <StackLayout width="100%" class="default-container">
+                    <FlexboxLayout flexDirection="row" class="form-row">
+                        <Label text="Rp" class="price-detail"></Label>
+                        <TextField class="form-control price" hint="Input price here"
+                            flexGrow="1" keyboardType="number"></TextField>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="row" class="form-row">
+                        <Image src="~/images/description-icon.png" class="form-icon"></Image>
+                        <TextField class="form-control" hint="Input title here"
+                            flexGrow="1"></TextField>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="row" class="form-row">
+                        <Image src="~/images/date-icon.png" class="form-icon"></Image>
+                        <TextField class="form-control" hint="Input date here"
+                            flexGrow="1" keyboardType="dateTime"></TextField>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="row" class="form-row">
+                        <Image id="selectCategoryIcon" src="~/images/icon-shopping.png"
+                            class="form-icon category"></Image>
+                        <Label id="selectCategoryText" class="form-control" text="House Shop" flexGrow="1"></Label>
+                    </FlexboxLayout>
+                </StackLayout>
+            </ScrollView>
+        </RadSideDrawer>
+    </GridLayout>
+    <GridLayout verticalAlignment="bottom">
+        <GridLayout columns="*, *, *" class="bottom-navigation">
+            <GridLayout col="0" (tap)="selectTab(0)">
+                <Label class="menu-word" text="Menu"></Label>
+                <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+            </GridLayout>
+            <GridLayout col="2" (tap)="selectTab(2)">
+                <Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']"></Label>
+                <Button class="fa menu-icon m-word" text="&#xf4d3;"></Button>
+            </GridLayout>
+        </GridLayout>
+    </GridLayout>
+</GridLayout>
