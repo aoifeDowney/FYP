@@ -16,8 +16,8 @@ import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.compon
 import { BackendService } from "./shared/backend.service";
 
 const routes: Routes = [
-    { path: "", redirectTo: BackendService.isUserLoggedIn() ? "/Shopping" : "/login", pathMatch: "full" },
-    { path: "login", component: LoginComponent },
+    //{ path: "", redirectTo: BackendService.isUserLoggedIn() ? "/Shopping" : "/login", pathMatch: "full" },
+    { path: "", component: IndividualProfileComponent },
     { path: "IndividualProfile", component: IndividualProfileComponent },
     { path: "Profile", component: ProfileComponent },
     { path: "EditProfile", component: EditProfileComponent },
