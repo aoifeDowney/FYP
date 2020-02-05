@@ -7,32 +7,17 @@
                     verticalAlignment="middle">
                     <StackLayout row="0" col="2" height="50" orientation="vertical"
                         class="profile-information-container">
+                        <Label text="Items Bought"></Label>
                     </StackLayout>
                 </GridLayout>
                 <GridLayout columns="auto, auto, *" rows="auto" width="100%" height="auto" class="owe-dashboard">
                     <StackLayout id="category1" (tap)="onTouch($event)" category="total" row="0" col="0"
                         orientation="vertical" class="owe-dashboard-item active">
-                        <StackLayout orientation="horizontal" class="dashboard-title">
-                            <Image src="~/images/total-indicator.png" class="dashboard__indicator"></Image>
-                            <Label text="Total" class="dashboard-title__text"></Label>
-                        </StackLayout>
-                        <Label text="Rp 227.700" class="dasboard-value total"></Label>
+                        <Label text="Items Bought" class="dasboard-value total" [nsRouterLink]="['/AddItem']"></Label>
                     </StackLayout>
                     <StackLayout id="category2" (tap)="onTouch($event)" category="owe" row="0" col="1"
                         orientation="vertical" class="owe-dashboard-item">
-                        <StackLayout orientation="horizontal" class="dashboard-title">
-                            <Image src="~/images/owe-indicator.png" class="dashboard__indicator"></Image>
-                            <Label text="You Owed" class="dashboard-title__text"></Label>
-                        </StackLayout>
-                        <Label text="Rp 62.230" class="dasboard-value owe"></Label>
-                    </StackLayout>
-                    <StackLayout id="category3" (tap)="onTouch($event)" category="owed" row="0" col="2"
-                        orientation="vertical" class="owe-dashboard-item">
-                        <StackLayout orientation="horizontal" class="dashboard-title">
-                            <Image src="~/images/owed-indicator.png" class="dashboard__indicator"></Image>
-                            <Label text="You are Owed" class="dashboard-title__text"></Label>
-                        </StackLayout>
-                        <Label text="Rp 220.700" class="dasboard-value owed"></Label>
+                        <Label text="Suggested Items" class="dasboard-value owe" [nsRouterLink]="['/AddItem']"></Label>
                     </StackLayout>
                 </GridLayout>
                 <FlexboxLayout justifyContent="flex-end" class="owe-list-filter">

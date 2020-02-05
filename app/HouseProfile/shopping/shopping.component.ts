@@ -13,9 +13,6 @@ import { TransactionsService } from "../../shared/transactions/transactions.serv
 export class ShoppingComponent {
 
     transactions = [];
-    transactionsNotPaid = [];
-    paid = false;
-    notPaid = false;
 
     constructor(private transactionsService: TransactionsService) {}
 

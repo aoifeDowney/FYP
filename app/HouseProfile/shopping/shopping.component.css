@@ -20,6 +20,10 @@
       margin-left: 210;
   }
 
+  .subHeading {
+      text-align: center;
+  }
+
 .sidedrawer-list-item-text {
     color: #fff
 }
@@ -35,7 +39,7 @@ html {
 
 .profile-information-container {
     color: #fff;
-    padding: 0 20;
+    padding: 0 130;
 }
 
 .drawer-icon {
@@ -51,7 +55,7 @@ html {
 .owe-dashboard-item {
     background: #fff;
     padding: 10 10 15;
-    margin: 0 6;
+    margin: 0 25;
     border-width: 1;
     border-color: #fff;
     border-radius: 3;
