@@ -1,4 +1,32 @@
-<ActionBar title="Finances" class="action-bar"></ActionBar>
+<ActionBar title="House Finance" class="action-bar"></ActionBar>
 <GridLayout class="page">
-    <Label row="0" text="Utility Bill" [nsRouterLink]="['/Shopping']" style="margin-top: 40;"></Label>
+    <StackLayout width="100%" class="default-container">
+        <FlexboxLayout flexDirection="row" class="form-row">
+            <Image src="~/images/rent-icon.png" class="form-icon category"></Image>
+            <Label id="selectCategoryText" class="form-control" text="Rent" flexGrow="1"
+                [nsRouterLink]="['/Rent']"></Label>
+        </FlexboxLayout>
+        <FlexboxLayout flexDirection="row" class="form-row">
+            <Image src="~/images/bill.png" class="form-icon category"></Image>
+            <Label id="selectCategoryText" class="form-control" text="Utility Bill" flexGrow="1"
+                [nsRouterLink]="['/UtilityBill']"></Label>
+        </FlexboxLayout>
+        <FlexboxLayout flexDirection="row" class="form-row">
+            <Image src="~/images/icon-shopping.png" class="form-icon category"></Image>
+            <Label id="selectCategoryText" class="form-control" text="House Shop" flexGrow="1"
+                [nsRouterLink]="['/Shopping']"></Label>
+        </FlexboxLayout>
+    </StackLayout>
+    <GridLayout verticalAlignment="bottom">
+        <GridLayout columns="*, *, *" class="bottom-navigation">
+            <GridLayout col="0" (tap)="selectTab(0)">
+                <Label class="menu-word" text="Menu"></Label>
+                <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+            </GridLayout>
+            <GridLayout col="2" (tap)="selectTab(2)">
+                <Label class="menu-word m-word" text="House Finance" [nsRouterLink]="['/HouseProfile']"></Label>
+                <Button class="fa menu-icon m-word" text="&#xf15c;"></Button>
+            </GridLayout>
+        </GridLayout>
+    </GridLayout>
 </GridLayout>
