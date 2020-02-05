@@ -11,6 +11,8 @@ import { HouseProfileComponent } from "./HouseProfile/HouseProfile.component";
 import { RentComponent } from "./HouseProfile/rent/rent.component";
 import { UtilityBillComponent } from "./HouseProfile/utilityBill/utilityBill.component";
 import { ShoppingComponent } from "./HouseProfile/shopping/shopping.component";
+import { AddBillComponent } from "./HouseProfile/utilityBill/addBill/addBill.component";
+import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.component";
 
 import { BackendService } from "./shared/backend.service";
 
@@ -24,7 +26,9 @@ const routes: Routes = [
     { path: "HouseProfile", component: HouseProfileComponent },
     { path: "Rent", component: RentComponent },
     { path: "UtilityBill", component: UtilityBillComponent },
-    { path: "Shopping", component: ShoppingComponent }
+    { path: "Shopping", component: ShoppingComponent },
+    { path: "AddBill", component: AddBillComponent },
+    { path: "AddItem", component: AddItemComponent }
 ];
 
 @NgModule({
