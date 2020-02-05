@@ -3,11 +3,11 @@ import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
 @Component({
-    selector: "gr-addItem",
-    templateUrl: "./addItem.component.html",
-    styleUrls: ["./addItem.component.css"]
+    selector: "gr-addBill",
+    templateUrl: "./addBill.component.html",
+    styleUrls: ["./addBill.component.css"]
 })
-export class AddItemComponent {
+export class AddBillComponent {
 
     constructor() {}
 

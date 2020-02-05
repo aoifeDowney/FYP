@@ -1,4 +1,4 @@
-<ActionBar title="Add Expense" class="action-bar">
+<ActionBar title="Add Utility Bill" class="action-bar">
     <ActionItem (tap)="onSave()" ios.systemIcon="3" ios.position="right"></ActionItem>
 </ActionBar>
 <GridLayout class="page">
@@ -29,9 +29,9 @@
                             flexGrow="1" keyboardType="dateTime"></TextField>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="row" class="form-row">
-                        <Image id="selectCategoryIcon" src="~/images/icon-shopping.png"
+                        <Image id="selectCategoryIcon" src="~/images/bill.png"
                             class="form-icon category"></Image>
-                        <Label id="selectCategoryText" class="form-control" text="House Shop" flexGrow="1"></Label>
+                        <Label id="selectCategoryText" class="form-control" text="Utility Bill" flexGrow="1"></Label>
                     </FlexboxLayout>
                 </StackLayout>
             </ScrollView>

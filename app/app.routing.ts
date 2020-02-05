@@ -12,8 +12,8 @@ import { RentComponent } from "./HouseProfile/rent/rent.component";
 import { UtilityBillComponent } from "./HouseProfile/utilityBill/utilityBill.component";
 import { ShoppingComponent } from "./HouseProfile/shopping/shopping.component";
 import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.component";
+import { AddBillComponent } from "./HouseProfile/utilityBill/addBill/addBill.component";
 
-import { BackendService } from "./shared/backend.service";
 
 const routes: Routes = [
     //{ path: "", redirectTo: BackendService.isUserLoggedIn() ? "/Shopping" : "/login", pathMatch: "full" },
@@ -26,7 +26,8 @@ const routes: Routes = [
     { path: "Rent", component: RentComponent },
     { path: "UtilityBill", component: UtilityBillComponent },
     { path: "Shopping", component: ShoppingComponent },
-    { path: "AddItem", component: AddItemComponent }
+    { path: "AddItem", component: AddItemComponent },
+    { path: "AddBill", component: AddBillComponent }
 ];
 
 @NgModule({
