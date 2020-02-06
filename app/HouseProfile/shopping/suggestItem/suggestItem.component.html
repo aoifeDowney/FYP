@@ -7,7 +7,7 @@
                     verticalAlignment="middle">
                     <StackLayout row="0" col="2" height="50" orientation="vertical"
                         class="profile-information-container">
-                        <Label text="Items Bought"></Label>
+                        <Label text="Suggested Items"></Label>
                     </StackLayout>
                 </GridLayout>
                 <GridLayout columns="auto, auto, *" rows="auto" width="100%" height="auto" class="owe-dashboard">
@@ -67,6 +67,10 @@
                 <Label class="menu-word" text="Menu"></Label>
                 <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
             </GridLayout>
+            <GridLayout col="1" (tap)="selectTab(1)">
+				<Label class="menu-word m-word" text="Add Item" [nsRouterLink]="['/AddItem']"></Label>
+				<Button class="fa menu-icon m-word" text="&#xf067;"></Button>
+			</GridLayout>
             <GridLayout col="2" (tap)="selectTab(2)">
                 <Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']"></Label>
                 <Button class="fa menu-icon m-word" text="&#xf15c;"></Button>

@@ -43,7 +43,7 @@ export class IndividualProfileComponent implements OnInit {
         });
     }
 
-    save() {
+    /*save() {
         var transaction = {
           name: this.textFieldValue
         };
@@ -52,7 +52,7 @@ export class IndividualProfileComponent implements OnInit {
           this.transactions.unshift(newTransaction);
         })
         this.textFieldValue = "";
-      }
+      }*/
 
       calculatePrice(type: string, price: number) {
 

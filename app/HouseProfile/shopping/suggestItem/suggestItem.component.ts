@@ -2,25 +2,22 @@ import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
-import { TransactionsService } from "../../shared/transactions/transactions.service";
+import { TransactionsService } from "../../../shared/transactions/transactions.service";
 
 @Component({
-    selector: "gr-shopping",
-    templateUrl: "./shopping.component.html",
-    styleUrls: ["./shopping.component.css"],
+    selector: "gr-suggestItem",
+    templateUrl: "./suggestItem.component.html",
+    styleUrls: ["./suggestItem.component.css"],
     providers: [TransactionsService]
 })
-export class ShoppingComponent {
+export class SuggestItemComponent {
 
     transactions = [];
-    suggestions = [];
-    itemsBought = false;
-    suggestedItems = false;
 
     constructor(private transactionsService: TransactionsService) {}
 
     ngOnInit(): void {
-        this.transactionsService.getHouseShop().subscribe((data) => {
+        this.transactionsService.getSuggestedItem().subscribe((data) => {
             this.transactions = data;
         }, () => {
             alert({

@@ -13,6 +13,7 @@ import { UtilityBillComponent } from "./HouseProfile/utilityBill/utilityBill.com
 import { ShoppingComponent } from "./HouseProfile/shopping/shopping.component";
 import { AddBillComponent } from "./HouseProfile/utilityBill/addBill/addBill.component";
 import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.component";
+import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
 
 import { BackendService } from "./shared/backend.service";
 
@@ -28,7 +29,8 @@ const routes: Routes = [
     { path: "UtilityBill", component: UtilityBillComponent },
     { path: "Shopping", component: ShoppingComponent },
     { path: "AddBill", component: AddBillComponent },
-    { path: "AddItem", component: AddItemComponent }
+    { path: "AddItem", component: AddItemComponent },
+    { path: "SuggestItem", component: SuggestItemComponent }
 ];
 
 @NgModule({
