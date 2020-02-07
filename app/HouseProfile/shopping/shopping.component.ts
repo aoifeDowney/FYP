@@ -12,6 +12,7 @@ import { TransactionsService } from "../../shared/transactions/transactions.serv
 })
 export class ShoppingComponent {
 
+    itemName: string;
     transactions = [];
     suggestions = [];
     itemsBought = false;
