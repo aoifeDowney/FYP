@@ -34,7 +34,7 @@
                 </FlexboxLayout>
                 <ListView [items]="transactions" backgroundColor="#e8e7e7">
                     <ng-template nsTemplateKey="transaction" let-item="item">
-                        <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7" [nsRouterLink]="['/ListDetail']">
+                        <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7" [nsRouterLink]="['/ListDetail']" (tap)="getItemName(item.name)">
                             <StackLayout id="item1" orientation="vertical" class="owe-list-item" width="100%"
                                 (tap)="onNavigate()">
                                 <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"

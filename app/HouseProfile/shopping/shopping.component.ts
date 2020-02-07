@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
@@ -29,6 +29,10 @@ export class ShoppingComponent {
                 message: "An error occurred retrieving your data"
             });
         });
+    }
+
+    getItemName(name: string) {
+        this.itemName = name;
     }
 
     onDrawerButtonTap(): void {

@@ -84,4 +84,11 @@ export class TransactionsService {
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
+
+    getListDetail(itemName: string) {
+        const query = new Kinvey.Query();
+        query.equalTo('name', itemName);
+
+        return this.dataStore.find(query);
+    }
 }
