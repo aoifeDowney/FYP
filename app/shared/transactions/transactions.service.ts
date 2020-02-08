@@ -10,6 +10,10 @@ export class TransactionsService {
         this.dataStore = Kinvey.DataStore.collection("Transactions");
     }
 
+    save(task) {
+        return this.dataStore.save(task);
+    }
+
     get() {
         const query = new Kinvey.Query();
         const secondQuery = new Kinvey.Query();

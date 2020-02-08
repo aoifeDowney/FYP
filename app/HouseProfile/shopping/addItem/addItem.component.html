@@ -1,5 +1,5 @@
-<ActionBar title="Add Expense" class="action-bar">
-    <ActionItem (tap)="onSave()" ios.systemIcon="3" ios.position="right"></ActionItem>
+<ActionBar title="Suggest Item" class="action-bar">
+    <ActionItem (tap)="suggestItem()" ios.systemIcon="3" ios.position="right"></ActionItem>
 </ActionBar>
 <GridLayout class="page">
     <GridLayout rows="*" height="1500px">
@@ -14,19 +14,9 @@
     
                 <StackLayout width="100%" class="default-container">
                     <FlexboxLayout flexDirection="row" class="form-row">
-                        <Label text="Rp" class="price-detail"></Label>
-                        <TextField class="form-control price" hint="Input price here"
-                            flexGrow="1" keyboardType="number"></TextField>
-                    </FlexboxLayout>
-                    <FlexboxLayout flexDirection="row" class="form-row">
                         <Image src="~/images/description-icon.png" class="form-icon"></Image>
-                        <TextField class="form-control" hint="Input title here"
+                        <TextField class="form-control" hint="Input title here" [(ngModel)]="nameValue"
                             flexGrow="1"></TextField>
-                    </FlexboxLayout>
-                    <FlexboxLayout flexDirection="row" class="form-row">
-                        <Image src="~/images/date-icon.png" class="form-icon"></Image>
-                        <TextField class="form-control" hint="Input date here"
-                            flexGrow="1" keyboardType="dateTime"></TextField>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="row" class="form-row">
                         <Image id="selectCategoryIcon" src="~/images/icon-shopping.png"

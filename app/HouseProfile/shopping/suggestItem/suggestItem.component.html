@@ -44,14 +44,11 @@
                                     <StackLayout row="0" col="1" orientation="vertical" class="owe-info-container">
                                         <Label class="owe-title" [text]="item.name"></Label>
                                     </StackLayout>
-                                    <Label text="€ " verticalAlignment="top" row="0" col="1"
-                                        class="pay-amount euroIcon"></Label>
-                                    <Label verticalAlignment="top" row="0" col="2" [text]="item.price"
-                                        class="pay-amount"></Label>
                                 </GridLayout>
                                 <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"
                                     class="owe-secondary-info">
-                                    <Label row="0" col="0" [text]="item.date" class="time-information"></Label>
+                                    <Label row="0" col="0" text="Suggested By: " class="time-information"></Label>
+                                    <Label row="0" col="1" [text]="item.user" class="time-information"></Label>
                                 </GridLayout>
                                 <Label class="divider" text=""></Label>
                             </StackLayout>
