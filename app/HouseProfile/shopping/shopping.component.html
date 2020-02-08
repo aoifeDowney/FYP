@@ -35,6 +35,7 @@
                 <ListView [items]="transactions" backgroundColor="#e8e7e7">
                     <ng-template nsTemplateKey="transaction" let-item="item">
                         <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7" [nsRouterLink]="['/ListDetail']" (tap)="getItemName(item.name)">
+                            <ListDetailComponent #list></ListDetailComponent>
                             <StackLayout id="item1" orientation="vertical" class="owe-list-item" width="100%"
                                 (tap)="onNavigate()">
                                 <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"
@@ -43,6 +44,7 @@
                                     </Image>
                                     <StackLayout row="0" col="1" orientation="vertical" class="owe-info-container">
                                         <Label class="owe-title" [text]="item.name"></Label>
+                                        <Label class="owe-title" text="{{itemName}}"></Label>
                                     </StackLayout>
                                     <Label text="€ " verticalAlignment="top" row="0" col="1"
                                         class="pay-amount euroIcon"></Label>

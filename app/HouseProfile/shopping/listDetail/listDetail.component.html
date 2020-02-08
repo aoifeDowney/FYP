@@ -6,8 +6,8 @@
 			<Label text="Bought by" class="title"></Label>
 			<Label text="Paid by" class="paidBy"></Label>
 		</GridLayout>
-		<StackLayout row="0" class="listPaid" *ngIf="paid">
-			<ListView [items]="transactions" separatorColor="transparent" class="transactions-list">
+		<StackLayout row="0" class="listPaid">
+			<ListView [items]="items" separatorColor="transparent" class="transactions-list">
 				<ng-template nsTemplateKey="transaction" let-item="item">
 					<GridLayout columns="auto, *, auto" class="transactions-list-item">
 						<StackLayout col="0" class="mr-10" height="36" width="36">
@@ -25,33 +25,6 @@
 					</GridLayout>
 				</ng-template>
 			</ListView>
-		</StackLayout>
-		<StackLayout row="0" class="listPaid" *ngIf="!paid">
-			<Label text="Nobody has yet paid" class="paidText"></Label>
-		</StackLayout>
-		<Label text="Still to pay" class="notPaid"></Label>
-		<StackLayout row="0" class="listNotPaid" *ngIf="notPaid">
-			<ListView [items]="transactionsNotPaid" separatorColor="transparent" class="transactions-list">
-				<ng-template nsTemplateKey="transaction" let-item="item">
-					<GridLayout columns="auto, *, auto" class="transactions-list-item">
-						<StackLayout col="0" class="mr-10" height="36" width="36">
-							<Label text="price" class="calculatingPrice"></Label>
-						</StackLayout>
-						<StackLayout col="1" verticalAlignment="center">
-							<Label [text]="item.user"></Label>
-						</StackLayout>
-						<Label col="2" horizontal="right" class="ammount">
-							<FormattedString>
-								<Span text="Amount: €"></Span>
-								<Span [text]="item.price"></Span>
-							</FormattedString>
-						</Label>
-					</GridLayout>
-				</ng-template>
-			</ListView>
-		</StackLayout>
-		<StackLayout row="0" class="listPaid" *ngIf="!notPaid">
-			<Label text="Everybody has paid" class="notPaidText"></Label>
 		</StackLayout>
 		<Label text="Make your payment" class="makePayment"></Label>
 	</GridLayout>
