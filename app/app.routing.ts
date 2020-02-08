@@ -29,10 +29,10 @@ const routes: Routes = [
     { path: "Rent", component: RentComponent },
     { path: "UtilityBill", component: UtilityBillComponent },
     { path: "Shopping", component: ShoppingComponent },
+    { path: "SuggestItem", component: SuggestItemComponent },
     { path: "AddBill", component: AddBillComponent },
     { path: "AddItem", component: AddItemComponent },
-    { path: "ListDetail", component: ListDetailComponent },
-
+    { path: "ListDetail", component: ListDetailComponent }
 ];
 
 @NgModule({

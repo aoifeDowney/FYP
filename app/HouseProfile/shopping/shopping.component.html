@@ -11,13 +11,13 @@
                     </StackLayout>
                 </GridLayout>
                 <GridLayout columns="auto, auto, *" rows="auto" width="100%" height="auto" class="owe-dashboard">
-                    <StackLayout id="category1" (tap)="onTouch($event)" category="total" row="0" col="0"
+                    <StackLayout id="category1" [nsRouterLink]="['/Shopping']" category="total" row="0" col="0"
                         orientation="vertical" class="owe-dashboard-item active">
-                        <Label text="Items Bought" class="dasboard-value total" [nsRouterLink]="['/Shopping']"></Label>
+                        <Label text="Items Bought" class="dasboard-value total"></Label>
                     </StackLayout>
-                    <StackLayout id="category2" (tap)="onTouch($event)" category="owe" row="0" col="1"
+                    <StackLayout id="category2" [nsRouterLink]="['/SuggestItem']" category="owe" row="0" col="1"
                         orientation="vertical" class="owe-dashboard-item">
-                        <Label text="Suggested Items" class="dasboard-value owe" [nsRouterLink]="['/SuggestItem']"></Label>
+                        <Label text="Suggested Items" class="dasboard-value owe" ></Label>
                     </StackLayout>
                 </GridLayout>
                 <FlexboxLayout justifyContent="flex-end" class="owe-list-filter">

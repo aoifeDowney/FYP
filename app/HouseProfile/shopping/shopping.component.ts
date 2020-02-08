@@ -38,8 +38,10 @@ export class ShoppingComponent {
         //console.log(name);
         //this.messageEvent.emit(this.message)
         this.itemName = name;
-        
+    }
 
+    do() {
+        console.log("HI");
     }
 
     onDrawerButtonTap(): void {
