@@ -23,6 +23,9 @@ import { UtilityBillComponent } from "./HouseProfile/utilityBill/utilityBill.com
 import { ShoppingComponent } from "./HouseProfile/shopping/shopping.component";
 import { AddBillComponent } from "./HouseProfile/utilityBill/addBill/addBill.component";
 import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.component";
+import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
+import { ListDetailComponent } from "./HouseProfile/shopping/listDetail/listDetail.component";
+import { ItemDetailComponent } from "./HouseProfile/shopping/suggestItem/itemDetail/itemDetail.component";
 
 @NgModule({
   imports: [
@@ -49,7 +52,10 @@ import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.compon
     UtilityBillComponent,
     ShoppingComponent,
     AddBillComponent,
-    AddItemComponent
+    AddItemComponent,
+    SuggestItemComponent,
+    ListDetailComponent,
+    ItemDetailComponent
   ],
   bootstrap: [AppComponent]
 })

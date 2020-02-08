@@ -7,17 +7,17 @@
                     verticalAlignment="middle">
                     <StackLayout row="0" col="2" height="50" orientation="vertical"
                         class="profile-information-container">
-                        <Label text="Items Bought"></Label>
+                        <Label text="Suggested Items"></Label>
                     </StackLayout>
                 </GridLayout>
                 <GridLayout columns="auto, auto, *" rows="auto" width="100%" height="auto" class="owe-dashboard">
-                    <StackLayout id="category1" [nsRouterLink]="['/Shopping']" category="total" row="0" col="0"
+                    <StackLayout id="category1" (tap)="onTouch($event)" category="total" row="0" col="0"
                         orientation="vertical" class="owe-dashboard-item active">
-                        <Label text="Items Bought" class="dasboard-value total"></Label>
+                        <Label text="Items Bought" class="dasboard-value total" [nsRouterLink]="['/Shopping']"></Label>
                     </StackLayout>
-                    <StackLayout id="category2" [nsRouterLink]="['/SuggestItem']" category="owe" row="0" col="1"
+                    <StackLayout id="category2" (tap)="onTouch($event)" category="owe" row="0" col="1"
                         orientation="vertical" class="owe-dashboard-item">
-                        <Label text="Suggested Items" class="dasboard-value owe" ></Label>
+                        <Label text="Suggested Items" class="dasboard-value owe" [nsRouterLink]="['/SuggestItem']"></Label>
                     </StackLayout>
                 </GridLayout>
                 <FlexboxLayout justifyContent="flex-end" class="owe-list-filter">
@@ -34,8 +34,7 @@
                 </FlexboxLayout>
                 <ListView [items]="transactions" backgroundColor="#e8e7e7">
                     <ng-template nsTemplateKey="transaction" let-item="item">
-                        <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7" [nsRouterLink]="['/ListDetail']" (tap)="getItemName(item.name)">
-                            <ListDetailComponent #list></ListDetailComponent>
+                        <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7" [nsRouterLink]="['/ItemDetail']">
                             <StackLayout id="item1" orientation="vertical" class="owe-list-item" width="100%"
                                 (tap)="onNavigate()">
                                 <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"
@@ -44,16 +43,12 @@
                                     </Image>
                                     <StackLayout row="0" col="1" orientation="vertical" class="owe-info-container">
                                         <Label class="owe-title" [text]="item.name"></Label>
-                                        <Label class="owe-title" text="{{itemName}}"></Label>
                                     </StackLayout>
-                                    <Label text="€ " verticalAlignment="top" row="0" col="1"
-                                        class="pay-amount euroIcon"></Label>
-                                    <Label verticalAlignment="top" row="0" col="2" [text]="item.price"
-                                        class="pay-amount"></Label>
                                 </GridLayout>
                                 <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"
                                     class="owe-secondary-info">
-                                    <Label row="0" col="0" [text]="item.date" class="time-information"></Label>
+                                    <Label row="0" col="0" text="Suggested By: " class="time-information"></Label>
+                                    <Label row="0" col="1" [text]="item.user" class="time-information"></Label>
                                 </GridLayout>
                                 <Label class="divider" text=""></Label>
                             </StackLayout>
@@ -69,6 +64,10 @@
                 <Label class="menu-word" text="Menu"></Label>
                 <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
             </GridLayout>
+            <GridLayout col="1" (tap)="selectTab(1)">
+				<Label class="menu-word m-word" text="Add Item" [nsRouterLink]="['/AddItem']"></Label>
+				<Button class="fa menu-icon m-word" text="&#xf067;"></Button>
+			</GridLayout>
             <GridLayout col="2" (tap)="selectTab(2)">
                 <Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']"></Label>
                 <Button class="fa menu-icon m-word" text="&#xf15c;"></Button>
