@@ -18,11 +18,11 @@
 			        <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
 		        </GridLayout>
 		        <GridLayout col="1" (tap)="selectTab(1)">
-			        <Label class="menu-word" text="Profile" [nsRouterLink]="['/Profile']"></Label>
+			        <Label class="menu-word" text="Profile" [nsRouterLink]="['/Profile']" clearHistory="true"></Label>
 			        <Button class="fa menu-icon" text="&#xf007;"></Button>
 		        </GridLayout>
 		        <GridLayout col="2" (tap)="selectTab(2)">
-			        <Label class="menu-word" text="Edit Profile" [nsRouterLink]="['/EditProfile']"></Label>
+			        <Label class="menu-word" text="Edit Profile" [nsRouterLink]="['/EditProfile']" clearHistory="true"></Label>
 			        <Button class="fa menu-icon" text="&#xf044;"></Button>
 		        </GridLayout>
 	        </GridLayout>
