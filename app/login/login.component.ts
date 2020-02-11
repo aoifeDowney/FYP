@@ -5,6 +5,8 @@ import { Page } from "tns-core-modules/ui/page";
 import { User } from "../shared/user/user.model";
 import { UserService } from "../shared/user/user.service";
 
+import * as Kinvey from "kinvey-nativescript-sdk";
+
 @Component({
     selector: "gr-login",
     providers: [UserService],
@@ -33,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     login() {
         this.userService.login(this.user)
-            .subscribe(
+            .then(
                 () => this.router.navigate(["/IndividualProfile"]),
                 (exception) => {
                     if (exception.error && exception.error.description) {

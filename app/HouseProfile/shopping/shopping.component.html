@@ -11,11 +11,11 @@
                     </StackLayout>
                 </GridLayout>
                 <GridLayout columns="auto, auto, *" rows="auto" width="100%" height="auto" class="owe-dashboard">
-                    <StackLayout id="category1" [nsRouterLink]="['/Shopping']" category="total" row="0" col="0"
+                    <StackLayout id="category1" [nsRouterLink]="['/Shopping']" clearHistory="true" category="total" row="0" col="0"
                         orientation="vertical" class="owe-dashboard-item active">
                         <Label text="Items Bought" class="dasboard-value total"></Label>
                     </StackLayout>
-                    <StackLayout id="category2" [nsRouterLink]="['/SuggestItem']" category="owe" row="0" col="1"
+                    <StackLayout id="category2" [nsRouterLink]="['/SuggestItem']" clearHistory="true" category="owe" row="0" col="1"
                         orientation="vertical" class="owe-dashboard-item">
                         <Label text="Suggested Items" class="dasboard-value owe" ></Label>
                     </StackLayout>
@@ -34,7 +34,7 @@
                 </FlexboxLayout>
                 <ListView [items]="transactions" backgroundColor="#e8e7e7">
                     <ng-template nsTemplateKey="transaction" let-item="item">
-                        <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7" [nsRouterLink]="['/ListDetail']" (tap)="getItemName(item.name)">
+                        <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7" [nsRouterLink]="['/ListDetail']" (tap)="getItemName(item.name)" clearHistory="true">
                             <ListDetailComponent #list></ListDetailComponent>
                             <StackLayout id="item1" orientation="vertical" class="owe-list-item" width="100%"
                                 (tap)="onNavigate()">
@@ -70,7 +70,7 @@
                 <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
             </GridLayout>
             <GridLayout col="2" (tap)="selectTab(2)">
-                <Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']"></Label>
+                <Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']" clearHistory="true"></Label>
                 <Button class="fa menu-icon m-word" text="&#xf15c;"></Button>
             </GridLayout>
         </GridLayout>
