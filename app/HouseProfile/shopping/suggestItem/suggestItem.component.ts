@@ -86,6 +86,10 @@ export class SuggestItemComponent {
         });
     }
 
+    back() {
+        this.itemDetail = false;
+    }
+
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
