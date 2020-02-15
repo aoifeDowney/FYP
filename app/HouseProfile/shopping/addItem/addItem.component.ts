@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as dialogs from "tns-core-modules/ui/dialogs";
+import * as Kinvey from "kinvey-nativescript-sdk";
 
 import { TransactionsService } from "../../../shared/transactions/transactions.service";
 
@@ -15,6 +16,7 @@ export class AddItemComponent {
 
     nameValue = "";
     items = [];
+    activeUser = Kinvey.User.getActiveUser();
 
     constructor(private transactionsService: TransactionsService) {}
 
@@ -25,7 +27,7 @@ export class AddItemComponent {
         var task = {
             name: this.nameValue,
             type: "House Shop",
-            user: "Aoife",
+            user: this.activeUser.username,
             bought: false,
             complete: false
         };

@@ -14,12 +14,10 @@ import { ShoppingService } from "../shopping/shared/shopping.service";
 export class ShoppingComponent {
 
     itemName: string;
-    @Output() itemNameEvent = new EventEmitter<string>();
-
+    boughtBy: string;
     transactions = [];
-    suggestions = [];
-    itemsBought = false;
-    suggestedItems = false;
+    itemDetail = false;
+
 
     constructor(private transactionsService: TransactionsService, private shoppingService: ShoppingService) {}
 
@@ -34,10 +32,10 @@ export class ShoppingComponent {
         });
     }
 
-    getItemName(name: string) {
-        //console.log(name);
-        //this.messageEvent.emit(this.message)
+    getItemDetail(name: string, boughtBy: string) {
         this.itemName = name;
+        this.boughtBy = boughtBy;
+        this.itemDetail = true;
     }
 
     do() {

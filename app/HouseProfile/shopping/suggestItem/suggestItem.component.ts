@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import { Router } from "@angular/router";
 import { EventData } from "tns-core-modules/data/observable";
 import { Switch } from "tns-core-modules/ui/switch";
 import * as dialogs from "tns-core-modules/ui/dialogs";
@@ -28,7 +29,7 @@ export class SuggestItemComponent {
     items = [];
     activeUser = Kinvey.User.getActiveUser();
 
-    constructor(private transactionsService: TransactionsService) {}
+    constructor(private transactionsService: TransactionsService, private router: Router) {}
 
     ngOnInit(): void {
         this.transactionsService.getSuggestedItem().subscribe((data) => {
@@ -83,6 +84,8 @@ export class SuggestItemComponent {
             title: "Saved!",
             message: "The item has been updated and moved to the 'Items Bought' list",
             okButtonText: "Okay"
+        }).then(() => {
+            this.router.navigate(["/SuggestItem"])
         });
     }
 

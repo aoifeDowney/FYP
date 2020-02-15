@@ -16,6 +16,51 @@
     border-top-width: 1;
   }
 
+  .icon {
+    margin-bottom: 580;
+    margin-right: 320;
+  }
+
+  .title {
+    margin-bottom: 570;
+    margin-left: 40;
+  }
+
+  .paidBy {
+    margin-bottom: 450;
+    margin-left: 40;
+    font-weight: bold;
+  }
+
+  .notPaid {
+    margin-bottom: 150;
+    margin-left: 40;
+    font-weight: bold;
+  }
+
+  .makePayment {
+    margin-top: 100;
+    margin-left: 40;
+    font-weight: bold;
+  }
+
+  .listPaid {
+    margin-top: 100;
+  }
+
+  .listNotPaid {
+    margin-top: 250;
+  }
+
+  .paidText {
+    margin-left: 40;
+  }
+
+  .notPaidText {
+      margin-left: 40;
+      margin-top: 150;
+  }
+
   .euroIcon {
       margin-left: 210;
   }
