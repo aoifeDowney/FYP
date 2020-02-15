@@ -1,6 +1,6 @@
 <ActionBar title="House Shop" class="action-bar"></ActionBar>
 <GridLayout class="page">
-    <GridLayout rows="*" height="1500px">
+    <GridLayout rows="*" height="1500px" *ngIf="!itemDetail">
         <AbsoluteLayout width="100%" height="100%" backgroundColor="#e8e7e7">
             <StackLayout top="0" left="0" width="100%" height="100%">
                 <GridLayout columns="auto, auto , auto" row="auto" width="100%" height="auto" class="profile-container"
@@ -11,13 +11,13 @@
                     </StackLayout>
                 </GridLayout>
                 <GridLayout columns="auto, auto, *" rows="auto" width="100%" height="auto" class="owe-dashboard">
-                    <StackLayout id="category1" [nsRouterLink]="['/Shopping']" clearHistory="true" category="total" row="0" col="0"
-                        orientation="vertical" class="owe-dashboard-item active">
+                    <StackLayout id="category1" [nsRouterLink]="['/Shopping']" clearHistory="true" category="total"
+                        row="0" col="0" orientation="vertical" class="owe-dashboard-item active">
                         <Label text="Items Bought" class="dasboard-value total"></Label>
                     </StackLayout>
-                    <StackLayout id="category2" [nsRouterLink]="['/SuggestItem']" clearHistory="true" category="owe" row="0" col="1"
-                        orientation="vertical" class="owe-dashboard-item">
-                        <Label text="Suggested Items" class="dasboard-value owe" ></Label>
+                    <StackLayout id="category2" [nsRouterLink]="['/SuggestItem']" clearHistory="true" category="owe"
+                        row="0" col="1" orientation="vertical" class="owe-dashboard-item">
+                        <Label text="Suggested Items" class="dasboard-value owe"></Label>
                     </StackLayout>
                 </GridLayout>
                 <FlexboxLayout justifyContent="flex-end" class="owe-list-filter">
@@ -34,7 +34,8 @@
                 </FlexboxLayout>
                 <ListView [items]="transactions" backgroundColor="#e8e7e7">
                     <ng-template nsTemplateKey="transaction" let-item="item">
-                        <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7" [nsRouterLink]="['/ListDetail']" (tap)="getItemName(item.name)" clearHistory="true">
+                        <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7"
+                            (tap)="getItemDetail(item.name, item.boughtBy)">
                             <ListDetailComponent #list></ListDetailComponent>
                             <StackLayout id="item1" orientation="vertical" class="owe-list-item" width="100%"
                                 (tap)="onNavigate()">
@@ -63,6 +64,34 @@
             </StackLayout>
         </AbsoluteLayout>
     </GridLayout>
+    <GridLayout *ngIf="itemDetail">
+        <GridLayout row="0">
+            <Image src="~/images/boughtBy.png" style="width:15em; height:40em;" class="icon"></Image>
+            <Label text="Bought by {{boughtBy}}" class="title"></Label>
+            <Label text="Paid by" class="paidBy"></Label>
+        </GridLayout>
+        <StackLayout row="0" class="listPaid">
+            <ListView [items]="items" separatorColor="transparent" class="transactions-list">
+                <ng-template nsTemplateKey="transaction" let-item="item">
+                    <GridLayout columns="auto, *, auto" class="transactions-list-item">
+                        <StackLayout col="0" class="mr-10" height="36" width="36">
+                            <Label text="price" class="calculatingPrice"></Label>
+                        </StackLayout>
+                        <StackLayout col="1" verticalAlignment="center">
+                            <Label [text]="item.user"></Label>
+                        </StackLayout>
+                        <Label col="2" horizontal="right" class="ammount">
+                            <FormattedString>
+                                <Span text="Amount: €"></Span>
+                                <Span [text]="item.price"></Span>
+                            </FormattedString>
+                        </Label>
+                    </GridLayout>
+                </ng-template>
+            </ListView>
+        </StackLayout>
+        <Label text="Make your payment" class="makePayment"></Label>
+    </GridLayout>
     <GridLayout verticalAlignment="bottom">
         <GridLayout columns="*, *, *" class="bottom-navigation">
             <GridLayout col="0" (tap)="selectTab(0)">
@@ -70,7 +99,8 @@
                 <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
             </GridLayout>
             <GridLayout col="2" (tap)="selectTab(2)">
-                <Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']" clearHistory="true"></Label>
+                <Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']"
+                    clearHistory="true"></Label>
                 <Button class="fa menu-icon m-word" text="&#xf15c;"></Button>
             </GridLayout>
         </GridLayout>
