@@ -95,4 +95,11 @@ export class TransactionsService {
 
         return this.dataStore.find(query);
     }
+
+    getHouseholdMembers(householdName: string) {
+        const query = new Kinvey.Query();
+        query.equalTo('houseName', householdName);
+
+        return this.dataStore.find(query);
+    }
 }

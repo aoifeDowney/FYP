@@ -21,13 +21,33 @@
     margin-right: 320;
   }
 
+  .priceIcon {
+    margin-bottom: 520;
+    margin-right: 320;
+  }
+
+  .divisionIcon {
+    margin-bottom: 470;
+    margin-right: 320;
+  }
+
+  .priceTitle {
+    margin-bottom: 520;
+    margin-left: 40;
+  }
+
+  .priceInfo {
+    margin-bottom: 460;
+    margin-left: 40;
+  }
+
   .title {
     margin-bottom: 570;
     margin-left: 40;
   }
 
   .paidBy {
-    margin-bottom: 450;
+    margin-bottom: 380;
     margin-left: 40;
     font-weight: bold;
   }

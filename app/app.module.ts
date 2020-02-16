@@ -10,6 +10,7 @@ import { NativeScriptUICalendarModule } from "nativescript-ui-calendar/angular";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app.routing";
+import { Household } from "./HouseProfile/shared/household.module";
 
 import { LoginComponent } from "./login/login.component";
 import { IndividualProfileComponent } from "./IndividualProfile/IndividualProfile.component";
@@ -25,6 +26,7 @@ import { AddBillComponent } from "./HouseProfile/utilityBill/addBill/addBill.com
 import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.component";
 import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
 import { ListDetailComponent } from "./HouseProfile/shopping/listDetail/listDetail.component";
+import { HouseLoginComponent } from "./HouseProfile/houseLogin/houseLogin.component";
 
 @NgModule({
   imports: [
@@ -37,6 +39,9 @@ import { ListDetailComponent } from "./HouseProfile/shopping/listDetail/listDeta
     NativeScriptUIChartModule,
     NativeScriptUICalendarModule,
     AppRoutingModule
+  ],
+  providers: [
+    Household
   ],
   declarations: [
     AppComponent,
@@ -53,7 +58,8 @@ import { ListDetailComponent } from "./HouseProfile/shopping/listDetail/listDeta
     AddBillComponent,
     AddItemComponent,
     SuggestItemComponent,
-    ListDetailComponent
+    ListDetailComponent,
+    HouseLoginComponent
   ],
   bootstrap: [AppComponent]
 })
