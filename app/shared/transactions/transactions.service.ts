@@ -49,6 +49,14 @@ export class TransactionsService {
         return this.dataStore.find(query.and(secondQuery));
     }
 
+
+    getAllUtilityBills() {
+        const query = new Kinvey.Query();
+        query.equalTo('type', 'Utility Bill');
+
+        return this.dataStore.find(query);
+    }
+
     getUtilityBill() {
         const query = new Kinvey.Query();
         query.equalTo('type', 'Utility Bill');

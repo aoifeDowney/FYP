@@ -27,6 +27,7 @@ import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.compon
 import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
 import { ListDetailComponent } from "./HouseProfile/shopping/listDetail/listDetail.component";
 import { HouseLoginComponent } from "./HouseProfile/houseLogin/houseLogin.component";
+import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.component";
 
 @NgModule({
   imports: [
@@ -59,7 +60,8 @@ import { HouseLoginComponent } from "./HouseProfile/houseLogin/houseLogin.compon
     AddItemComponent,
     SuggestItemComponent,
     ListDetailComponent,
-    HouseLoginComponent
+    HouseLoginComponent,
+    DetailComponent
   ],
   bootstrap: [AppComponent]
 })

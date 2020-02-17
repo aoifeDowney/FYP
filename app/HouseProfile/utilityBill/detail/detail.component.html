@@ -1,0 +1,58 @@
+<ActionBar title="Utility Bill Detail" class="action-bar"></ActionBar>
+<GridLayout class="page">
+    <GridLayout rows="*" height="1500px">
+        <GridLayout row="0">
+            <Image src="~/images/utilityBill.png" style="width:15em; height:40em;" class="icon"></Image>
+            <Label text="Household Utility Bills which are due" class="title"></Label>
+            <Image src="~/images/total-indicator.png" style="width:15em; height:40em;" class="billIcon"></Image>
+            <Label text="This is a list of all the household bills which are currently due. Add new bills as needed."
+                textWrap="true" class="billInfo"></Label>
+        </GridLayout>
+        <AbsoluteLayout width="100%" height="100%" class="bills">
+            <StackLayout top="0" left="0" width="100%" height="100%">
+                <ListView [items]="transactions">
+                    <ng-template nsTemplateKey="transaction" let-item="item">
+                        <FlexboxLayout flexDirection="column" class="owe-list"
+                            (tap)="getItemDetail(item.name, item.boughtBy, item.price)">
+                            <StackLayout id="item1" orientation="vertical" class="owe-list-item" width="100%"
+                                (tap)="onNavigate()">
+                                <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"
+                                    class="owe-main-info" verticalAlignment="top">
+                                    <Image row="0" col="0" src="~/images/bill.png" class="owe-category-icon"></Image>
+                                    <StackLayout row="0" col="1" orientation="vertical" class="owe-info-container">
+                                        <Label class="owe-title" [text]="item.name"></Label>
+                                    </StackLayout>
+                                    <Label text="€" verticalAlignment="top" row="0" col="1"
+                                        class="pay-amount euroIcon"></Label>
+                                    <Label verticalAlignment="top" row="0" col="2" [text]="item.price" class="pay-amount"></Label>
+                                </GridLayout>
+                                <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"
+                                    class="owe-secondary-info">
+                                    <Label text="Due: " class="time-information"></Label>
+                                    <Label row="0" col="1" [text]="item.date" class="time-information"></Label>
+                                </GridLayout>
+                                <Label class="divider" text=""></Label>
+                            </StackLayout>
+                        </FlexboxLayout>
+                    </ng-template>
+                </ListView>
+            </StackLayout>
+        </AbsoluteLayout>
+    </GridLayout>
+    <GridLayout verticalAlignment="bottom">
+        <GridLayout columns="*, *, *" class="bottom-navigation">
+            <GridLayout col="0" (tap)="selectTab(0)">
+                <Label class="menu-word" text="Menu"></Label>
+                <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+            </GridLayout>
+            <GridLayout col="1" (tap)="selectTab(1)">
+                <Label class="menu-word m-word" text="Add Bill" [nsRouterLink]="['/AddBill']" clearHistory="true"></Label>
+                <Button class="fa menu-icon m-word" text="&#xf067;"></Button>
+            </GridLayout>    
+            <GridLayout col="2" (tap)="selectTab(2)">
+                <Label class="menu-word m-word" text="Utility Bill" [nsRouterLink]="['/UtilityBill']" clearHistory="true"></Label>
+                <Button class="fa menu-icon m-word" text="&#xf15b;"></Button>
+            </GridLayout>
+        </GridLayout>
+    </GridLayout>
+</GridLayout>
