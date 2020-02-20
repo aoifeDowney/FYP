@@ -19,6 +19,10 @@ export class UserService {
         });
     }
 
+    logout() {
+        return Kinvey.User.logout();
+    }
+
     register(user: User) {
         if (!user.email || !user.password) {
             return throwError("Please provide both an email address and password.");

@@ -8,7 +8,7 @@
 		<ScrollView row="1">
 			<StackLayout class="sidedrawer-content">
 				<GridLayout columns="auto, *" class="sidedrawer-list-item sidedrawer-text">
-					<Label col="0" text="&#xf2bb;" class="fa"></Label>
+					<Label col="0" text="&#xf2c1;" class="fa"></Label>
 					<Label col="1" text="My Profile" class="p-r-10" [nsRouterLink]="['/Profile']" clearHistory="true"
 						(tap)="closeSideDrawer()"></Label>
 				</GridLayout>
@@ -24,8 +24,8 @@
 						(tap)="closeSideDrawer()"></Label>
 				</GridLayout>
 
-				<GridLayout columns="auto, *" class="sidedrawer-list-item sidedrawer-text">
-					<Label col="0" text="&#xf2b9;" class="fa"></Label>
+				<GridLayout columns="auto, *" class="sidedrawer-list-item sidedrawer-text" (tap)="logout()">
+					<Label col="0" text="&#xf0a8;" class="fa"></Label>
 					<Label col="1" text="Log Out" class="p-r-10"></Label>
 				</GridLayout>
 			</StackLayout>
