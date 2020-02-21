@@ -4,6 +4,8 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 import { Router } from "@angular/router";
 
+import * as Kinvey from "kinvey-nativescript-sdk";
+
 import { UserService } from "../app/shared/user/user.service";
 
 @Component({
@@ -14,8 +16,11 @@ import { UserService } from "../app/shared/user/user.service";
 export class AppComponent implements OnInit {
   private _sideDrawerTransition: DrawerTransitionBase;
 
+  activeUser = Kinvey.User.getActiveUser();
+  username: string;
+
   constructor(private routerExtensions: RouterExtensions, private router: Router, private userService: UserService) {
-      // Use the component constructor to inject services.
+      this.username = this.activeUser.username;
   }
 
   ngOnInit(): void {

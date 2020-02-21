@@ -49,10 +49,9 @@ export class LoginComponent implements OnInit {
 
     signUp() {
         this.userService.register(this.user)
-            .subscribe(
+            .then(
                 () => {
-                    alert("Your account was successfully created.");
-                    this.toggleDisplay();
+                    this.router.navigate(["/IndividualProfile"]);
                 },
                 (exception) => {
                     if (exception.error && exception.error.description) {
