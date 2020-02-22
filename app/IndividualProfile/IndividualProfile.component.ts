@@ -4,6 +4,9 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
 import { TransactionsService } from "../shared/transactions/transactions.service";
 
+import { User } from "../shared/user/user.model";
+import * as Kinvey from "kinvey-nativescript-sdk";
+
 @Component({
     selector: "gr-IndividualProfile",
     templateUrl: "./IndividualProfile.component.html",
@@ -11,6 +14,8 @@ import { TransactionsService } from "../shared/transactions/transactions.service
     providers: [TransactionsService]
 })
 export class IndividualProfileComponent implements OnInit {
+    user: User;
+    activeUser = Kinvey.User.getActiveUser();
 
     expensesChartData = [];
     transactions = [];
@@ -30,6 +35,7 @@ export class IndividualProfileComponent implements OnInit {
             { name: "Utility Bills", ammount: 19.60 },
             { name: "House Shop", ammount: 10.80 }
         ]
+        //console.log("YES!!!" + this.activeUser._acl.creator);
     }
 
     ngOnInit(): void {
@@ -40,7 +46,7 @@ export class IndividualProfileComponent implements OnInit {
                 title: "Transactions",
                 message: "An error occurred retrieving your data"
             });
-        });
+        });        
     }
 
     /*save() {

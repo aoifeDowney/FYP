@@ -5,6 +5,7 @@ import * as Kinvey from "kinvey-nativescript-sdk";
 export class TransactionsService {
 
     private dataStore;
+    activeUser = Kinvey.User.getActiveUser();
 
     constructor() {
         this.dataStore = Kinvey.DataStore.collection("Transactions");
@@ -17,11 +18,15 @@ export class TransactionsService {
     get() {
         const query = new Kinvey.Query();
         const secondQuery = new Kinvey.Query();
+        const thirdQuery = new Kinvey.Query();
         // Sort by descending “entity created time” to put new items on top.
         query.descending("_kmd.ect");
         secondQuery.equalTo('complete', true);
+        thirdQuery.equalTo("_acl.creator", this.activeUser._acl.creator);
+        //thirdQuery.equalTo('household', "Galway");
+        //const subscription = Kinvey.User.lookup(thirdQuery)
 
-        return this.dataStore.find(query.and(secondQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
 
     getHouseShopPrice() {
