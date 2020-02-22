@@ -14,7 +14,6 @@ import { ShoppingComponent } from "./HouseProfile/shopping/shopping.component";
 import { AddBillComponent } from "./HouseProfile/utilityBill/addBill/addBill.component";
 import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.component";
 import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
-import { ListDetailComponent } from "./HouseProfile/shopping/listDetail/listDetail.component";
 import { HouseLoginComponent } from "./HouseProfile/houseLogin/houseLogin.component";
 import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.component";
 
@@ -34,7 +33,6 @@ const routes: Routes = [
     { path: "SuggestItem", component: SuggestItemComponent },
     { path: "AddBill", component: AddBillComponent },
     { path: "AddItem", component: AddItemComponent },
-    { path: "ListDetail", component: ListDetailComponent },
     { path: "HouseLogin", component: HouseLoginComponent },
     { path: "Detail", component: DetailComponent }
 ];

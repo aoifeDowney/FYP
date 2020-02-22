@@ -36,7 +36,6 @@
                     <ng-template nsTemplateKey="transaction" let-item="item">
                         <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7"
                             (tap)="getItemDetail(item.name, item.boughtBy, item.price)">
-                            <ListDetailComponent #list></ListDetailComponent>
                             <StackLayout id="item1" orientation="vertical" class="owe-list-item" width="100%"
                                 (tap)="onNavigate()">
                                 <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"

@@ -23,8 +23,6 @@ export class TransactionsService {
         query.descending("_kmd.ect");
         secondQuery.equalTo('complete', true);
         thirdQuery.equalTo("_acl.creator", this.activeUser._acl.creator);
-        //thirdQuery.equalTo('household', "Galway");
-        //const subscription = Kinvey.User.lookup(thirdQuery)
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
@@ -41,8 +39,10 @@ export class TransactionsService {
         query.equalTo('type', 'Rent');
         const secondQuery = new Kinvey.Query();
         secondQuery.equalTo('complete', true);
+        const thirdQuery = new Kinvey.Query();
+        thirdQuery.equalTo('houseName', 'Galway');
 
-        return this.dataStore.find(query.and(secondQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
 
     getRentNotPaid() {
@@ -50,16 +50,20 @@ export class TransactionsService {
         query.equalTo('type', 'Rent');
         const secondQuery = new Kinvey.Query();
         secondQuery.equalTo('complete', false);
+        const thirdQuery = new Kinvey.Query();
+        thirdQuery.equalTo('houseName', 'Galway');
 
-        return this.dataStore.find(query.and(secondQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
 
 
     getAllUtilityBills() {
         const query = new Kinvey.Query();
         query.equalTo('type', 'Utility Bill');
+        const secondQuery = new Kinvey.Query();
+        secondQuery.equalTo('houseName', 'Galway');
 
-        return this.dataStore.find(query);
+        return this.dataStore.find(query.and(secondQuery));
     }
 
     getUtilityBill() {
@@ -67,8 +71,10 @@ export class TransactionsService {
         query.equalTo('type', 'Utility Bill');
         const secondQuery = new Kinvey.Query();
         secondQuery.equalTo('complete', true);
+        const thirdQuery = new Kinvey.Query();
+        thirdQuery.equalTo('houseName', 'Galway');
 
-        return this.dataStore.find(query.and(secondQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
 
     getUtilityBillNotPaid() {
@@ -84,29 +90,26 @@ export class TransactionsService {
         const query = new Kinvey.Query();
         const secondQuery = new Kinvey.Query();
         const thirdQuery = new Kinvey.Query();
+        const fourthQuery = new Kinvey.Query();
         query.equalTo('type', 'House Shop');
         secondQuery.equalTo('complete', false);
         thirdQuery.equalTo('bought', true);
+        fourthQuery.equalTo('houseName', 'Galway');
 
-        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
 
     getSuggestedItem() {
         const query = new Kinvey.Query();
         const secondQuery = new Kinvey.Query();
         const thirdQuery = new Kinvey.Query();
+        const fourthQuery = new Kinvey.Query();
         query.equalTo('type', 'House Shop');
         secondQuery.equalTo('complete', false);
         thirdQuery.equalTo('bought', false);
+        fourthQuery.equalTo('houseName', 'Galway');
 
-        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
-    }
-
-    getListDetail(itemName: string) {
-        const query = new Kinvey.Query();
-        query.equalTo('name', itemName);
-
-        return this.dataStore.find(query);
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
 
     getHouseholdMembers(householdName: string) {

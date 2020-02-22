@@ -25,7 +25,6 @@ import { ShoppingComponent } from "./HouseProfile/shopping/shopping.component";
 import { AddBillComponent } from "./HouseProfile/utilityBill/addBill/addBill.component";
 import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.component";
 import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
-import { ListDetailComponent } from "./HouseProfile/shopping/listDetail/listDetail.component";
 import { HouseLoginComponent } from "./HouseProfile/houseLogin/houseLogin.component";
 import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.component";
 
@@ -59,7 +58,6 @@ import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.compon
     AddBillComponent,
     AddItemComponent,
     SuggestItemComponent,
-    ListDetailComponent,
     HouseLoginComponent,
     DetailComponent
   ],
