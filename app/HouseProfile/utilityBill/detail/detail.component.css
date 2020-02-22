@@ -11,112 +11,79 @@
   .bottom-navigation {
     height: 52;
     text-align: center;
-    background-color: #8f91de;
+    background-color: #8f91de;;
     border-top-color: #dae1e7;
     border-top-width: 1;
   }
+  
+  .m-word {
+    margin-right: 10;
+  }
 
+  .euroIcon {
+    margin-left: 210;
+}
+
+  .bills {
+      margin-top: 400;
+  }
+
+  .billInfo {
+      margin-bottom: 350;
+      margin-left: 30;
+  }
+
+  .billIcon {
+      margin-bottom: 370;
+      margin-right: 330;
+  }
+  
   .icon {
-    margin-bottom: 580;
+    margin-bottom: 500;
     margin-right: 320;
   }
-
-  .priceIcon {
-    margin-bottom: 520;
-    margin-right: 320;
-  }
-
-  .divisionIcon {
-    margin-bottom: 470;
-    margin-right: 320;
-  }
-
-  .priceTitle {
-    margin-bottom: 520;
-    margin-left: 40;
-  }
-
-  .priceInfo {
-    margin-bottom: 460;
-    margin-left: 40;
-  }
-
+  
   .title {
-    margin-bottom: 570;
+    margin-bottom: 500;
     margin-left: 40;
   }
-
+  
   .paidBy {
-    margin-bottom: 380;
+    margin-bottom: 450;
     margin-left: 40;
     font-weight: bold;
   }
-
+  
   .notPaid {
     margin-bottom: 150;
     margin-left: 40;
     font-weight: bold;
   }
-
+  
   .makePayment {
     margin-top: 100;
     margin-left: 40;
     font-weight: bold;
   }
-
+  
   .listPaid {
     margin-top: 100;
   }
-
+  
   .listNotPaid {
     margin-top: 250;
   }
-
+  
   .paidText {
     margin-left: 40;
   }
-
+  
   .notPaidText {
       margin-left: 40;
       margin-top: 150;
   }
-
-  .euroIcon {
-      margin-left: 210;
-  }
-
-  .dasboard-value.total {
-    color: #8f91de;
-}
-
-.dasboard-value.owe {
-    color: #f67979;
-}
-
-  .subHeading {
-      text-align: center;
-  }
-
-.sidedrawer-list-item-text {
-    color: #fff
-}
-
-html {
-    background-color: #f7f7f7;
-}
-
-.profile-container {
-    background-color: #8f91de;
-    padding: 30 20 60 0;
-}
-
-.profile-information-container {
-    color: #fff;
-    padding: 0 120;
-    font-weight: bold;
-}
-
-.drawer-icon {
+  
+  .drawer-icon {
     width: 24;
     margin: -45 30 15 15;
 }

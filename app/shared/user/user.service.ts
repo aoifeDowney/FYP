@@ -7,34 +7,43 @@ import * as Kinvey from "kinvey-nativescript-sdk";
 
 import { User } from "./user.model";
 import { Config } from "../config";
+import { promises } from "dns";
 
 @Injectable()
 export class UserService {
+
     constructor(private http: HttpClient) { }
 
     login(user: User) {
         return Kinvey.User.login({
             username: user.email,
-            password: user.password 
+            password: user.password
         });
     }
 
-    register(user: User) {
-        if (!user.email || !user.password) {
-            return throwError("Please provide both an email address and password.");
-        }
+    logout() {
+        return Kinvey.User.logout();
+    }
 
-        return this.http.post(
-            Config.apiUrl + "user/" + Config.appKey,
-            JSON.stringify({
-                username: user.email,
-                email: user.email,
-                password: user.password
-            }),
-            { headers: this.getCommonHeaders() }
-        ).pipe(
-            catchError(this.handleErrors)
-        );
+    addHousehold(user: User) {
+        return Promise.resolve(Kinvey.User.getActiveUser())
+            .then((user: Kinvey.User) => {
+                if (user) {
+                    return user.update({
+                        household: "Galway"
+                    });
+                }
+                return user;
+            });
+    }
+
+    register(user: User) {
+        return Kinvey.User.signup({
+            username: user.email,
+            email: user.email,
+            password: user.password,
+            household: user.household
+        });
     }
 
     getCommonHeaders() {

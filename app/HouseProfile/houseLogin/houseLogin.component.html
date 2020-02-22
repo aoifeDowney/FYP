@@ -1,0 +1,8 @@
+<FlexboxLayout>
+	<StackLayout class="form" [class.dark]="!isLoggingIn">
+		<Image src="~/images/logo.png"></Image>
+		<TextField hint="Household Name" secure="true" [(ngModel)]="houseName" class="input input-border"></TextField>
+		<Button [text]="isLoggingIn ? 'Sign in' : 'Sign up'" class="btn btn-primary" (tap)="submit()"></Button>
+		<Button [text]="isLoggingIn ? 'Sign up' : 'Back to login'" class="signup-text" (tap)="toggleDisplay()"></Button>
+	</StackLayout>
+</FlexboxLayout>

@@ -15,10 +15,13 @@ import { AddBillComponent } from "./HouseProfile/utilityBill/addBill/addBill.com
 import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.component";
 import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
 import { ListDetailComponent } from "./HouseProfile/shopping/listDetail/listDetail.component";
+import { HouseLoginComponent } from "./HouseProfile/houseLogin/houseLogin.component";
+import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.component";
+
 import { BackendService } from "./shared/backend.service";
 
 const routes: Routes = [
-    { path: "", redirectTo: BackendService.isUserLoggedIn() ? "/Shopping" : "/login", pathMatch: "full" },
+    { path: "", redirectTo: BackendService.isUserLoggedIn() ? "/IndividualProfile" : "/login", pathMatch: "full" },
     { path: "login", component: LoginComponent },
     { path: "IndividualProfile", component: IndividualProfileComponent },
     { path: "Profile", component: ProfileComponent },
@@ -31,7 +34,9 @@ const routes: Routes = [
     { path: "SuggestItem", component: SuggestItemComponent },
     { path: "AddBill", component: AddBillComponent },
     { path: "AddItem", component: AddItemComponent },
-    { path: "ListDetail", component: ListDetailComponent }
+    { path: "ListDetail", component: ListDetailComponent },
+    { path: "HouseLogin", component: HouseLoginComponent },
+    { path: "Detail", component: DetailComponent }
 ];
 
 @NgModule({

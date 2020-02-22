@@ -35,7 +35,7 @@
                 <ListView [items]="transactions" backgroundColor="#e8e7e7">
                     <ng-template nsTemplateKey="transaction" let-item="item">
                         <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7"
-                            (tap)="getItemDetail(item.name, item.boughtBy)">
+                            (tap)="getItemDetail(item.name, item.boughtBy, item.price)">
                             <ListDetailComponent #list></ListDetailComponent>
                             <StackLayout id="item1" orientation="vertical" class="owe-list-item" width="100%"
                                 (tap)="onNavigate()">
@@ -68,6 +68,10 @@
         <GridLayout row="0">
             <Image src="~/images/boughtBy.png" style="width:15em; height:40em;" class="icon"></Image>
             <Label text="Bought by {{boughtBy}}" class="title"></Label>
+            <Image src="~/images/owed-indicator.png" style="width:15em; height:40em;" class="priceIcon"></Image>
+            <Label text="Total Price: € {{price}}" class="priceTitle"></Label>
+            <Image src="~/images/total-indicator.png" style="width:15em; height:40em;" class="divisionIcon"></Image>
+            <Label text="The price to be paid by each house member is €{{dividedPrice | number:'1.2-2'}}" class="priceInfo" textWrap="true"></Label>
             <Label text="Paid by" class="paidBy"></Label>
         </GridLayout>
         <StackLayout row="0" class="listPaid">
