@@ -28,6 +28,7 @@ export class AddItemComponent {
             name: this.nameValue,
             type: "House Shop",
             user: this.activeUser.username,
+            houseName: "Galway",
             bought: false,
             complete: false
         };

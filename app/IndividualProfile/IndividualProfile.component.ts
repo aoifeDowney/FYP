@@ -7,6 +7,9 @@ import { TransactionsService } from "../shared/transactions/transactions.service
 import { User } from "../shared/user/user.model";
 import * as Kinvey from "kinvey-nativescript-sdk";
 
+//const user = new Kinvey.User();
+
+
 @Component({
     selector: "gr-IndividualProfile",
     templateUrl: "./IndividualProfile.component.html",
@@ -14,8 +17,11 @@ import * as Kinvey from "kinvey-nativescript-sdk";
     providers: [TransactionsService]
 })
 export class IndividualProfileComponent implements OnInit {
-    user: User;
+    //user: User;
     activeUser = Kinvey.User.getActiveUser();
+    userData = ​Kinvey.User.getActiveUser().data;
+    //user = new Kinvey.User();
+
 
     expensesChartData = [];
     transactions = [];
@@ -36,6 +42,9 @@ export class IndividualProfileComponent implements OnInit {
             { name: "House Shop", ammount: 10.80 }
         ]
         //console.log("YES!!!" + this.activeUser._acl.creator);
+        //console.log("House: " + this.userData.hou)
+        //user.data.customProp = 'foo';
+        
     }
 
     ngOnInit(): void {

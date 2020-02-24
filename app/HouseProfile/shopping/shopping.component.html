@@ -35,8 +35,7 @@
                 <ListView [items]="transactions" backgroundColor="#e8e7e7">
                     <ng-template nsTemplateKey="transaction" let-item="item">
                         <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7"
-                            (tap)="getItemDetail(item.name, item.boughtBy, item.price)">
-                            <ListDetailComponent #list></ListDetailComponent>
+                            (tap)="getItemDetail(item.name, item._id, item.boughtBy, item.price, item.date)">
                             <StackLayout id="item1" orientation="vertical" class="owe-list-item" width="100%"
                                 (tap)="onNavigate()">
                                 <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"
@@ -73,28 +72,10 @@
             <Image src="~/images/total-indicator.png" style="width:15em; height:40em;" class="divisionIcon"></Image>
             <Label text="The price to be paid by each house member is €{{dividedPrice | number:'1.2-2'}}" class="priceInfo" textWrap="true"></Label>
             <Label text="Paid by" class="paidBy"></Label>
+            <Label text="Make your payment" class="makePayment"></Label>
+            <Label text="If you wish to process your payment for this item please continue by pressing the button" textWrap="true" class="makePaymentInfo"></Label>
+            <Button text="Payment" (tap)="makePayment()" class="makePaymentButton"></Button>
         </GridLayout>
-        <StackLayout row="0" class="listPaid">
-            <ListView [items]="items" separatorColor="transparent" class="transactions-list">
-                <ng-template nsTemplateKey="transaction" let-item="item">
-                    <GridLayout columns="auto, *, auto" class="transactions-list-item">
-                        <StackLayout col="0" class="mr-10" height="36" width="36">
-                            <Label text="price" class="calculatingPrice"></Label>
-                        </StackLayout>
-                        <StackLayout col="1" verticalAlignment="center">
-                            <Label [text]="item.user"></Label>
-                        </StackLayout>
-                        <Label col="2" horizontal="right" class="ammount">
-                            <FormattedString>
-                                <Span text="Amount: €"></Span>
-                                <Span [text]="item.price"></Span>
-                            </FormattedString>
-                        </Label>
-                    </GridLayout>
-                </ng-template>
-            </ListView>
-        </StackLayout>
-        <Label text="Make your payment" class="makePayment"></Label>
     </GridLayout>
     <GridLayout verticalAlignment="bottom">
         <GridLayout columns="*, *, *" class="bottom-navigation">

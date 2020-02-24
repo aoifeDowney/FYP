@@ -15,7 +15,7 @@ import { TransactionsService } from "../../../shared/transactions/transactions.s
     styleUrls: ["./suggestItem.component.css"],
     providers: [TransactionsService]
 })
-export class SuggestItemComponent {
+export class SuggestItemComponent implements OnInit{
 
     transactions = [];
     itemDetail = false;
@@ -69,10 +69,11 @@ export class SuggestItemComponent {
             name: this.itemName,
             date: this.itemDateValue,
             price: this.itemPriceValue,
+            houseName: "Galway",
             boughtBy: this.activeUser.username,
             type: "House Shop",
             bought: true,
-            complete: false
+            complete: true
         };
 
         this.transactionsService.save(task).then((newTask) => {

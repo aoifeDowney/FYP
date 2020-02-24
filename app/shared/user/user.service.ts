@@ -1,13 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
-import { catchError, map, tap } from "rxjs/operators";
+import { HttpClient } from "@angular/common/http";
+import { throwError } from "rxjs";
 
 import * as Kinvey from "kinvey-nativescript-sdk";
 
 import { User } from "./user.model";
 import { Config } from "../config";
-import { promises } from "dns";
 
 @Injectable()
 export class UserService {
