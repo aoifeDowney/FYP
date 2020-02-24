@@ -1,7 +1,8 @@
-import { Component, OnInit, EventEmitter, Output  } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { Injectable } from '@angular/core';
+import * as dialogs from "tns-core-modules/ui/dialogs";
 
 import { TransactionsService } from "../../shared/transactions/transactions.service";
 import * as Kinvey from "kinvey-nativescript-sdk";
@@ -16,7 +17,7 @@ import { Household } from "../shared/household.module";
 })
 
 @Injectable()
-export class ShoppingComponent {
+export class ShoppingComponent implements OnInit{
 
     activeUser = Kinvey.User.getActiveUser();
     itemName: string;
@@ -28,6 +29,11 @@ export class ShoppingComponent {
     houseMembers = [];
     itemDetail = false;
     name: string;
+
+    itemID: string;
+    suggestedBy: string;
+    itemDate = "";
+    items = [];
 
 
     constructor(private transactionsService: TransactionsService, private household: Household) {}
@@ -43,13 +49,39 @@ export class ShoppingComponent {
         });
     }
 
-    getItemDetail(name: string, boughtBy: string, price: number): void {
+    getItemDetail(name: string, id: string, boughtBy: string, price: number, date: string): void {
         this.itemName = name;
+        this.itemID = id;
         this.boughtBy = boughtBy;
         this.price = price;
-        this.itemDetail = true;
+        this.itemDate = date;
         this.dividedPrice = this.price / this.houseMember;
+        this.itemDetail = true;
     }
+
+    makePayment() {
+        var task = {
+            _id: this.itemID,
+            name: this.itemName,
+            date: this.itemDate,
+            price: this.price,
+            boughtBy: this.activeUser.username,
+            type: "House Shop",
+            houseName: 'Galway',
+            bought: true,
+            complete: true
+        };
+
+        this.transactionsService.save(task).then((newTask) => {
+            this.items.unshift(newTask);
+        });
+        dialogs.alert({
+            title: "Payment Successful!",
+            message: "This item has been paid for",
+            okButtonText: "Okay"
+        });
+    }
+
 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();

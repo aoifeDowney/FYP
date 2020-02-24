@@ -64,6 +64,16 @@
     font-weight: bold;
   }
 
+  .makePaymentInfo {
+    margin-top: 180;
+    margin-left: 20;
+  }
+
+  .makePaymentButton {
+    margin-top: 280;
+    margin-right: 30;
+  }
+
   .listPaid {
     margin-top: 100;
   }
@@ -310,3 +320,4 @@ html {
     border-width: 1;
     border-color: #bf97df;
 }
+
