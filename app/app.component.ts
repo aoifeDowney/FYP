@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   username: string;
 
   constructor(private routerExtensions: RouterExtensions, private router: Router, private userService: UserService) {
-      this.username = this.activeUser.username;
+      //this.username = this.activeUser.username;
   }
 
   ngOnInit(): void {

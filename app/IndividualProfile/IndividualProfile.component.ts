@@ -9,6 +9,7 @@ import * as Kinvey from "kinvey-nativescript-sdk";
 
 //const user = new Kinvey.User();
 
+
 @Component({
     selector: "gr-IndividualProfile",
     templateUrl: "./IndividualProfile.component.html",
@@ -43,6 +44,7 @@ export class IndividualProfileComponent implements OnInit {
         //console.log("YES!!!" + this.activeUser._acl.creator);
         //console.log("House: " + this.userData.hou)
         //user.data.customProp = 'foo';
+        
     }
 
     ngOnInit(): void {

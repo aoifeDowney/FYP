@@ -22,7 +22,7 @@ export class TransactionsService {
         // Sort by descending “entity created time” to put new items on top.
         query.descending("_kmd.ect");
         secondQuery.equalTo('complete', true);
-        thirdQuery.equalTo("_acl.creator", this.activeUser._acl.creator);
+        thirdQuery.equalTo("boughtBy", this.activeUser.username);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
