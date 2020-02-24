@@ -51,10 +51,7 @@ export class IndividualProfileComponent implements OnInit {
         this.transactionsService.get().subscribe((data) => {
             this.transactions = data;
         }, () => {
-            alert({
-                title: "Transactions",
-                message: "An error occurred retrieving your data"
-            });
+            console.log("Unable to retrive list of transactions");
         });        
     }
 
