@@ -1,7 +1,9 @@
 <FlexboxLayout>
 	<StackLayout class="form" [class.dark]="!isLoggingIn">
 		<Image src="~/images/logo.png"></Image>
-		<TextField hint="User Name" keyboardType="email" autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.email"
+		<TextField hint="Email for account verification" keyboardType="email" autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.email"
+		 class="input input-border"></TextField>
+		<TextField hint="User Name" keyboardType="email" autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.username"
 		 class="input input-border"></TextField>
 		 <TextField hint="Household name"  autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.household"
 		 class="input input-border"></TextField>

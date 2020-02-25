@@ -33,14 +33,15 @@ export class IndividualProfileComponent implements OnInit {
     houseShopTotal: number;
     houseShopPercentage: number;
     totalTransactions: number;
+    dataToShow: boolean;
     house: number[] = [];
 
     constructor(private transactionsService: TransactionsService) {
-        this.expensesChartData = [
-            { name: "Rent", ammount: 69.5 },
-            { name: "Utility Bills", ammount: 19.60 },
-            { name: "House Shop", ammount: 10.80 }
-        ]
+            this.expensesChartData = [
+                { name: "Rent", ammount: 69.5 },
+                { name: "Utility Bills", ammount: 19.60 },
+                { name: "House Shop", ammount: 10.80 }
+            ]
         //console.log("YES!!!" + this.activeUser._acl.creator);
         //console.log("House: " + this.userData.hou)
         //user.data.customProp = 'foo';
@@ -50,11 +51,14 @@ export class IndividualProfileComponent implements OnInit {
     ngOnInit(): void {
         this.transactionsService.get().subscribe((data) => {
             this.transactions = data;
+            if (this.transactions.length > 0) {
+                this.dataToShow = true;
+            }
+            else if(this.transactions.length < 1) {
+                this.dataToShow = false;
+            }
         }, () => {
-            alert({
-                title: "Transactions",
-                message: "An error occurred retrieving your data"
-            });
+            console.log("Unable to retrive list of transactions");
         });        
     }
 

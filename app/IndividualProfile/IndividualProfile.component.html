@@ -10,7 +10,7 @@
 			<Label text="Expenses Total" class="expensesTotal"></Label>
 		</StackLayout>
 		</GridLayout>
-		<StackLayout row="2">
+		<StackLayout row="2" *ngIf="dataToShow">
 			<ListView [items]="transactions" separatorColor="transparent" class="transactions-list">
 				<ng-template nsTemplateKey="transaction" let-item="item">
 					<GridLayout columns="auto, *, auto" class="transactions-list-item">
@@ -31,6 +31,9 @@
 					</GridLayout>
 				</ng-template>
 			</ListView>
+		</StackLayout>
+		<StackLayout row="2" *ngIf="!dataToShow">
+			<Label text="There are currently no transactions to view." textWrap="true" class="noTransactions"></Label>
 		</StackLayout>
 	</GridLayout>
 	<GridLayout verticalAlignment="bottom">

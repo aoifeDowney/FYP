@@ -37,7 +37,7 @@ export class UserService {
 
     register(user: User) {
         return Kinvey.User.signup({
-            username: user.email,
+            username: user.username,
             email: user.email,
             password: user.password,
             household: user.household

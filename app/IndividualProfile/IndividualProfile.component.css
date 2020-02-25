@@ -16,6 +16,10 @@
   border-top-width: 1;
 }
 
+.noTransactions {
+  margin-left: 20;
+}
+
 .balance-chart {
   background-color: #ffffff;
   border-radius: 5;
