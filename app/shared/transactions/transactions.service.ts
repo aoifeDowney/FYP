@@ -34,6 +34,15 @@ export class TransactionsService {
         return this.dataStore.find(query);
     }
 
+    getItemBoughtDate() {
+        const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
+        query.equalTo('type', 'House Shop');
+        secondQuery.fields = [ 'boughtDate' ];
+
+        return this.dataStore.find(query.and(secondQuery));
+    }
+
     getRent() {
         const query = new Kinvey.Query();
         query.equalTo('type', 'Rent');

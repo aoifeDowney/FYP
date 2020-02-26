@@ -66,6 +66,7 @@ export class ShoppingComponent implements OnInit{
             date: this.itemDate,
             price: this.price,
             boughtBy: this.activeUser.username,
+            boughtDate: new Date(),
             type: "House Shop",
             houseName: 'Galway',
             bought: true,

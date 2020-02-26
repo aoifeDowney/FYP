@@ -73,13 +73,15 @@ export class SuggestItemComponent implements OnInit{
             boughtBy: this.activeUser.username,
             type: "House Shop",
             bought: true,
-            complete: true
+            complete: false
         };
 
         this.transactionsService.save(task).then((newTask) => {
             this.items.unshift(newTask);
         })
         this.itemDateValue = "";
+        this.itemName = "";
+        this.itemPriceValue = null;
 
         dialogs.alert({
             title: "Saved!",

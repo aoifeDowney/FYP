@@ -9,9 +9,22 @@
             transitionMode="Stack"
             locale="en-US">
         </RadCalendar>
-        </StackLayout>
+		</StackLayout>
+		<StackLayout row="2">
+			<ListView [items]="transactions" separatorColor="transparent" class="transactions-list">
+				<ng-template nsTemplateKey="transaction" let-item="item">
+					<GridLayout columns="auto, *, auto" class="transactions-list-item">
+						<StackLayout col="0" class="mr-10" height="36" width="36">
+							<Label text="{{itemDate}}" textWrap="true"></Label>
+						</StackLayout>
+						<StackLayout col="1" verticalAlignment="center">
+							<Label [text]="getItemDetail(item.boughtDate)" class="category"></Label>
+						</StackLayout>
+					</GridLayout>
+				</ng-template>
+			</ListView>
+		</StackLayout>
     </GridLayout>
-
     <GridLayout verticalAlignment="bottom">
 		<GridLayout columns="*, *, *" class="bottom-navigation">
 			<GridLayout col="0" (tap)="selectTab(0)">
