@@ -45,9 +45,9 @@ export class IndividualProfileComponent implements OnInit {
         //console.log("YES!!!" + this.activeUser._acl.creator);
         //console.log("House: " + this.userData.hou)
         //user.data.customProp = 'foo';
-        console.log("House");
-        console.log(JSON.stringify(this.userData));
+        //console.log(JSON.stringify(this.userData));
         //console.log(JSON.stringify(this.userData.household));
+        console.log("House: " + this.userData["household"]);
         
     }
 

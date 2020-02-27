@@ -14,7 +14,7 @@ export class UserService {
 
     login(user: User) {
         return Kinvey.User.login({
-            username: user.email,
+            username: user.username,
             password: user.password
         });
     }

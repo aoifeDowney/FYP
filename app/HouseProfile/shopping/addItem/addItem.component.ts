@@ -28,7 +28,10 @@ export class AddItemComponent {
             name: this.nameValue,
             type: "House Shop",
             user: this.activeUser.username,
+            suggestedBy: this.activeUser.username,
+            toPay: this.activeUser.username,
             houseName: "Galway",
+            show: true,
             bought: false,
             complete: false
         };
@@ -44,6 +47,7 @@ export class AddItemComponent {
             okButtonText: "Okay"
         });
     }
+
 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();

@@ -47,6 +47,17 @@ export class ShoppingComponent implements OnInit{
                 message: "An error occurred retrieving your data"
             });
         });
+
+        console.log("NAME" + this.itemName);
+
+        this.transactionsService.getHouseShopPaid(this.itemName).subscribe((data) => {
+            this.items = data;
+        }, () => {
+            alert({
+                title: "Transactions",
+                message: "An error occurred retrieving your data"
+            });
+        });
     }
 
     getItemDetail(name: string, id: string, boughtBy: string, price: number, date: string): void {

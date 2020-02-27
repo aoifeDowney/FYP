@@ -108,23 +108,33 @@ export class TransactionsService {
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
 
+    getHouseShopPaid(itemName: string) {
+        const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
+        const thirdQuery = new Kinvey.Query();
+        const fourthQuery = new Kinvey.Query();
+        const fifthQuery = new Kinvey.Query();
+        query.equalTo('type', 'House Shop');
+        secondQuery.equalTo('complete', true);
+        thirdQuery.equalTo('bought', true);
+        fourthQuery.equalTo('houseName', 'Galway');
+        fifthQuery.equalTo('name', itemName);
+
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
+    }
+
     getSuggestedItem() {
         const query = new Kinvey.Query();
         const secondQuery = new Kinvey.Query();
         const thirdQuery = new Kinvey.Query();
         const fourthQuery = new Kinvey.Query();
+        const fifthQuery = new Kinvey.Query();
         query.equalTo('type', 'House Shop');
         secondQuery.equalTo('complete', false);
         thirdQuery.equalTo('bought', false);
         fourthQuery.equalTo('houseName', 'Galway');
+        fifthQuery.equalTo("show", true);
 
-        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
-    }
-
-    getHouseholdMembers(householdName: string) {
-        const query = new Kinvey.Query();
-        query.equalTo('houseName', householdName);
-
-        return this.dataStore.find(query);
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery).and(fifthQuery));
     }
 }
