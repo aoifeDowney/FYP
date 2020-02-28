@@ -29,17 +29,30 @@ export class SuggestItemComponent implements OnInit {
     activeUser = Kinvey.User.getActiveUser();
 
     //don't have the active user on this list if they are the ones to buy the item???
-    users = [
-        "Niamh",
-        "Emma",
-        "Ciara"
+    users = [];
+    userName = [
+        "Aoife",
+        "aoife"
     ];
+    names: string;
 
-    constructor(private transactionsService: TransactionsService, private router: Router) { }
+    constructor(private transactionsService: TransactionsService, private router: Router) {}
 
     ngOnInit(): void {
         this.transactionsService.getSuggestedItem().subscribe((data) => {
             this.transactions = data;
+        }, () => {
+            alert({
+                title: "Transactions",
+                message: "An error occurred retrieving your data"
+            });
+        });
+
+        this.transactionsService.getHouseMembers().subscribe((data) => {
+            this.users.push(data);
+            for(let i = 0; i < this.users.length; i++) {
+                console.log(this.users[i]);
+            }
         }, () => {
             alert({
                 title: "Transactions",
@@ -51,6 +64,9 @@ export class SuggestItemComponent implements OnInit {
     getItemDetails(name: string, id: string) {
         this.itemName = name;
         this.itemID = id;
+        for(let i = 0; i < this.userName.length; i++) {
+            console.log(this.userName[i]);
+        }
         this.itemDetail = true;
     }
 
@@ -68,14 +84,14 @@ export class SuggestItemComponent implements OnInit {
     }
 
     saveItem() {
-        for (let i = 0; i < this.users.length; i++) {
+        for (let i = 0; i < this.userName.length; i++) {
             var task = {
                 name: this.itemName,
                 date: this.itemDateValue,
                 price: this.itemPriceValue,
                 houseName: "Galway",
                 boughtBy: this.activeUser.username,
-                toPay: this.users[i],
+                toPay: this.userName[i],
                 type: "House Shop",
                 bought: true,
                 complete: false

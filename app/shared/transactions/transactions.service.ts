@@ -153,4 +153,17 @@ export class TransactionsService {
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
+
+    getHouseMembers() {
+        const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
+        const thirdQuery = new Kinvey.Query();
+
+        query.equalTo('user', true);
+        secondQuery.equalTo('houseName', "Galway");
+        thirdQuery.fields = ['userName'];
+
+        return this.dataStore.find(query.and(secondQuery));
+
+    }
 }
