@@ -25,8 +25,7 @@
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="row" class="form-row">
                         <Image src="~/images/date-icon.png" class="form-icon"></Image>
-                        <TextField class="form-control" hint="Input bill due date here" [(ngModel)]="dateValue"
-                            flexGrow="1" keyboardType="dateTime"></TextField>
+                        <DatePicker year="1980" month="4" day="20" class="date-picker" (dateChange)="onDateChanged($event)"></DatePicker>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="row" class="form-row">
                         <Image id="selectCategoryIcon" src="~/images/bill.png"

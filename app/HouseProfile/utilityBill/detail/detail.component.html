@@ -1,4 +1,5 @@
-<ActionBar title="Utility Bill Detail" class="action-bar"></ActionBar>
+<ActionBar title="Utility Bill Detail" class="action-bar">
+</ActionBar>
 <GridLayout class="page">
     <GridLayout rows="*" height="1500px">
         <GridLayout row="0">
@@ -29,7 +30,7 @@
                                 <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"
                                     class="owe-secondary-info">
                                     <Label text="Due: " class="time-information"></Label>
-                                    <Label row="0" col="1" [text]="item.date" class="time-information"></Label>
+                                    <Label row="0" col="1" [text]="item.date" [dates]="item.date" class="time-information"></Label>
                                 </GridLayout>
                                 <Label class="divider" text=""></Label>
                             </StackLayout>

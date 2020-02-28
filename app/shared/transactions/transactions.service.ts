@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { DatePipe } from '@angular/common';
 import * as Kinvey from "kinvey-nativescript-sdk";
 
 @Injectable()
@@ -7,7 +8,7 @@ export class TransactionsService {
     private dataStore;
     activeUser = Kinvey.User.getActiveUser();
 
-    constructor() {
+    constructor(private datePipe: DatePipe) {
         this.dataStore = Kinvey.DataStore.collection("Transactions");
     }
 
@@ -73,6 +74,19 @@ export class TransactionsService {
         secondQuery.equalTo('houseName', 'Galway');
 
         return this.dataStore.find(query.and(secondQuery));
+    }
+
+    getUtilityBillDue() {
+        let now = new Date();
+        let date = this.datePipe.transform(now,"yyyy-MM-dd");
+        const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
+        const thirdQuery = new Kinvey.Query();
+        query.equalTo('type', 'Utility Bill');
+        secondQuery.equalTo('houseName', 'Galway');
+        thirdQuery.equalTo('date', date);
+
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
 
     getUtilityBill() {
