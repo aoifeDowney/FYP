@@ -114,12 +114,14 @@ export class TransactionsService {
         const secondQuery = new Kinvey.Query();
         const thirdQuery = new Kinvey.Query();
         const fourthQuery = new Kinvey.Query();
+        const fifthQuery = new Kinvey.Query();
         query.equalTo('type', 'House Shop');
         secondQuery.equalTo('complete', false);
         thirdQuery.equalTo('bought', true);
         fourthQuery.equalTo('houseName', 'Galway');
+        fifthQuery.equalTo("toPay", this.activeUser.username);
 
-        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery).and(fifthQuery));
     }
 
     getHouseShopPaid(itemName: string) {
@@ -147,8 +149,8 @@ export class TransactionsService {
         secondQuery.equalTo('complete', false);
         thirdQuery.equalTo('bought', false);
         fourthQuery.equalTo('houseName', 'Galway');
-        fifthQuery.equalTo("show", true);
+        fifthQuery.equalTo('toPay', this.activeUser.username);
 
-        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery).and(fifthQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
 }

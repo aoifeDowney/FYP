@@ -21,9 +21,6 @@ export class SuggestItemComponent implements OnInit {
     itemDetail = false;
     itemName: string;
     itemID: string;
-    suggestedBy: string;
-    boughtBy: string;
-    toPay: string;
     toogleName = "No";
     toogled = false;
     itemPriceValue: number;
@@ -31,8 +28,12 @@ export class SuggestItemComponent implements OnInit {
     items = [];
     activeUser = Kinvey.User.getActiveUser();
 
-    users = [];
-    click = false;
+    //don't have the active user on this list if they are the ones to buy the item???
+    users = [
+        "Niamh",
+        "Emma",
+        "Ciara"
+    ];
 
     constructor(private transactionsService: TransactionsService, private router: Router) { }
 
@@ -47,36 +48,10 @@ export class SuggestItemComponent implements OnInit {
         });
     }
 
-    getItemDetails(name: string, id: string, create: string) {
-        console.log("NAME" + id);
-        console.log("Create" + create);
-        //console.log("Sugg: " + show);
+    getItemDetails(name: string, id: string) {
         this.itemName = name;
         this.itemID = id;
-        //this.suggestedBy = suggestedBy;
-        //this.boughtBy = boughtBy;
         this.itemDetail = true;
-
-        if (create != this.activeUser._acl.creator && this.click == false) {
-            var task = {
-                name: this.itemName,
-                date: this.itemDateValue,
-                price: this.itemPriceValue,
-                houseName: "Galway",
-                boughtBy: this.boughtBy,
-                toPay: this.activeUser.username,
-                type: "House Shop",
-                show: true,
-                bought: false,
-                complete: false
-            };
-
-            this.transactionsService.save(task).then((newTask) => {
-                this.items.unshift(newTask);
-            });
-        }
-        this.click = true;
-        //this.users.push(this.activeUser.username);
     }
 
     onCheckedChange(args: EventData) {
@@ -92,40 +67,41 @@ export class SuggestItemComponent implements OnInit {
         }
     }
 
-    //NOTE: have to put in all the variables - no update=>keep same value
     saveItem() {
-        let i = 0;
+        for (let i = 0; i < this.users.length; i++) {
             var task = {
-                _id: this.itemID,
                 name: this.itemName,
                 date: this.itemDateValue,
                 price: this.itemPriceValue,
                 houseName: "Galway",
                 boughtBy: this.activeUser.username,
+                toPay: this.users[i],
                 type: "House Shop",
                 bought: true,
                 complete: false
             };
 
-
             this.transactionsService.save(task).then((newTask) => {
                 this.items.unshift(newTask);
             });
+        }
 
-            this.itemDateValue = "";
-            this.itemName = "";
-            this.itemPriceValue = null;
+        this.boughtByCurrentUser();
 
-            dialogs.alert({
-                title: "Saved!",
-                message: "The item has been updated and moved to the 'Items Bought' list",
-                okButtonText: "Okay"
-            }).then(() => {
-                this.router.navigate(["/SuggestItem"])
-            });
+        this.itemDateValue = "";
+        this.itemName = "";
+        this.itemPriceValue = null;
+
+        dialogs.alert({
+            title: "Saved!",
+            message: "The item has been updated and moved to the 'Items Bought' list",
+            okButtonText: "Okay"
+        }).then(() => {
+            this.router.navigate(["/SuggestItem"])
+        });
     }
 
-    save() {
+    boughtByCurrentUser() {
         var task = {
             _id: this.itemID,
             name: this.itemName,
@@ -133,10 +109,9 @@ export class SuggestItemComponent implements OnInit {
             price: this.itemPriceValue,
             houseName: "Galway",
             boughtBy: this.activeUser.username,
-            // toPay: this.activeUser.username,
             type: "House Shop",
             bought: true,
-            complete: false
+            complete: true
         };
 
         this.transactionsService.save(task).then((newTask) => {
