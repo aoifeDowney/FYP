@@ -1,5 +1,6 @@
 <ActionBar title="Suggest Item" class="action-bar">
     <ActionItem (tap)="suggestItem()" ios.systemIcon="3" ios.position="right"></ActionItem>
+    <ActionItem [nsRouterLink]="['/SuggestItem']" clearHistory="true" ios.systemIcon="1" ios.position="left"></ActionItem>
 </ActionBar>
 <GridLayout class="page">
     <GridLayout rows="*" height="1500px">
@@ -32,8 +33,8 @@
                 <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
             </GridLayout>
             <GridLayout col="2" (tap)="selectTab(2)">
-                <Label class="menu-word m-word" text="Cancel" [nsRouterLink]="['/SuggestItem']" clearHistory="true"></Label>
-                <Button class="fa menu-icon m-word" text="&#xf057;"></Button>
+                <Label class="menu-word m-word" text="Suggested" [nsRouterLink]="['/SuggestItem']" clearHistory="true"></Label>
+                <Button class="fa menu-icon m-word" text="&#xf291;"></Button>
             </GridLayout>
         </GridLayout>
     </GridLayout>

@@ -50,7 +50,8 @@ export class ShoppingComponent implements OnInit{
 
         console.log("NAME" + this.itemName);
 
-        this.transactionsService.getHouseShopPaid(this.itemName).subscribe((data) => {
+        //INSEAD OF PAID LIST THOESE WHO HAVE YET TO PAY
+        this.transactionsService.getHouseShopPaid().subscribe((data) => {
             this.items = data;
         }, () => {
             alert({
@@ -68,10 +69,19 @@ export class ShoppingComponent implements OnInit{
         this.itemDate = date;
         this.dividedPrice = this.price / this.houseMember;
         this.itemDetail = true;
+
+        this.transactionsService.getHouseShopPaidName(this.itemName).subscribe((data) => {
+            this.items = data;
+        }, () => {
+            alert({
+                title: "Transactions",
+                message: "An error occurred retrieving your data"
+            });
+        });
     }
 
     makePayment() {
-        var task = {
+        /*var task = {
             _id: this.itemID,
             name: this.itemName,
             date: this.itemDate,
@@ -86,12 +96,16 @@ export class ShoppingComponent implements OnInit{
 
         this.transactionsService.save(task).then((newTask) => {
             this.items.unshift(newTask);
-        });
+        });*/
         dialogs.alert({
             title: "Payment Successful!",
             message: "This item has been paid for",
             okButtonText: "Okay"
         });
+    }
+
+    back() {
+        this.itemDetail = false;
     }
 
 

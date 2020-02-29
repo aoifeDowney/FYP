@@ -89,7 +89,6 @@ export class SuggestItemComponent implements OnInit {
                 date: this.itemDateValue,
                 price: this.itemPriceValue,
                 houseName: "Galway",
-                boughtBy: this.activeUser.username,
                 toPay: this.userName[i],
                 type: "House Shop",
                 bought: true,
