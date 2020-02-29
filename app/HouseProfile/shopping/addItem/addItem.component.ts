@@ -18,7 +18,7 @@ export class AddItemComponent {
     items = [];
     activeUser = Kinvey.User.getActiveUser();
 
-    constructor(private transactionsService: TransactionsService) {}
+    constructor(private transactionsService: TransactionsService) { }
 
     ngOnInit(): void {
     }
@@ -27,8 +27,9 @@ export class AddItemComponent {
         var task = {
             name: this.nameValue,
             type: "House Shop",
-            user: this.activeUser.username,
+            suggestedBy: this.activeUser.username,
             houseName: "Galway",
+            show: true,
             bought: false,
             complete: false
         };

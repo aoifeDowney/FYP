@@ -76,6 +76,23 @@
             <Label text="If you wish to process your payment for this item please continue by pressing the button" textWrap="true" class="makePaymentInfo"></Label>
             <Button text="Payment" (tap)="makePayment()" class="makePaymentButton"></Button>
         </GridLayout>
+        <StackLayout row="0" class="listPaid">
+            <ListView [items]="items" separatorColor="transparent" class="transactions-list">
+                <ng-template nsTemplateKey="transaction" let-item="item">
+                    <GridLayout columns="auto, *, auto" class="transactions-list-item">
+                        <StackLayout col="1" verticalAlignment="center">
+                            <Label [text]="item.boughtBy"></Label>
+                        </StackLayout>
+                        <Label col="2" horizontal="right" class="ammount">
+                            <FormattedString>
+                                <Span text="Amount: €"></Span>
+                                <Span [text]="item.price"></Span>
+                            </FormattedString>
+                        </Label>
+                    </GridLayout>
+                </ng-template>
+            </ListView>
+        </StackLayout>
     </GridLayout>
     <GridLayout verticalAlignment="bottom">
         <GridLayout columns="*, *, *" class="bottom-navigation">

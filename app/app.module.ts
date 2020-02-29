@@ -7,6 +7,7 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 import { NativeScriptUIChartModule } from "nativescript-ui-chart/angular";
 import { NativeScriptUICalendarModule } from "nativescript-ui-calendar/angular";
+import {DatePipe} from '@angular/common';
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app.routing";
@@ -41,7 +42,8 @@ import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.compon
     AppRoutingModule
   ],
   providers: [
-    Household
+    Household,
+    DatePipe
   ],
   declarations: [
     AppComponent,

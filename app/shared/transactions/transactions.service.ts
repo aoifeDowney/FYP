@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { DatePipe } from '@angular/common';
 import * as Kinvey from "kinvey-nativescript-sdk";
 
 @Injectable()
@@ -7,7 +8,7 @@ export class TransactionsService {
     private dataStore;
     activeUser = Kinvey.User.getActiveUser();
 
-    constructor() {
+    constructor(private datePipe: DatePipe) {
         this.dataStore = Kinvey.DataStore.collection("Transactions");
     }
 
@@ -32,6 +33,15 @@ export class TransactionsService {
         query.equalTo('type', 'House Shop');
 
         return this.dataStore.find(query);
+    }
+
+    getItemBoughtDate() {
+        const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
+        query.equalTo('type', 'House Shop');
+        secondQuery.fields = [ 'boughtDate' ];
+
+        return this.dataStore.find(query.and(secondQuery));
     }
 
     getRent() {
@@ -66,6 +76,19 @@ export class TransactionsService {
         return this.dataStore.find(query.and(secondQuery));
     }
 
+    getUtilityBillDue() {
+        let now = new Date();
+        let date = this.datePipe.transform(now,"yyyy-MM-dd");
+        const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
+        const thirdQuery = new Kinvey.Query();
+        query.equalTo('type', 'Utility Bill');
+        secondQuery.equalTo('houseName', 'Galway');
+        thirdQuery.equalTo('date', date);
+
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
+    }
+
     getUtilityBill() {
         const query = new Kinvey.Query();
         query.equalTo('type', 'Utility Bill');
@@ -91,10 +114,27 @@ export class TransactionsService {
         const secondQuery = new Kinvey.Query();
         const thirdQuery = new Kinvey.Query();
         const fourthQuery = new Kinvey.Query();
+        const fifthQuery = new Kinvey.Query();
         query.equalTo('type', 'House Shop');
         secondQuery.equalTo('complete', false);
         thirdQuery.equalTo('bought', true);
         fourthQuery.equalTo('houseName', 'Galway');
+        fifthQuery.equalTo("toPay", this.activeUser.username);
+
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery).and(fifthQuery));
+    }
+
+    getHouseShopPaid(itemName: string) {
+        const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
+        const thirdQuery = new Kinvey.Query();
+        const fourthQuery = new Kinvey.Query();
+        const fifthQuery = new Kinvey.Query();
+        query.equalTo('type', 'House Shop');
+        secondQuery.equalTo('complete', true);
+        thirdQuery.equalTo('bought', true);
+        fourthQuery.equalTo('houseName', 'Galway');
+        fifthQuery.equalTo('name', itemName);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
@@ -104,18 +144,26 @@ export class TransactionsService {
         const secondQuery = new Kinvey.Query();
         const thirdQuery = new Kinvey.Query();
         const fourthQuery = new Kinvey.Query();
+        const fifthQuery = new Kinvey.Query();
         query.equalTo('type', 'House Shop');
         secondQuery.equalTo('complete', false);
         thirdQuery.equalTo('bought', false);
         fourthQuery.equalTo('houseName', 'Galway');
+        fifthQuery.equalTo('toPay', this.activeUser.username);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
 
-    getHouseholdMembers(householdName: string) {
+    getHouseMembers() {
         const query = new Kinvey.Query();
-        query.equalTo('houseName', householdName);
+        const secondQuery = new Kinvey.Query();
+        const thirdQuery = new Kinvey.Query();
 
-        return this.dataStore.find(query);
+        query.equalTo('user', true);
+        secondQuery.equalTo('houseName', "Galway");
+        thirdQuery.fields = ['userName'];
+
+        return this.dataStore.find(query.and(secondQuery));
+
     }
 }

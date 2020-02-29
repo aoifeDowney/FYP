@@ -15,25 +15,45 @@ import { TransactionsService } from "../../../shared/transactions/transactions.s
     styleUrls: ["./suggestItem.component.css"],
     providers: [TransactionsService]
 })
-export class SuggestItemComponent implements OnInit{
+export class SuggestItemComponent implements OnInit {
 
     transactions = [];
     itemDetail = false;
     itemName: string;
     itemID: string;
-    suggestedBy: string;
     toogleName = "No";
     toogled = false;
+    suggestedBy: string;
     itemPriceValue: number;
     itemDateValue = "";
     items = [];
     activeUser = Kinvey.User.getActiveUser();
+
+    //don't have the active user on this list if they are the ones to buy the item???
+    users = [];
+    userName = [
+        "Aoife",
+        "aoife"
+    ];
+    names: string;
 
     constructor(private transactionsService: TransactionsService, private router: Router) {}
 
     ngOnInit(): void {
         this.transactionsService.getSuggestedItem().subscribe((data) => {
             this.transactions = data;
+        }, () => {
+            alert({
+                title: "Transactions",
+                message: "An error occurred retrieving your data"
+            });
+        });
+
+        this.transactionsService.getHouseMembers().subscribe((data) => {
+            this.users.push(data);
+            for(let i = 0; i < this.users.length; i++) {
+                console.log(this.users[i]);
+            }
         }, () => {
             alert({
                 title: "Transactions",
@@ -51,8 +71,8 @@ export class SuggestItemComponent implements OnInit{
 
     onCheckedChange(args: EventData) {
         let sw = args.object as Switch;
-        let isChecked = sw.checked; 
-        if(isChecked) {
+        let isChecked = sw.checked;
+        if (isChecked) {
             this.toogleName = "Yes";
             this.toogled = true;
         }
@@ -62,8 +82,41 @@ export class SuggestItemComponent implements OnInit{
         }
     }
 
-    //NOTE: have to put in all the variables - no update=>keep same value
     saveItem() {
+        for (let i = 0; i < this.userName.length; i++) {
+            var task = {
+                name: this.itemName,
+                date: this.itemDateValue,
+                price: this.itemPriceValue,
+                houseName: "Galway",
+                boughtBy: this.activeUser.username,
+                toPay: this.userName[i],
+                type: "House Shop",
+                bought: true,
+                complete: false
+            };
+
+            this.transactionsService.save(task).then((newTask) => {
+                this.items.unshift(newTask);
+            });
+        }
+
+        this.boughtByCurrentUser();
+
+        this.itemDateValue = "";
+        this.itemName = "";
+        this.itemPriceValue = null;
+
+        dialogs.alert({
+            title: "Saved!",
+            message: "The item has been updated and moved to the 'Items Bought' list",
+            okButtonText: "Okay"
+        }).then(() => {
+            this.router.navigate(["/SuggestItem"])
+        });
+    }
+
+    boughtByCurrentUser() {
         var task = {
             _id: this.itemID,
             name: this.itemName,
@@ -78,15 +131,6 @@ export class SuggestItemComponent implements OnInit{
 
         this.transactionsService.save(task).then((newTask) => {
             this.items.unshift(newTask);
-        })
-        this.itemDateValue = "";
-
-        dialogs.alert({
-            title: "Saved!",
-            message: "The item has been updated and moved to the 'Items Bought' list",
-            okButtonText: "Okay"
-        }).then(() => {
-            this.router.navigate(["/SuggestItem"])
         });
     }
 

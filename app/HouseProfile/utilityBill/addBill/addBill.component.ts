@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as dialogs from "tns-core-modules/ui/dialogs";
+import { DatePicker } from "tns-core-modules/ui/date-picker";
+import { DatePipe } from '@angular/common';
 import * as Kinvey from "kinvey-nativescript-sdk";
 
 import { TransactionsService } from "../../../shared/transactions/transactions.service";
@@ -14,17 +16,24 @@ import { TransactionsService } from "../../../shared/transactions/transactions.s
 })
 export class AddBillComponent {
 
+    minDate: Date = new Date();
+    maxDate: Date = new Date(2045, 4, 12);
+
     nameValue = "";
     priceValue: number;
     dateValue = "";
     items = [];
     activeUser = Kinvey.User.getActiveUser();
 
-    constructor(private transactionsService: TransactionsService) {}
+    constructor(private transactionsService: TransactionsService, private datePipe: DatePipe) {}
 
     ngOnInit(): void {
     }
 
+    onDateChanged(args) {
+        console.log("Date New value: " + args.value);
+        this.dateValue = this.datePipe.transform(args.value,"yyyy-MM-dd");
+    }
 
 
     saveBill() {
