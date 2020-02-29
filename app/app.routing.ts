@@ -16,7 +16,6 @@ import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.compon
 import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
 import { HouseLoginComponent } from "./HouseProfile/houseLogin/houseLogin.component";
 import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.component";
-import { EmailComponent } from "./IndividualProfile/email/email.component";
 
 import { BackendService } from "./shared/backend.service";
 
@@ -35,8 +34,7 @@ const routes: Routes = [
     { path: "AddBill", component: AddBillComponent },
     { path: "AddItem", component: AddItemComponent },
     { path: "HouseLogin", component: HouseLoginComponent },
-    { path: "Detail", component: DetailComponent },
-    { path: "Email", component: EmailComponent }
+    { path: "Detail", component: DetailComponent }
 ];
 
 @NgModule({

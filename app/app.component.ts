@@ -17,17 +17,16 @@ export class AppComponent implements OnInit {
   private _sideDrawerTransition: DrawerTransitionBase;
 
   activeUser = Kinvey.User.getActiveUser();
-  username: string;
+  username = this.activeUser.username;
 
-  constructor(private routerExtensions: RouterExtensions, private router: Router, private userService: UserService) {
-      //this.username = this.activeUser.username;
-  }
+  constructor(private routerExtensions: RouterExtensions, private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
       this._sideDrawerTransition = new SlideInOnTopTransition();
   }
 
   logout() {
+    this.closeSideDrawer();
     this.userService.logout()
         .then(
             () => this.router.navigate(["/login"]),
