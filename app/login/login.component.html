@@ -8,7 +8,9 @@
 		 <TextField hint="Household name"  autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.household"
 		 class="input input-border"></TextField>
 		<TextField hint="Password" secure="true" [(ngModel)]="user.password" class="input input-border"></TextField>
-		<Button [text]="isLoggingIn ? 'Sign in' : 'Sign up'" class="btn btn-primary" (tap)="submit()"></Button>
-		<Button [text]="isLoggingIn ? 'Sign up' : 'Back to login'" class="signup-text" (tap)="toggleDisplay()"></Button>
+		<Button [text]="isLoggingIn ? 'Sign in' : 'Regiser'" class="btn btn-primary" (tap)="submit()"></Button>
+		<Button [text]="isLoggingIn ? 'Regiser' : 'Back to login'" class="signup-text" (tap)="toggleDisplay()"></Button>
+		<Label *ngIf="!isLoggingIn" text="Regiser with a new household name or with the household name you were given with your invitation email." 
+			   textWrap="true"></Label>
 	</StackLayout>
 </FlexboxLayout>
