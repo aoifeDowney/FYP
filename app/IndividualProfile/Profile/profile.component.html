@@ -14,7 +14,7 @@
         <GridLayout>
             <Label text="Invite your housemates to the house group by sending them an email!" 
                    textWrap="true" class="houseInviteText"></Label>
-            <Button text="Invite Housemates" (tap)="saveItem()" class="buttonText" class="houseInviteButton"></Button>
+            <Button text="Invite Housemates" [nsRouterLink]="['/Email']" clearHistory="true" class="buttonText" class="houseInviteButton"></Button>
         </GridLayout>
         <GridLayout verticalAlignment="bottom">
 	        <GridLayout columns="*, *, *" class="bottom-navigation">

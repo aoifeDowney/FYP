@@ -28,6 +28,7 @@ import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.compon
 import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
 import { HouseLoginComponent } from "./HouseProfile/houseLogin/houseLogin.component";
 import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.component";
+import { EmailComponent } from "./IndividualProfile/email/email.component";
 
 @NgModule({
   imports: [
@@ -61,7 +62,8 @@ import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.compon
     AddItemComponent,
     SuggestItemComponent,
     HouseLoginComponent,
-    DetailComponent
+    DetailComponent,
+    EmailComponent
   ],
   bootstrap: [AppComponent]
 })
