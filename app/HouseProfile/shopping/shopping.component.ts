@@ -50,7 +50,8 @@ export class ShoppingComponent implements OnInit{
 
         console.log("NAME" + this.itemName);
 
-        this.transactionsService.getHouseShopPaid(this.itemName).subscribe((data) => {
+        //INSEAD OF PAID LIST THOESE WHO HAVE YET TO PAY
+        this.transactionsService.getHouseShopPaid().subscribe((data) => {
             this.items = data;
         }, () => {
             alert({
@@ -68,6 +69,15 @@ export class ShoppingComponent implements OnInit{
         this.itemDate = date;
         this.dividedPrice = this.price / this.houseMember;
         this.itemDetail = true;
+
+        this.transactionsService.getHouseShopPaidName(this.itemName).subscribe((data) => {
+            this.items = data;
+        }, () => {
+            alert({
+                title: "Transactions",
+                message: "An error occurred retrieving your data"
+            });
+        });
     }
 
     makePayment() {
