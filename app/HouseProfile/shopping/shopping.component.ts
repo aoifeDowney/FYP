@@ -81,7 +81,7 @@ export class ShoppingComponent implements OnInit{
     }
 
     makePayment() {
-        var task = {
+        /*var task = {
             _id: this.itemID,
             name: this.itemName,
             date: this.itemDate,
@@ -96,7 +96,7 @@ export class ShoppingComponent implements OnInit{
 
         this.transactionsService.save(task).then((newTask) => {
             this.items.unshift(newTask);
-        });
+        });*/
         dialogs.alert({
             title: "Payment Successful!",
             message: "This item has been paid for",
