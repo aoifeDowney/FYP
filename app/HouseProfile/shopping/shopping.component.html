@@ -44,7 +44,6 @@
                                     </Image>
                                     <StackLayout row="0" col="1" orientation="vertical" class="owe-info-container">
                                         <Label class="owe-title" [text]="item.name"></Label>
-                                        <Label class="owe-title" text="{{itemName}}"></Label>
                                     </StackLayout>
                                     <Label text="€ " verticalAlignment="top" row="0" col="1"
                                         class="pay-amount euroIcon"></Label>
@@ -94,7 +93,7 @@
             </ListView>
         </StackLayout>
     </GridLayout>
-    <GridLayout verticalAlignment="bottom">
+    <GridLayout verticalAlignment="bottom" *ngIf="itemDetail">
         <GridLayout columns="*, *, *" class="bottom-navigation">
             <GridLayout col="0" (tap)="selectTab(0)">
                 <Label class="menu-word" text="Menu"></Label>
@@ -102,11 +101,22 @@
             </GridLayout>
             <GridLayout col="1" (tap)="selectTab(1)">
                 <Label class="menu-word m-word" text="Make Payment" (tap)="makePayment()"></Label>
-                <Button class="fa menu-icon m-word" text="&#xf15c;"></Button>
+                <Button class="fa menu-icon m-word" text="&#xf1ed;"></Button>
             </GridLayout>
             <GridLayout col="2" (tap)="selectTab(2)">
-                <Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']"
-                    clearHistory="true"></Label>
+                <Label class="menu-word m-word" text="Items Bought" (tap)="back()"></Label>
+                <Button class="fa menu-icon m-word" text="&#xf291;"></Button>
+            </GridLayout>
+        </GridLayout>
+    </GridLayout>
+    <GridLayout verticalAlignment="bottom" *ngIf="!itemDetail">
+        <GridLayout columns="*, *, *" class="bottom-navigation">
+            <GridLayout col="0" (tap)="selectTab(0)">
+                <Label class="menu-word" text="Menu"></Label>
+                <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+            </GridLayout>
+            <GridLayout col="2" (tap)="selectTab(2)">
+                <Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']" clearHistory="true"></Label>
                 <Button class="fa menu-icon m-word" text="&#xf15c;"></Button>
             </GridLayout>
         </GridLayout>

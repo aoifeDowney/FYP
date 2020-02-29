@@ -104,6 +104,10 @@ export class ShoppingComponent implements OnInit{
         });
     }
 
+    back() {
+        this.itemDetail = false;
+    }
+
 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
