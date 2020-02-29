@@ -16,6 +16,15 @@
     border-top-width: 1;
   }
 
+  .houseInviteText {
+    margin-top: 400px;
+    margin-left: 20px;
+  }
+
+  .houseInviteButton {
+    margin-top: 700px;
+    font-size: 20em;
+  }
   
   /* Profile */
 .profilePic {

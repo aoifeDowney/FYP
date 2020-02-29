@@ -17,11 +17,9 @@ import * as Kinvey from "kinvey-nativescript-sdk";
     providers: [TransactionsService]
 })
 export class IndividualProfileComponent implements OnInit {
-    //user: User;
+    
     activeUser = Kinvey.User.getActiveUser();
     userData = ​Kinvey.User.getActiveUser().data;
-    //user = new Kinvey.User();
-
 
     expensesChartData = [];
     transactions = [];
