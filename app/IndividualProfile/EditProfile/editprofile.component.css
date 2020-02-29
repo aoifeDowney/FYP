@@ -16,65 +16,72 @@
   border-top-width: 1;
 }
 
-
-/* Profile */
-.profilePic {
-width: 150;
-height: 150;
-border-radius: 100;
-margin: 32 32 16 32;
-border-color: #8f91de;
-border-width: 1;
+.pic1 {
+  margin-bottom: 950px;
+  margin-right: 450px;
 }
 
-.title-profile {
-color: #000;
-font-size: 19;
-font-weight: bold;
+.pic2 {
+  margin-bottom: 950px;
 }
 
-.listImage {
-border-width: 1;
-border-color: #fff;
+.pic3 {
+  margin-bottom: 950px;
+  margin-left: 450px;
 }
 
-.additional-info {
-border-radius: 15;
-background: #eeeeee;
-padding: 18;
-line-height: 18;
-margin-top: 20;
-width: 85%;
+.pic4 {
+  margin-bottom: 550px;
+  margin-right: 450px;
 }
 
-.icon-aditional-info {
-font-size: 17;
-color: #557AAD;
-text-align: center;
-padding-top: 2;
+.pic5 {
+  margin-bottom: 550px;
 }
 
-.description-aditional-info {
-font-size: 17;
-color:#000;
-margin-left: 8;
-border-width: 1;
-border-color: transparent;
+.pic6 {
+  margin-bottom: 550px;
+  margin-left: 450px;
 }
 
-.house-icon {
-  font-size: 40em;
+.pic7 {
+  margin-bottom: 150px;
+  margin-right: 450px;
 }
 
-.image-edit-icon {
-  margin-left: 270;
+.pic8 {
+  margin-bottom: 150px;
 }
 
-.name-edit-icon {
-  margin-left: 240;
+.pic9 {
+  margin-bottom: 150px;
+  margin-left: 450px;
 }
 
-.house-edit-icon {
-  margin-left: 150;
-  margin-bottom: 20;
+.pic10 {
+  margin-top: 250px;
+  margin-right: 450px;
+}
+
+.pic11 {
+  margin-top: 250px;
+}
+
+.pic12 {
+  margin-top: 250px;
+  margin-left: 450px;
+}
+
+.pic13 {
+  margin-top: 650px;
+  margin-right: 450px;
+}
+
+.pic14 {
+  margin-top: 650px;
+}
+
+.pic15 {
+  margin-top: 650px;
+  margin-left: 450px;
 }

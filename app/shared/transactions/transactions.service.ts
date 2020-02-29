@@ -181,6 +181,14 @@ export class TransactionsService {
         thirdQuery.fields = ['userName'];
 
         return this.dataStore.find(query.and(secondQuery));
+    }
 
+    getIcon() {
+        const query = new Kinvey.Query();
+
+        query.equalTo('userName', this.activeUser.username);
+
+        return this.dataStore.find(query);
+        
     }
 }

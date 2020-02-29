@@ -20,13 +20,14 @@ import { UserProfileSerive } from "../../shared/userprofile/userprofile.service"
 export class EditProfileComponent implements OnInit {
 
   profile: Array<UserProfile> = [];
+  icon: string;
 
-  //username: any = Kinvey.User.getActiveUser();
-  //username: string;
+  activeUser = Kinvey.User.getActiveUser();
+  userData = ​Kinvey.User.getActiveUser().data;
+  //this.userData["household"]
 
   tasks = [];
   textFieldValue = "";
-  activeUser = Kinvey.User.getActiveUser();
 
   constructor(private userProfileSerive: UserProfileSerive) {}
 
@@ -70,6 +71,10 @@ export class EditProfileComponent implements OnInit {
       this.tasks[index].Username = result.text;
       this.userProfileSerive.save(task);
     });
+  }
+
+  getIcon(icon: string) {
+    this.icon = icon;
   }
 
 }

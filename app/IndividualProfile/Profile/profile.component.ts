@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import { Router } from "@angular/router";
 
 import * as email from "nativescript-email";
 import * as Kinvey from "kinvey-nativescript-sdk";
@@ -27,7 +28,7 @@ export class ProfileComponent implements OnInit {
                 + " created. The house group name is: " + this.houseName + ".\nWe look forward to welcoming you to the HouseShare Team!"
                 + "\n\nYours Sincerely," + "\nThe HouseShare Team";
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -56,6 +57,11 @@ clearFields(): void {
     this.subject = '';
     this.message = '';
 }
+
+
+  chooseIcon() {
+    this.router.navigate(["/EditProfile"]);
+  }
 
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();

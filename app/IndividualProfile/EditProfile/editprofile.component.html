@@ -1,21 +1,23 @@
-<ActionBar title="Edit Profile">
+<ActionBar title="Select Icon">
 </ActionBar>
 <GridLayout class="page">
-	<RadListView [items]="tasks">
-		<ng-template let-item="item">
-			<StackLayout rows="auto, auto, auto, auto,auto" columns="*">
-				<Label row="0" col="0" text="&#xf044;" class="fa image-edit-icon"></Label>
-				<Image row="0" col="0" [src]="item.picture" stretch="aspectFill" class="profilePic"></Image>
-				<Label row="1" col="0" [text]="item.Username" class="title-profile" textAlignment="center"></Label>
-				<Label row="1" col="0" text="&#xf044;" class="fa name-edit-icon" (tap)="updateName(item)"></Label>
-				<StackLayout row="2" col="0" rows="auto, auto" columns="auto, auto" class="additional-info">
-					<Label class="fa house-icon" text="&#xf015;"></Label>
-					<Label row="0" col="1" text="Household Name" class="fa description-aditional-info"></Label>
-					<Label row="0" col="1" text="&#xf044;" class="fa house-edit-icon"></Label>
-				</StackLayout>
-			</StackLayout>
-		</ng-template>
-	</RadListView>
+	<GridLayout>
+		<Image src="~/images/avatars/avatars/png/001-girl.png" style="width:200px;height:210px;" class="pic1"></Image>
+		<Image src="~/images/avatars/avatars/png/015-girl-14.png" style="width:200px;height:210px;" class="pic2"></Image>
+		<Image src="~/images/avatars/avatars/png/003-girl-2.png" style="width:200px;height:210px;" class="pic3"></Image>
+		<Image src="~/images/avatars/avatars/png/004-girl-3.png" style="width:200px;height:210px;" class="pic4"></Image>
+		<Image src="~/images/avatars/avatars/png/005-girl-4.png" style="width:200px;height:210px;" class="pic5"></Image>
+		<Image src="~/images/avatars/avatars/png/034-girl-21.png" style="width:200px;height:210px;" class="pic6"></Image>
+		<Image src="~/images/avatars/avatars/png/007-girl-6.png" style="width:200px;height:210px;" class="pic7" ></Image>
+		<Image src="~/images/avatars/avatars/png/008-girl-7.png" style="width:200px;height:210px;" class="pic8"></Image>
+		<Image src="~/images/avatars/avatars/png/043-man-10.png" style="width:200px;height:210px;" class="pic9"></Image>
+		<Image src="~/images/avatars/avatars/png/022-man-1.png" style="width:200px;height:210px;" class="pic10"></Image>
+		<Image src="~/images/avatars/avatars/png/035-boy-5.png" style="width:200px;height:210px;" class="pic11"></Image>
+		<Image src="~/images/avatars/avatars/png/024-boy-1.png" style="width:200px;height:210px;" class="pic12"></Image>
+		<Image src="~/images/avatars/avatars/png/044-boy-8.png" style="width:200px;height:210px;" class="pic13"></Image>
+		<Image src="~/images/avatars/avatars/png/039-man-7.png" style="width:200px;height:210px;" class="pic14"></Image>
+		<Image src="~/images/avatars/avatars/png/041-man-8.png" style="width:200px;height:210px;" class="pic15"></Image>
+	</GridLayout>
 	<GridLayout verticalAlignment="bottom">
 		<GridLayout columns="*, *, *" class="bottom-navigation">
 			<GridLayout col="0" (tap)="selectTab(0)">
@@ -27,7 +29,8 @@
 				<Button class="fa menu-icon" text="&#xf007;"></Button>
 			</GridLayout>
 			<GridLayout col="2" (tap)="selectTab(2)">
-				<Label class="menu-word" text="Edit Profile" [nsRouterLink]="['/EditProfile']" clearHistory="true"></Label>
+				<Label class="menu-word" text="Edit Profile" [nsRouterLink]="['/EditProfile']"
+					clearHistory="true"></Label>
 				<Button class="fa menu-icon" text="&#xf044;"></Button>
 			</GridLayout>
 		</GridLayout>
