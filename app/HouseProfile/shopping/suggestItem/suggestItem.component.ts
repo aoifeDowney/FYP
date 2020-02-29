@@ -23,6 +23,7 @@ export class SuggestItemComponent implements OnInit {
     itemID: string;
     toogleName = "No";
     toogled = false;
+    suggestedBy: string;
     itemPriceValue: number;
     itemDateValue = "";
     items = [];
@@ -61,12 +62,10 @@ export class SuggestItemComponent implements OnInit {
         });
     }
 
-    getItemDetails(name: string, id: string) {
+    getItemDetails(name: string, id: string, suggestedBy: string) {
         this.itemName = name;
         this.itemID = id;
-        for(let i = 0; i < this.userName.length; i++) {
-            console.log(this.userName[i]);
-        }
+        this.suggestedBy = suggestedBy;
         this.itemDetail = true;
     }
 

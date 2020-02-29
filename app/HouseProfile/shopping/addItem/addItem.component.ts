@@ -27,7 +27,6 @@ export class AddItemComponent {
         var task = {
             name: this.nameValue,
             type: "House Shop",
-            user: this.activeUser.username,
             suggestedBy: this.activeUser.username,
             houseName: "Galway",
             show: true,
