@@ -17,6 +17,7 @@ export class AddItemComponent {
     nameValue = "";
     items = [];
     activeUser = Kinvey.User.getActiveUser();
+    userData = ​Kinvey.User.getActiveUser().data;    
 
     constructor(private transactionsService: TransactionsService) { }
 
@@ -28,7 +29,7 @@ export class AddItemComponent {
             name: this.nameValue,
             type: "House Shop",
             suggestedBy: this.activeUser.username,
-            houseName: "Galway",
+            houseName: this.userData["household"],
             show: true,
             bought: false,
             complete: false

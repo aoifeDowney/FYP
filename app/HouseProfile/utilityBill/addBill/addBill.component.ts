@@ -15,6 +15,8 @@ import { TransactionsService } from "../../../shared/transactions/transactions.s
     providers: [TransactionsService]
 })
 export class AddBillComponent {
+    
+    userData = ​Kinvey.User.getActiveUser().data;
 
     minDate: Date = new Date();
     maxDate: Date = new Date(2045, 4, 12);
@@ -43,7 +45,7 @@ export class AddBillComponent {
             date: this.dateValue,
             type: "Utility Bill",
             boughtBy: this.activeUser.username,
-            houseName: "Galway",
+            houseName: this.userData["household"],
             bought: false,
             complete: false
         };

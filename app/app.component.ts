@@ -16,11 +16,14 @@ import { UserService } from "../app/shared/user/user.service";
 export class AppComponent implements OnInit {
   private _sideDrawerTransition: DrawerTransitionBase;
 
+  loggedIn = true;
   activeUser = Kinvey.User.getActiveUser();
   username: string;
 
   constructor(private routerExtensions: RouterExtensions, private router: Router, private userService: UserService) {
-      //this.username = this.activeUser.username;
+    if(this.loggedIn) {
+      this.username = this.activeUser.username;
+    }
   }
 
   ngOnInit(): void {
@@ -28,6 +31,8 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
+    this.closeSideDrawer();
+    this.loggedIn = false;
     this.userService.logout()
         .then(
             () => this.router.navigate(["/login"]),

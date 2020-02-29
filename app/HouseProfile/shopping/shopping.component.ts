@@ -20,6 +20,7 @@ import { Household } from "../shared/household.module";
 export class ShoppingComponent implements OnInit{
 
     activeUser = Kinvey.User.getActiveUser();
+    userData = ​Kinvey.User.getActiveUser().data;
     itemName: string;
     boughtBy: string;
     dividedPrice: number;
@@ -81,7 +82,7 @@ export class ShoppingComponent implements OnInit{
     }
 
     makePayment() {
-        /*var task = {
+        var task = {
             _id: this.itemID,
             name: this.itemName,
             date: this.itemDate,
@@ -89,14 +90,14 @@ export class ShoppingComponent implements OnInit{
             boughtBy: this.activeUser.username,
             boughtDate: new Date(),
             type: "House Shop",
-            houseName: 'Galway',
+            houseName: this.userData["household"],
             bought: true,
             complete: true
         };
 
         this.transactionsService.save(task).then((newTask) => {
             this.items.unshift(newTask);
-        });*/
+        });
         dialogs.alert({
             title: "Payment Successful!",
             message: "This item has been paid for",

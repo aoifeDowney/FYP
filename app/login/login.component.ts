@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Page } from "tns-core-modules/ui/page";
+import * as dialogs from "tns-core-modules/ui/dialogs";
+
 
 import { User } from "../shared/user/user.model";
 import { UserService } from "../shared/user/user.service";
@@ -38,11 +40,13 @@ export class LoginComponent implements OnInit {
             .then(
                 () => this.router.navigate(["/IndividualProfile"]),
                 (exception) => {
-                    if (exception.error && exception.error.description) {
-                        alert(exception.error.description);
-                    } else {
-                        alert(exception)
-                    }
+                    if (exception) {
+                        dialogs.alert({
+                            title: "Error",
+                            message: "Please check your login details",
+                            okButtonText: "Okay"
+                        });
+                    } 
                 }
             );
     }

@@ -28,6 +28,7 @@ export class SuggestItemComponent implements OnInit {
     itemDateValue = "";
     items = [];
     activeUser = Kinvey.User.getActiveUser();
+    userData = ​Kinvey.User.getActiveUser().data;
 
     //don't have the active user on this list if they are the ones to buy the item???
     users = [];
@@ -88,7 +89,7 @@ export class SuggestItemComponent implements OnInit {
                 name: this.itemName,
                 date: this.itemDateValue,
                 price: this.itemPriceValue,
-                houseName: "Galway",
+                houseName: this.userData["household"],
                 toPay: this.userName[i],
                 type: "House Shop",
                 bought: true,
@@ -121,7 +122,7 @@ export class SuggestItemComponent implements OnInit {
             name: this.itemName,
             date: this.itemDateValue,
             price: this.itemPriceValue,
-            houseName: "Galway",
+            houseName: this.userData["household"],
             boughtBy: this.activeUser.username,
             type: "House Shop",
             bought: true,
