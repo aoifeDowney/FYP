@@ -7,6 +7,7 @@ export class TransactionsService {
 
     private dataStore;
     activeUser = Kinvey.User.getActiveUser();
+    userData = ​Kinvey.User.getActiveUser().data;
 
     constructor(private datePipe: DatePipe) {
         this.dataStore = Kinvey.DataStore.collection("Transactions");
@@ -50,7 +51,7 @@ export class TransactionsService {
         const secondQuery = new Kinvey.Query();
         secondQuery.equalTo('complete', true);
         const thirdQuery = new Kinvey.Query();
-        thirdQuery.equalTo('houseName', 'Galway');
+        thirdQuery.equalTo('houseName', this.userData["household"]);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
@@ -61,7 +62,7 @@ export class TransactionsService {
         const secondQuery = new Kinvey.Query();
         secondQuery.equalTo('complete', false);
         const thirdQuery = new Kinvey.Query();
-        thirdQuery.equalTo('houseName', 'Galway');
+        thirdQuery.equalTo('houseName', this.userData["household"]);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
@@ -71,7 +72,7 @@ export class TransactionsService {
         const query = new Kinvey.Query();
         query.equalTo('type', 'Utility Bill');
         const secondQuery = new Kinvey.Query();
-        secondQuery.equalTo('houseName', 'Galway');
+        secondQuery.equalTo('houseName', this.userData["household"]);
 
         return this.dataStore.find(query.and(secondQuery));
     }
@@ -83,7 +84,7 @@ export class TransactionsService {
         const secondQuery = new Kinvey.Query();
         const thirdQuery = new Kinvey.Query();
         query.equalTo('type', 'Utility Bill');
-        secondQuery.equalTo('houseName', 'Galway');
+        secondQuery.equalTo('houseName', this.userData["household"]);
         thirdQuery.equalTo('date', date);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
@@ -95,7 +96,7 @@ export class TransactionsService {
         const secondQuery = new Kinvey.Query();
         secondQuery.equalTo('complete', true);
         const thirdQuery = new Kinvey.Query();
-        thirdQuery.equalTo('houseName', 'Galway');
+        thirdQuery.equalTo('houseName', this.userData["household"]);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
@@ -118,7 +119,7 @@ export class TransactionsService {
         query.equalTo('type', 'House Shop');
         secondQuery.equalTo('complete', false);
         thirdQuery.equalTo('bought', true);
-        fourthQuery.equalTo('houseName', 'Galway');
+        fourthQuery.equalTo('houseName', this.userData["household"]);
         fifthQuery.equalTo("toPay", this.activeUser.username);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery).and(fifthQuery));
@@ -134,7 +135,7 @@ export class TransactionsService {
         query.equalTo('type', 'House Shop');
         secondQuery.equalTo('complete', true);
         thirdQuery.equalTo('bought', true);
-        fourthQuery.equalTo('houseName', 'Galway');
+        fourthQuery.equalTo('houseName', this.userData["household"]);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
@@ -149,7 +150,7 @@ export class TransactionsService {
         query.equalTo('type', 'House Shop');
         secondQuery.equalTo('complete', true);
         thirdQuery.equalTo('bought', true);
-        fourthQuery.equalTo('houseName', 'Galway');
+        fourthQuery.equalTo('houseName', this.userData["household"]);
         fifthQuery.equalTo('name', itemName);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery).and(fifthQuery));
@@ -164,7 +165,7 @@ export class TransactionsService {
         query.equalTo('type', 'House Shop');
         secondQuery.equalTo('complete', false);
         thirdQuery.equalTo('bought', false);
-        fourthQuery.equalTo('houseName', 'Galway');
+        fourthQuery.equalTo('houseName', this.userData["household"]);
         fifthQuery.equalTo('toPay', this.activeUser.username);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
@@ -176,7 +177,7 @@ export class TransactionsService {
         const thirdQuery = new Kinvey.Query();
 
         query.equalTo('user', true);
-        secondQuery.equalTo('houseName', "Galway");
+        secondQuery.equalTo('houseName', this.userData["household"]);
         thirdQuery.fields = ['userName'];
 
         return this.dataStore.find(query.and(secondQuery));

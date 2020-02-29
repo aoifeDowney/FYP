@@ -4,11 +4,7 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
 import { TransactionsService } from "../shared/transactions/transactions.service";
 
-import { User } from "../shared/user/user.model";
 import * as Kinvey from "kinvey-nativescript-sdk";
-
-//const user = new Kinvey.User();
-
 
 @Component({
     selector: "gr-IndividualProfile",
@@ -39,14 +35,7 @@ export class IndividualProfileComponent implements OnInit {
                 { name: "Rent", ammount: 69.5 },
                 { name: "Utility Bills", ammount: 19.60 },
                 { name: "House Shop", ammount: 10.80 }
-            ]
-        //console.log("YES!!!" + this.activeUser._acl.creator);
-        //console.log("House: " + this.userData.hou)
-        //user.data.customProp = 'foo';
-        //console.log(JSON.stringify(this.userData));
-        //console.log(JSON.stringify(this.userData.household));
-        console.log("House: " + this.userData["household"]);
-        
+            ]        
     }
 
     ngOnInit(): void {
