@@ -180,7 +180,7 @@ export class TransactionsService {
         secondQuery.equalTo('houseName', this.userData["household"]);
         thirdQuery.notEqualTo('userName', this.activeUser.username);
 
-        return this.dataStore.find(query.and(secondQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
 
     getIcon() {
