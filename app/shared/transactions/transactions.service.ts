@@ -178,7 +178,7 @@ export class TransactionsService {
 
         query.equalTo('user', true);
         secondQuery.equalTo('houseName', this.userData["household"]);
-        thirdQuery.fields = ['userName'];
+        thirdQuery.notEqualTo('userName', this.activeUser.username);
 
         return this.dataStore.find(query.and(secondQuery));
     }
