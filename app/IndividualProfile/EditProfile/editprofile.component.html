@@ -2,21 +2,51 @@
 </ActionBar>
 <GridLayout class="page">
 	<GridLayout>
-		<Image src="~/images/avatars/avatars/png/001-girl.png" style="width:200px;height:210px;" class="pic1"></Image>
-		<Image src="~/images/avatars/avatars/png/015-girl-14.png" style="width:200px;height:210px;" class="pic2"></Image>
-		<Image src="~/images/avatars/avatars/png/003-girl-2.png" style="width:200px;height:210px;" class="pic3"></Image>
-		<Image src="~/images/avatars/avatars/png/004-girl-3.png" style="width:200px;height:210px;" class="pic4"></Image>
-		<Image src="~/images/avatars/avatars/png/005-girl-4.png" style="width:200px;height:210px;" class="pic5"></Image>
-		<Image src="~/images/avatars/avatars/png/034-girl-21.png" style="width:200px;height:210px;" class="pic6"></Image>
-		<Image src="~/images/avatars/avatars/png/007-girl-6.png" style="width:200px;height:210px;" class="pic7" ></Image>
-		<Image src="~/images/avatars/avatars/png/008-girl-7.png" style="width:200px;height:210px;" class="pic8"></Image>
-		<Image src="~/images/avatars/avatars/png/043-man-10.png" style="width:200px;height:210px;" class="pic9"></Image>
-		<Image src="~/images/avatars/avatars/png/022-man-1.png" style="width:200px;height:210px;" class="pic10"></Image>
-		<Image src="~/images/avatars/avatars/png/035-boy-5.png" style="width:200px;height:210px;" class="pic11"></Image>
-		<Image src="~/images/avatars/avatars/png/024-boy-1.png" style="width:200px;height:210px;" class="pic12"></Image>
-		<Image src="~/images/avatars/avatars/png/044-boy-8.png" style="width:200px;height:210px;" class="pic13"></Image>
-		<Image src="~/images/avatars/avatars/png/039-man-7.png" style="width:200px;height:210px;" class="pic14"></Image>
-		<Image src="~/images/avatars/avatars/png/041-man-8.png" style="width:200px;height:210px;" class="pic15"></Image>
+		<Image src={{icon1}}
+			(tap)="changeIcon(icon1)" style="width:200px;height:210px;"
+			class="pic1"></Image>
+		<Image src={{icon2}}
+			(tap)="changeIcon(icon2)" style="width:200px;height:210px;"
+			class="pic2"></Image>
+		<Image src={{icon3}}
+			(tap)="changeIcon(icon3)" style="width:200px;height:210px;"
+			class="pic3"></Image>
+		<Image src={{icon4}}
+			(tap)="changeIcon(icon4)" style="width:200px;height:210px;"
+			class="pic4"></Image>
+		<Image src={{icon5}}
+			(tap)="changeIcon(icon5)" style="width:200px;height:210px;"
+			class="pic5"></Image>
+		<Image src={{icon6}}
+			(tap)="changeIcon(icon6)" style="width:200px;height:210px;"
+			class="pic6"></Image>
+		<Image src={{icon7}}
+			(tap)="changeIcon(icon7)" style="width:200px;height:210px;"
+			class="pic7"></Image>
+		<Image src={{icon8}}
+			(tap)="changeIcon(icon8)" style="width:200px;height:210px;"
+			class="pic8"></Image>
+		<Image src={{icon9}}
+			(tap)="changeIcon(icon9)" style="width:200px;height:210px;"
+			class="pic9"></Image>
+		<Image src={{icon10}}
+			(tap)="changeIcon(icon10)" style="width:200px;height:210px;"
+			class="pic10"></Image>
+		<Image src={{icon11}}
+			(tap)="changeIcon(icon11)" style="width:200px;height:210px;"
+			class="pic11"></Image>
+		<Image src={{icon12}}
+			(tap)="changeIcon(icon12)" style="width:200px;height:210px;"
+			class="pic12"></Image>
+		<Image src={{icon13}}
+			(tap)="changeIcon(icon13)" style="width:200px;height:210px;"
+			class="pic13"></Image>
+		<Image src={{icon14}}
+			(tap)="changeIcon(icon14)" style="width:200px;height:210px;"
+			class="pic14"></Image>
+		<Image src={{icon15}}
+			(tap)="changeIcon(icon15)" style="width:200px;height:210px;"
+			class="pic15"></Image>
 	</GridLayout>
 	<GridLayout verticalAlignment="bottom">
 		<GridLayout columns="*, *, *" class="bottom-navigation">

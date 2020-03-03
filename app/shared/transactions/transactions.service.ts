@@ -185,10 +185,12 @@ export class TransactionsService {
 
     getIcon() {
         const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
 
         query.equalTo('userName', this.activeUser.username);
+        secondQuery.equalTo('houseName', this.userData["household"]);
 
-        return this.dataStore.find(query);
+        return this.dataStore.find(query.and(secondQuery));
         
     }
 }

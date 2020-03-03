@@ -1,36 +1,35 @@
 <ActionBar title="My Profile"></ActionBar>
-    <GridLayout class="page">
-        <GridLayout rows="auto, auto, auto, auto,auto" columns="*">
-            <Image row="0" col="0" src="~/images/avatars/avatars/png/001-girl.png" stretch="aspectFill"
-                   class="profilePic"></Image>
-            <Label row="1" col="0" text="{{userName}}" class="title-profile"
-                   textAlignment="center"></Label>
-            <GridLayout row="2" col="0" rows="auto, auto" columns="auto, auto"
-                        class="additional-info">
-                <Label class="fa house-icon" text="&#xf015;"></Label>
-                <Label row="0" col="1" text="{{houseName}}" class="fa description-aditional-info"></Label>
-            </GridLayout>
-        </GridLayout>
-        <GridLayout>
-            <Label text="Invite your housemates to the house group by sending them an email!" 
-                   textWrap="true" class="houseInviteText"></Label>
-            <Button text="Invite Housemates" (tap)="onEmailSend($event)" class="buttonText" class="houseInviteButton"></Button>
-        </GridLayout>
-        <GridLayout verticalAlignment="bottom">
-	        <GridLayout columns="*, *, *" class="bottom-navigation">
-		        <GridLayout col="0" (tap)="selectTab(0)">
-			        <Label class="menu-word" text="Menu"></Label>
-			        <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
-		        </GridLayout>
-		        <GridLayout col="1" (tap)="selectTab(1)">
-			        <Label class="menu-word" text="Profile" [nsRouterLink]="['/Profile']" clearHistory="true"></Label>
-			        <Button class="fa menu-icon" text="&#xf007;"></Button>
-		        </GridLayout>
-		        <GridLayout col="2" (tap)="selectTab(2)">
-			        <Label class="menu-word" text="Change Icon" [nsRouterLink]="['/EditProfile']" clearHistory="true"></Label>
-			        <Button class="fa menu-icon" text="&#xf044;"></Button>
-		        </GridLayout>
-	        </GridLayout>
+<GridLayout class="page">
+    <GridLayout rows="auto, auto, auto, auto,auto" columns="*">
+        <Image row="0" col="0" src="{{icon}}" stretch="aspectFill" class="profilePic">
+        </Image>
+        <Label row="1" col="0" text="{{userName}}" class="title-profile" textAlignment="center"></Label>
+        <GridLayout row="2" col="0" rows="auto, auto" columns="auto, auto" class="additional-info">
+            <Label class="fa house-icon" text="&#xf015;"></Label>
+            <Label row="0" col="1" text="{{houseName}}" class="fa description-aditional-info"></Label>
         </GridLayout>
     </GridLayout>
-
+    <GridLayout>
+        <Label text="Invite your housemates to the house group by sending them an email!" textWrap="true"
+            class="houseInviteText"></Label>
+        <Button text="Invite Housemates" (tap)="onEmailSend($event)" class="buttonText"
+            class="houseInviteButton"></Button>
+    </GridLayout>
+    <GridLayout verticalAlignment="bottom">
+        <GridLayout columns="*, *, *" class="bottom-navigation">
+            <GridLayout col="0" (tap)="selectTab(0)">
+                <Label class="menu-word" text="Menu"></Label>
+                <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+            </GridLayout>
+            <GridLayout col="1" (tap)="selectTab(1)">
+                <Label class="menu-word" text="Profile" [nsRouterLink]="['/Profile']" clearHistory="true"></Label>
+                <Button class="fa menu-icon" text="&#xf007;"></Button>
+            </GridLayout>
+            <GridLayout col="2" (tap)="selectTab(2)">
+                <Label class="menu-word" text="Change Icon" [nsRouterLink]="['/EditProfile']"
+                    clearHistory="true"></Label>
+                <Button class="fa menu-icon" text="&#xf044;"></Button>
+            </GridLayout>
+        </GridLayout>
+    </GridLayout>
+</GridLayout>
