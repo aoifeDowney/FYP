@@ -46,7 +46,6 @@ export class EditProfileComponent implements OnInit {
       this.icons.push(data);
       for (let i = 0; i < this.icons.length; i++) {
         this.id = this.icons[0][i]["_id"];
-        //this.icon = "~/images/avatars/avatars/png/003-girl-2.png";
         console.log("Icon: " + this.id);
       }
 

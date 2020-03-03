@@ -36,6 +36,24 @@ export class ShoppingComponent implements OnInit{
     itemDate = "";
     items = [];
 
+    icons = [];
+    icon: string;
+    icon1 = "~/images/avatars/avatars/png/001-girl.png";
+    icon2 = "~/images/avatars/avatars/png/015-girl-14.png";
+    icon3 = "~/images/avatars/avatars/png/003-girl-2.png";
+    icon4 = "~/images/avatars/avatars/png/004-girl-3.png";
+    icon5 = "~/images/avatars/avatars/png/005-girl-4.png";
+    icon6 = "~/images/avatars/avatars/png/034-girl-21.png";
+    icon7 = "~/images/avatars/avatars/png/007-girl-6.png"
+    icon8 = "~/images/avatars/avatars/png/008-girl-7.png";
+    icon9 = "~/images/avatars/avatars/png/043-man-10.png";
+    icon10 = "~/images/avatars/avatars/png/022-man-1.png";
+    icon11 = "~/images/avatars/avatars/png/035-boy-5.png";
+    icon12 = "~/images/avatars/avatars/png/024-boy-1.png";
+    icon13 = "~/images/avatars/avatars/png/044-boy-8.png";
+    icon14 = "~/images/avatars/avatars/png/039-man-7.png";
+    icon15 = "~/images/avatars/avatars/png/041-man-8.png";
+
 
     constructor(private transactionsService: TransactionsService, private household: Household) {}
 
@@ -49,9 +67,6 @@ export class ShoppingComponent implements OnInit{
             });
         });
 
-        console.log("NAME" + this.itemName);
-
-        //INSEAD OF PAID LIST THOESE WHO HAVE YET TO PAY
         this.transactionsService.getHouseShopPaid().subscribe((data) => {
             this.items = data;
         }, () => {
@@ -59,6 +74,16 @@ export class ShoppingComponent implements OnInit{
                 title: "Transactions",
                 message: "An error occurred retrieving your data"
             });
+        });
+
+        this.transactionsService.getIcon().subscribe((data) => {
+            this.icons.push(data);
+            for(let i = 0; i < this.icons.length; i++) {
+              this.icon = this.icons[0][i]["icon"];
+            }
+            
+        }, () => {
+            console.log("Unable to retrive list of transactions");
         });
     }
 
