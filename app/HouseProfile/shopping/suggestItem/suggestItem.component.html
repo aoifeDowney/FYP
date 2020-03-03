@@ -67,21 +67,22 @@
 					backgroundColor="MEDIUMPURPLE" offBackgroundColor="MIDNIGHTBLUE"></Switch>
 		</GridLayout>
 		<StackLayout width="100%" class="default-container" *ngIf="toogled">
-			<FlexboxLayout flexDirection="row" class="form-row">
-				<Image src="~/images/description-icon.png" class="form-icon"></Image>
-				<TextField class="form-control" hint="Input price here" [(ngModel)]="itemPriceValue"
-					flexGrow="1" keyboardType="number"></TextField>
-			</FlexboxLayout>
-			<FlexboxLayout flexDirection="row" class="form-row">
-				<Image src="~/images/date-icon.png" class="form-icon"></Image>
-				<TextField class="form-control" hint="Input date here" [(ngModel)]="itemDateValue"
-					flexGrow="1" keyboardType="dateTime"></TextField>
-			</FlexboxLayout>
-			<FlexboxLayout flexDirection="row" class="form-row">
+            <FlexboxLayout flexDirection="row" class="form-row">
 				<Image id="selectCategoryIcon" src="~/images/icon-shopping.png"
 					class="form-icon category"></Image>
 				<Label id="selectCategoryText" class="form-control" text="House Shop" flexGrow="1"></Label>
 			</FlexboxLayout>
+			<FlexboxLayout flexDirection="row" class="form-row">
+				<Image src="~/images/description-icon.png" class="form-icon"></Image>
+				<TextField class="form-control" hint="Input price here" [(ngModel)]="itemPriceValue"
+					flexGrow="1" keyboardType="number"></TextField>
+            </FlexboxLayout>
+            <Label text="Please enter the bought date" class="boughtDateText"></Label>
+			<FlexboxLayout flexDirection="row" class="form-row">
+                <Image src="~/images/date-icon.png" class="form-icon"></Image>
+                <DatePicker year="1980" month="4" day="20" [minDate]="minDate" [maxDate]="maxDate"
+                    (dateChange)="onDateChanged($event)"></DatePicker>
+            </FlexboxLayout>
 			<Button text="Save" (tap)="saveItem()" class="buttonText"></Button>
 		</StackLayout>
     </GridLayout>

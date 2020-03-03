@@ -16,6 +16,11 @@
     border-top-width: 1;
   }
 
+  .boughtDateText{
+    margin-top: 40px;
+    margin-right: 50px;
+}
+
   .icon {
     margin-bottom: 580;
     margin-right: 320;

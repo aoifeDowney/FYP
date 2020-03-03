@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { EventData } from "tns-core-modules/data/observable";
 import { Switch } from "tns-core-modules/ui/switch";
 import * as dialogs from "tns-core-modules/ui/dialogs";
+import { DatePicker } from "tns-core-modules/ui/date-picker";
+import { DatePipe } from '@angular/common';
 import * as Kinvey from "kinvey-nativescript-sdk";
 
 import { TransactionsService } from "../../../shared/transactions/transactions.service";
@@ -16,6 +18,9 @@ import { TransactionsService } from "../../../shared/transactions/transactions.s
     providers: [TransactionsService]
 })
 export class SuggestItemComponent implements OnInit {
+
+    minDate: Date = new Date();
+    maxDate: Date = new Date(2045, 4, 12);
 
     transactions = [];
     itemDetail = false;
@@ -39,7 +44,7 @@ export class SuggestItemComponent implements OnInit {
     ];
     names: string;
 
-    constructor(private transactionsService: TransactionsService, private router: Router) {}
+    constructor(private transactionsService: TransactionsService, private router: Router, private datePipe: DatePipe) {}
 
     ngOnInit(): void {
         this.transactionsService.getSuggestedItem().subscribe((data) => {
@@ -144,8 +149,15 @@ export class SuggestItemComponent implements OnInit {
         });
     }
 
+    onDateChanged(args) {
+        console.log("Date New value: " + args.value);
+        this.itemDateValue = this.datePipe.transform(args.value,"yyyy-MM-dd");
+    }
+
     back() {
         this.itemDetail = false;
+        this.toogleName = "No";
+        this.toogled = false;
     }
 
     onDrawerButtonTap(): void {
