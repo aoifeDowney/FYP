@@ -32,6 +32,7 @@ export class SuggestItemComponent implements OnInit {
 
     //don't have the active user on this list if they are the ones to buy the item???
     users = [];
+    name = [];
     userName = [
         "Aoife",
         "aoife"
@@ -52,8 +53,17 @@ export class SuggestItemComponent implements OnInit {
 
         this.transactionsService.getHouseMembers().subscribe((data) => {
             this.users.push(data);
+            //this.users = data;
             for(let i = 0; i < this.users.length; i++) {
-                console.log(this.users[i]);
+                console.log("----------------------------------------------------");
+                //console.log("Name: " + this.users[0][i].userName);
+                this.name.push(this.users[0][i]["userName"]);
+                //console.log(this.users[0][i]["userName"]);
+                for(let j = 1; j < this.name.length; j++) {
+                    console.log("NAME: " + this.name[j]);
+                    console.log("----------------------------------------------------");
+                }
+ 
             }
         }, () => {
             alert({
@@ -84,13 +94,13 @@ export class SuggestItemComponent implements OnInit {
     }
 
     saveItem() {
-        for (let i = 0; i < this.userName.length; i++) {
+        for (let i = 1; i < this.name.length; i++) {
             var task = {
                 name: this.itemName,
                 date: this.itemDateValue,
                 price: this.itemPriceValue,
                 houseName: this.userData["household"],
-                toPay: this.userName[i],
+                toPay: this.name[i],
                 type: "House Shop",
                 bought: true,
                 complete: false

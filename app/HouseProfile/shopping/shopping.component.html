@@ -77,7 +77,7 @@
                 <ng-template nsTemplateKey="transaction" let-item="item">
                     <GridLayout columns="auto, *, auto" class="transactions-list-item">
 						<StackLayout col="0" class="mr-10" height="36" width="36">
-                            <Image src="~/images/houseShop.png" style="width:15em; height:40em;"></Image>
+                            <Image src="{{icon}}" style="width:30em; height:80em;"></Image>
 						</StackLayout>
 						<StackLayout col="1" verticalAlignment="center">
 							<Label [text]="item.boughtBy"></Label>
