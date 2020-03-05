@@ -60,13 +60,13 @@ export class SuggestItemComponent implements OnInit {
             this.users.push(data);
             //this.users = data;
             for(let i = 0; i < this.users.length; i++) {
-                console.log("----------------------------------------------------");
+                //console.log("----------------------------------------------------");
                 //console.log("Name: " + this.users[0][i].userName);
                 this.name.push(this.users[0][i]["userName"]);
                 //console.log(this.users[0][i]["userName"]);
                 for(let j = 1; j < this.name.length; j++) {
-                    console.log("NAME: " + this.name[j]);
-                    console.log("----------------------------------------------------");
+                    //console.log("NAME: " + this.name[j]);
+                    //console.log("----------------------------------------------------");
                 }
  
             }

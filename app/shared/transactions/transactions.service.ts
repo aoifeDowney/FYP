@@ -21,12 +21,14 @@ export class TransactionsService {
         const query = new Kinvey.Query();
         const secondQuery = new Kinvey.Query();
         const thirdQuery = new Kinvey.Query();
+        const fourthQuery = new Kinvey.Query();
         // Sort by descending “entity created time” to put new items on top.
         query.descending("_kmd.ect");
         secondQuery.equalTo('complete', true);
         thirdQuery.equalTo("boughtBy", this.activeUser.username);
+        fourthQuery.equalTo('houseName', this.userData["household"]);
 
-        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
 
     getHouseShopPrice() {
@@ -40,8 +42,7 @@ export class TransactionsService {
         const query = new Kinvey.Query();
         const secondQuery = new Kinvey.Query();
         query.equalTo('type', 'House Shop');
-        secondQuery.fields = [ 'boughtDate' ];
-
+        secondQuery.equalTo('houseName', this.userData["household"]);
         return this.dataStore.find(query.and(secondQuery));
     }
 
