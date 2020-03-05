@@ -36,27 +36,25 @@ export class CalendarComponent implements OnInit {
     payments = [];
     dates = [];
     date = [];
-        
-    name = [
-        "Bin Bags",
-        "Apple",
-        "Orange"
-    ];
-//16/02/2020  08/03/2020
+    names = [];
+    name = [];
+    
     constructor(private transactionsService: TransactionsService) {}
 
     ngOnInit(): void {
         this.transactionsService.get().subscribe((data) => {
             this.dates.push(data);
+            this.names.push(data);
             for(let i = 0; i < this.dates.length; i++) {
                 this.date.push(this.dates[0][i]["date"]);
+                this.name.push(this.names[0][i]["name"]);
+               console.log("NAME: " + this.name[i]);
             }
             let events = [];
-            let now = new Date();
             let startDate;
             let endDate;
             let colors = [new Color(200, 188, 26, 214), new Color(220, 255, 109, 130), new Color(255, 55, 45, 255), new Color(199, 17, 227, 10), new Color(255, 255, 54, 3)];
-            for(let i = 0; i < this.date.length; i++) {
+            for(let i = 1; i < this.name.length; i++) {
                 startDate = new Date(this.date[i]);
                 endDate = new Date(this.date[i]);
                 let event = new calendarModule.CalendarEvent(this.name[i], startDate, endDate, false, colors[2 * 10 % (colors.length - 1)]);
@@ -65,7 +63,6 @@ export class CalendarComponent implements OnInit {
                     event = new calendarModule.CalendarEvent(this.name[i], startDate, endDate, true, colors[2 * 5 % (colors.length - 1)]);
                     events.push(event);
                 }
-    
             this.calendarEvents = events;
            }
         }, () => {
