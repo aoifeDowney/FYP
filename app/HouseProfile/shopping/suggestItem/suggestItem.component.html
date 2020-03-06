@@ -1,4 +1,6 @@
-<ActionBar title="House Shop" class="action-bar"></ActionBar>
+<ActionBar title="House Shop" class="action-bar">
+    <ActionItem (tap)="saveItem()" ios.systemIcon="3" ios.position="right"></ActionItem>
+</ActionBar>
 <GridLayout class="page">
     <GridLayout rows="*" height="1500px" *ngIf="!itemDetail">
         <AbsoluteLayout width="100%" height="100%" backgroundColor="#e8e7e7">
@@ -13,11 +15,13 @@
                 <GridLayout columns="auto, auto, *" rows="auto" width="100%" height="auto" class="owe-dashboard">
                     <StackLayout id="category1" (tap)="onTouch($event)" category="total" row="0" col="0"
                         orientation="vertical" class="owe-dashboard-item active">
-                        <Label text="Items Bought" class="dasboard-value total" [nsRouterLink]="['/Shopping']" clearHistory="true"></Label>
+                        <Label text="Items Bought" class="dasboard-value total" [nsRouterLink]="['/Shopping']"
+                            clearHistory="true"></Label>
                     </StackLayout>
                     <StackLayout id="category2" (tap)="onTouch($event)" category="owe" row="0" col="1"
                         orientation="vertical" class="owe-dashboard-item">
-                        <Label text="Suggested Items" class="dasboard-value owe" [nsRouterLink]="['/SuggestItem']" clearHistory="true"></Label>
+                        <Label text="Suggested Items" class="dasboard-value owe" [nsRouterLink]="['/SuggestItem']"
+                            clearHistory="true"></Label>
                     </StackLayout>
                 </GridLayout>
                 <FlexboxLayout justifyContent="flex-end" class="owe-list-filter">
@@ -34,7 +38,8 @@
                 </FlexboxLayout>
                 <ListView [items]="transactions" backgroundColor="#e8e7e7">
                     <ng-template nsTemplateKey="transaction" let-item="item">
-                        <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7" (tap)="getItemDetails(item.name, item._id, item.suggestedBy)">
+                        <FlexboxLayout flexDirection="column" class="owe-list" backgroundColor="#e8e7e7"
+                            (tap)="getItemDetails(item.name, item._id, item.suggestedBy)">
                             <StackLayout id="item1" orientation="vertical" class="owe-list-item" width="100%"
                                 (tap)="onNavigate()">
                                 <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"
@@ -55,54 +60,55 @@
     </GridLayout>
     <GridLayout *ngIf="itemDetail">
         <GridLayout row="0">
-			<Image src="~/images/boughtBy.png" style="width:15em; height:40em;" class="icon"></Image>
-			<Label text="Suggested by {{suggestedBy}}" class="title"></Label>
-			<Label text="Buy Item" class="buyItem"></Label>
-			<Label text="Choose 'Yes' If you are going to/have already bought this item, then enter in the item details." 
-				   class="buyItemText" textWrap="true"></Label>
-		</GridLayout>
-		<GridLayout  row="1">
-			<Label text="{{toogleName}}" class="toogleText"></Label>
-			<Switch checked="false" (checkedChange)="onCheckedChange($event)" class="toogle" 
-					backgroundColor="MEDIUMPURPLE" offBackgroundColor="MIDNIGHTBLUE"></Switch>
-		</GridLayout>
-		<StackLayout width="100%" class="default-container" *ngIf="toogled">
+            <Image src="~/images/boughtBy.png" style="width:15em; height:40em;" class="icon"></Image>
+            <Label text="Suggested by {{suggestedBy}}" class="title"></Label>
+            <Label text="Buy Item" class="buyItem"></Label>
+            <Label
+                text="Choose 'Yes' If you are going have already bought this item, then enter in the item details."
+                class="buyItemText" textWrap="true"></Label>
+        </GridLayout>
+        <GridLayout row="1">
+            <Label text="{{toogleName}}" class="toogleText"></Label>
+            <Switch checked="false" (checkedChange)="onCheckedChange($event)" class="toogle"
+                backgroundColor="MEDIUMPURPLE" offBackgroundColor="MIDNIGHTBLUE"></Switch>
+        </GridLayout>
+        <StackLayout width="100%" class="default-container" *ngIf="toogled">
             <FlexboxLayout flexDirection="row" class="form-row">
-				<Image id="selectCategoryIcon" src="~/images/icon-shopping.png"
-					class="form-icon category"></Image>
-				<Label id="selectCategoryText" class="form-control" text="House Shop" flexGrow="1"></Label>
-			</FlexboxLayout>
-			<FlexboxLayout flexDirection="row" class="form-row">
-				<Image src="~/images/description-icon.png" class="form-icon"></Image>
-				<TextField class="form-control" hint="Input price here" [(ngModel)]="itemPriceValue"
-					flexGrow="1" keyboardType="number"></TextField>
+                <Image id="selectCategoryIcon" src="~/images/icon-shopping.png" class="form-icon category"></Image>
+                <Label id="selectCategoryText" class="form-control" text="House Shop" flexGrow="1"></Label>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row" class="form-row">
+                <Image src="~/images/description-icon.png" class="form-icon"></Image>
+                <TextField class="form-control" hint="Input price here" [(ngModel)]="itemPriceValue" flexGrow="1"
+                    keyboardType="number"></TextField>
             </FlexboxLayout>
             <Label text="Please enter the bought date" class="boughtDateText"></Label>
-			<FlexboxLayout flexDirection="row" class="form-row">
+            <FlexboxLayout flexDirection="row" class="form-row">
                 <Image src="~/images/date-icon.png" class="form-icon"></Image>
                 <DatePicker year="1980" month="4" day="20" [minDate]="minDate" [maxDate]="maxDate"
                     (dateChange)="onDateChanged($event)"></DatePicker>
             </FlexboxLayout>
-			<Button text="Save" (tap)="saveItem()" class="buttonText"></Button>
-		</StackLayout>
+        </StackLayout>
     </GridLayout>
-    <GridLayout verticalAlignment="bottom"  *ngIf="!itemDetail">
+    <GridLayout verticalAlignment="bottom" *ngIf="!itemDetail">
         <GridLayout columns="*, *, *" class="bottom-navigation">
             <GridLayout col="0" (tap)="selectTab(0)">
                 <Label class="menu-word" text="Menu"></Label>
                 <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
             </GridLayout>
             <GridLayout col="1" (tap)="selectTab(1)">
-				<Label class="menu-word m-word" text="Add Item" [nsRouterLink]="['/AddItem']" clearHistory="true"></Label>
-				<Button class="fa menu-icon m-word" text="&#xf067;"></Button>
-			</GridLayout>
+                <Label class="menu-word m-word" text="Add Item" [nsRouterLink]="['/AddItem']"
+                    clearHistory="true"></Label>
+                <Button class="fa menu-icon m-word" text="&#xf067;"></Button>
+            </GridLayout>
             <GridLayout col="2" (tap)="selectTab(2)">
-                <Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']" clearHistory="true"></Label>
+                <Label class="menu-word m-word" text="Finances" [nsRouterLink]="['/HouseProfile']"
+                    clearHistory="true"></Label>
                 <Button class="fa menu-icon m-word" text="&#xf15c;"></Button>
             </GridLayout>
         </GridLayout>
     </GridLayout>
-    <GridLayout verticalAlignment="bottom"  *ngIf="itemDetail">
+    <GridLayout verticalAlignment="bottom" *ngIf="itemDetail">
         <GridLayout columns="*, *, *" class="bottom-navigation">
             <GridLayout col="0" (tap)="selectTab(0)">
                 <Label class="menu-word" text="Menu"></Label>

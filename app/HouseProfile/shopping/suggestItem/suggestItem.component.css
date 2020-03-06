@@ -32,23 +32,23 @@
   }
 
   .buyItem {
-    margin-bottom: 400;
+    margin-bottom: 500;
     margin-left: 40;
     font-weight: bold;
   }
 
   .buyItemText {
-    margin-bottom: 320;
+    margin-bottom: 420;
     margin-left: 40;
   }
 
   .toogle {
-    margin-bottom: 200;
+    margin-bottom: 320;
     margin-right: 180;
   }
 
   .toogleText {
-    margin-bottom: 200;
+    margin-bottom: 320;
     margin-left: 40;
   }
 
@@ -80,14 +80,9 @@
       margin-left: 40;
       margin-top: 150;
   }
-
-  .buttonText {
-    color: #8f91de;
-    font-size: 20;
-  }
-
+  
   .default-container {
-    margin-top: 250;
+    margin-top: 150;
     padding: 20;
 }
 
