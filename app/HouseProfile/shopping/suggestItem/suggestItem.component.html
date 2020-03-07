@@ -1,5 +1,6 @@
 <ActionBar title="House Shop" class="action-bar">
-    <ActionItem (tap)="saveItem()" ios.systemIcon="3" ios.position="right"></ActionItem>
+    <ActionItem *ngIf="itemDetail" (tap)="saveItem()" ios.systemIcon="3" ios.position="right"></ActionItem>
+    <ActionItem *ngIf="itemDetail" (tap)="back()" ios.systemIcon="1" ios.position="left"></ActionItem>
 </ActionBar>
 <GridLayout class="page">
     <GridLayout rows="*" height="1500px" *ngIf="!itemDetail">
