@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
                             message: "Please check your login details",
                             okButtonText: "Okay"
                         });
-                    } 
+                    }
                 }
             );
     }

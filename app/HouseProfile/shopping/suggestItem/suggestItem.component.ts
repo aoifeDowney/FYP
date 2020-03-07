@@ -36,13 +36,11 @@ export class SuggestItemComponent implements OnInit {
     activeUser = Kinvey.User.getActiveUser();
     userData = ​Kinvey.User.getActiveUser().data;
 
+    member: number;
+
     //don't have the active user on this list if they are the ones to buy the item???
     users = [];
     name = [];
-    userName = [
-        "Aoife",
-        "aoife"
-    ];
     names: string;
 
     constructor(private transactionsService: TransactionsService, private router: Router, private datePipe: DatePipe) {}
@@ -61,6 +59,8 @@ export class SuggestItemComponent implements OnInit {
             this.users.push(data);
             //this.users = data;
             for(let i = 0; i < this.users.length; i++) {
+                this.member  = this.users.length;
+                console.log("Length: " + this.member);
                 //console.log("----------------------------------------------------");
                 //console.log("Name: " + this.users[0][i].userName);
                 this.name.push(this.users[0][i]["userName"]);
