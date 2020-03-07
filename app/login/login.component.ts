@@ -55,6 +55,11 @@ export class LoginComponent implements OnInit {
         this.userService.register(this.user)
             .then(
                 () => {
+                    this.userService.addHousehold(this.user);
+                }
+            )
+            .then(
+                () => {
                     this.router.navigate(["/IndividualProfile"]);
                 },
                 (exception) => {

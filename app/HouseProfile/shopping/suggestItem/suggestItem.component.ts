@@ -19,8 +19,9 @@ import { TransactionsService } from "../../../shared/transactions/transactions.s
 })
 export class SuggestItemComponent implements OnInit {
 
-    minDate: Date = new Date();
-    maxDate: Date = new Date(2045, 4, 12);
+    now: Date = new Date();
+    minDate: Date = new Date(this.now.getFullYear(), this.now.getMonth(), 1);
+    maxDate: Date = new Date();
 
     transactions = [];
     itemDetail = false;
