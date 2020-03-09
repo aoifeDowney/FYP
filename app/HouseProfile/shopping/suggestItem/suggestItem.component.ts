@@ -5,7 +5,6 @@ import { Router } from "@angular/router";
 import { EventData } from "tns-core-modules/data/observable";
 import { Switch } from "tns-core-modules/ui/switch";
 import * as dialogs from "tns-core-modules/ui/dialogs";
-import { DatePicker } from "tns-core-modules/ui/date-picker";
 import { DatePipe } from '@angular/common';
 import * as Kinvey from "kinvey-nativescript-sdk";
 
@@ -37,8 +36,6 @@ export class SuggestItemComponent implements OnInit {
     userData = ​Kinvey.User.getActiveUser().data;
 
     member: number;
-
-    //don't have the active user on this list if they are the ones to buy the item???
     users = [];
     name = [];
     names: string;
@@ -57,19 +54,15 @@ export class SuggestItemComponent implements OnInit {
 
         this.transactionsService.getHouseMembers().subscribe((data) => {
             this.users.push(data);
-            //this.users = data;
-            for(let i = 0; i < this.users.length; i++) {
-                this.member  = this.users.length;
-                console.log("Length: " + this.member);
-                //console.log("----------------------------------------------------");
-                //console.log("Name: " + this.users[0][i].userName);
-                this.name.push(this.users[0][i]["userName"]);
-                //console.log(this.users[0][i]["userName"]);
-                for(let j = 1; j < this.name.length; j++) {
-                    //console.log("NAME: " + this.name[j]);
-                    //console.log("----------------------------------------------------");
+            let number = this.users[0].length;
+            for(let i = 0; i < number; i++) {
+                this.member  = this.users[0].length + 1;
+                if(this.name.includes(this.users[0][i]["userName"])){
+                    return;
+                } else {
+                    this.name.push(this.users[0][i]["userName"]);
                 }
- 
+
             }
         }, () => {
             alert({
@@ -100,11 +93,11 @@ export class SuggestItemComponent implements OnInit {
     }
 
     saveItem() {
-        for (let i = 1; i < this.name.length; i++) {
+        for (let i = 0; i < this.name.length; i++) {
             var task = {
                 name: this.itemName,
                 date: this.itemDateValue,
-                price: this.itemPriceValue,
+                price: this.itemPriceValue / this.member,
                 houseName: this.userData["household"],
                 toPay: this.name[i],
                 type: "House Shop",
@@ -137,7 +130,7 @@ export class SuggestItemComponent implements OnInit {
             _id: this.itemID,
             name: this.itemName,
             date: this.itemDateValue,
-            price: this.itemPriceValue,
+            price: this.itemPriceValue / this.member,
             houseName: this.userData["household"],
             boughtBy: this.activeUser.username,
             type: "House Shop",
@@ -151,7 +144,6 @@ export class SuggestItemComponent implements OnInit {
     }
 
     onDateChanged(args) {
-        console.log("Date New value: " + args.value);
         this.itemDateValue = this.datePipe.transform(args.value,"yyyy-MM-dd");
     }
 

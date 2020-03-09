@@ -16,20 +16,40 @@ import { TransactionsService } from "../../../shared/transactions/transactions.s
 })
 export class AddBillComponent {
     
+    activeUser = Kinvey.User.getActiveUser();
     userData = ​Kinvey.User.getActiveUser().data;
 
+    now: Date = new Date();
     minDate: Date = new Date();
     maxDate: Date = new Date(2045, 4, 12);
 
+    houseMember: number;
     nameValue = "";
     priceValue: number;
     dateValue = "";
     items = [];
-    activeUser = Kinvey.User.getActiveUser();
+    name = [];
+    users = [];
 
     constructor(private transactionsService: TransactionsService, private datePipe: DatePipe) {}
 
     ngOnInit(): void {
+        this.transactionsService.getHouseMembersBill().subscribe((data) => {
+            this.users.push(data);
+            this.houseMember = this.users[0].length;
+            console.log(this.houseMember);
+            let number = this.users[0].length;
+            for(let i = 0; i < number; i++) {
+                if(this.name.includes(this.users[0][i]["userName"])){
+                    return;
+                } else {
+                    this.name.push(this.users[0][i]["userName"]);
+                }
+
+            }
+        }, () => {
+            console.log("Unable to retrive list of transactions");
+        });
     }
 
     onDateChanged(args) {
@@ -39,20 +59,23 @@ export class AddBillComponent {
 
 
     saveBill() {
+        for (let i = 0; i < this.name.length; i++) {
         var task = {
             name: this.nameValue,
             price: this.priceValue,
             date: this.dateValue,
             type: "Utility Bill",
-            boughtBy: this.activeUser.username,
+            toPay: this.name[i],
             houseName: this.userData["household"],
-            bought: false,
+            bought: true,
             complete: false
         };
 
         this.transactionsService.save(task).then((newTask) => {
             this.items.unshift(newTask);
         })
+    }
+
         this.nameValue = "";
         this.priceValue = null;
         this.dateValue = "";

@@ -57,13 +57,14 @@ export class TransactionsService {
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
 
-    getRentNotPaid() {
+    getRentForUser() {
         const query = new Kinvey.Query();
         query.equalTo('type', 'Rent');
         const secondQuery = new Kinvey.Query();
         secondQuery.equalTo('complete', false);
         const thirdQuery = new Kinvey.Query();
         thirdQuery.equalTo('houseName', this.userData["household"]);
+        const fourthQuery = new Kinvey.Query();
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
@@ -71,11 +72,15 @@ export class TransactionsService {
 
     getAllUtilityBills() {
         const query = new Kinvey.Query();
-        query.equalTo('type', 'Utility Bill');
         const secondQuery = new Kinvey.Query();
+        const thirdQuery = new Kinvey.Query();
+        const fourthQuery = new Kinvey.Query();
+        query.equalTo('type', 'Utility Bill');
         secondQuery.equalTo('houseName', this.userData["household"]);
+        thirdQuery.equalTo('complete', false);
+        fourthQuery.equalTo('toPay', this.activeUser.username);
 
-        return this.dataStore.find(query.and(secondQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
 
     getUtilityBillDue() {
@@ -171,7 +176,7 @@ export class TransactionsService {
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
-
+    
     getHouseMembers() {
         const query = new Kinvey.Query();
         const secondQuery = new Kinvey.Query();
@@ -182,6 +187,16 @@ export class TransactionsService {
         thirdQuery.notEqualTo('userName', this.activeUser.username);
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
+    }
+
+    getHouseMembersBill() {
+        const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
+
+        query.equalTo('user', true);
+        secondQuery.equalTo('houseName', this.userData["household"]);
+
+        return this.dataStore.find(query.and(secondQuery));
     }
 
     getIcon() {

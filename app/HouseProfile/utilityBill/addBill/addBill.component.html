@@ -9,9 +9,7 @@
                     <Label text="Select Category" class="category-drawer__title"></Label>
                 </FlexboxLayout>
             </StackLayout>
-
             <ScrollView tkMainContent id="scrollContainer">
-
                 <StackLayout width="100%" class="default-container">
                     <FlexboxLayout flexDirection="row" class="form-row">
                         <Image id="selectCategoryIcon" src="~/images/bill.png" class="form-icon category"></Image>
@@ -44,8 +42,8 @@
                 <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
             </GridLayout>
             <GridLayout col="2" (tap)="selectTab(2)">
-                <Label class="menu-word m-word" text="Cancel" [nsRouterLink]="['/Detail']" clearHistory="true"></Label>
-                <Button class="fa menu-icon m-word" text="&#xf057;"></Button>
+                <Label class="menu-word m-word" text="Back" [nsRouterLink]="['/Detail']" clearHistory="true"></Label>
+                <Button class="fa menu-icon m-word" text="&#xf060;"></Button>
             </GridLayout>
         </GridLayout>
     </GridLayout>

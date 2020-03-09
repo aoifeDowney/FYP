@@ -1,0 +1,34 @@
+<ActionBar title="Rent" class="action-bar"></ActionBar>
+<GridLayout class="page">
+	<GridLayout>
+			<Image src="~/images/rent.png" style="width:15em; height:40em;" class="icon"></Image>
+			<Label text="Pay this months rent" class="title" textWrap="true"></Label>
+        <StackLayout width="100%" class="default-container">
+            <FlexboxLayout flexDirection="row" class="form-row">
+                <Image id="selectCategoryIcon" src="~/images/rent-icon.png" class="form-icon category"></Image>
+                <Label id="selectCategoryText" class="form-control" text="Rent" flexGrow="1"></Label>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row" class="form-row">
+                <Image src="~/images/description-icon.png" class="form-icon"></Image>
+                <TextField class="form-control" hint="Input price here" [(ngModel)]="itemPriceValue" flexGrow="1"
+                    keyboardType="number"></TextField>
+            </FlexboxLayout>
+        </StackLayout>
+	</GridLayout>
+	<GridLayout verticalAlignment="bottom">
+		<GridLayout columns="*, *, *" class="bottom-navigation">
+			<GridLayout col="0" (tap)="selectTab(0)">
+				<Label class="menu-word" text="Menu"></Label>
+				<Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+            </GridLayout>
+            <GridLayout col="1" (tap)="selectTab(1)">
+				<Label class="menu-word m-word" text="Make Payment" (tap)="makePayment()"></Label>
+                <Button class="fa menu-icon m-word" text="&#xf1ed;"></Button>
+			</GridLayout>
+			<GridLayout col="2" (tap)="selectTab(2)">
+				<Label class="menu-word m-word" text="Back" [nsRouterLink]="['/Rent']" clearHistory="true"></Label>
+				<Button class="fa menu-icon m-word" text="&#xf060;"></Button>
+			</GridLayout>
+		</GridLayout>
+	</GridLayout>
+</GridLayout>

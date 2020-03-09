@@ -32,7 +32,6 @@ export class ShoppingComponent implements OnInit{
     users = [];
     names = [];
     name: string;
-
     itemID: string;
     suggestedBy: string;
     itemDate = "";
@@ -87,10 +86,7 @@ export class ShoppingComponent implements OnInit{
 
         this.transactionsService.getHouseMembers().subscribe((data) => {
             this.users.push(data);
-            //this.users = data;
-            for(let i = 0; i < this.users.length; i++) {
-               this.houseMember = this.users.length + 1;
-            }
+               this.houseMember = this.users[0].length + 1;
         }, () => {
             alert({
                 title: "Transactions",
@@ -123,7 +119,7 @@ export class ShoppingComponent implements OnInit{
             _id: this.itemID,
             name: this.itemName,
             date: this.itemDate,
-            price: this.price,
+            price: this.price / this.houseMember,
             boughtBy: this.activeUser.username,
             boughtDate: new Date(),
             type: "House Shop",

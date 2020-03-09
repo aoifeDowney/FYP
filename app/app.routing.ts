@@ -15,11 +15,12 @@ import { AddBillComponent } from "./HouseProfile/utilityBill/addBill/addBill.com
 import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.component";
 import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
 import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.component";
+import { AddRentComponent } from "./HouseProfile/rent/addrent/addrent.component";
 
 import { BackendService } from "./shared/backend.service";
 
 const routes: Routes = [
-    { path: "", redirectTo: BackendService.isUserLoggedIn() ? "/IndividualProfile" : "/login", pathMatch: "full" },
+    { path: "", redirectTo: BackendService.isUserLoggedIn() ? "/HouseProfile" : "/login", pathMatch: "full" },
     { path: "login", component: LoginComponent },
     { path: "IndividualProfile", component: IndividualProfileComponent },
     { path: "Profile", component: ProfileComponent },
@@ -32,7 +33,8 @@ const routes: Routes = [
     { path: "SuggestItem", component: SuggestItemComponent },
     { path: "AddBill", component: AddBillComponent },
     { path: "AddItem", component: AddItemComponent },
-    { path: "Detail", component: DetailComponent }
+    { path: "Detail", component: DetailComponent },
+    { path: "AddRent", component: AddRentComponent }
 ];
 
 @NgModule({

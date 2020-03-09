@@ -6,8 +6,7 @@
 				<Label text="Household Utility Bill Status" class="title"></Label>
 				<Image src="~/images/total-indicator.png" style="width:15em; height:40em;" class="infoIcon"></Image>
 				<Label text="This shows the list of house members who have paid." textWrap="true" class="info"></Label>
-				<Label text="Paid by" class="paidBy"></Label>	
-				<Label text="Make your payment" class="makePayment"></Label>
+				<Label text="Paid by" class="paidBy"></Label>
 		</GridLayout>
 		<StackLayout row="0" class="listPaid" *ngIf="paid">
 			<ListView [items]="transactions" separatorColor="transparent" class="transactions-list">
