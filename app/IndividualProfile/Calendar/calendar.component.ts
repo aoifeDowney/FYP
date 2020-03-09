@@ -28,48 +28,43 @@ import { TransactionsService } from "../../shared/transactions/transactions.serv
     providers: [TransactionsService]
 })
 export class CalendarComponent implements OnInit {
-    dates = [];
 
     itemDate: string;
 
     transactions = [];
     calendarEvents = [];
     payments = [];
-    date = [
-        "2020-02-03T15:40:30.423Z",
-        "2020-02-25T15:40:30.423Z",
-        "2020-02-16T15:40:30.423Z"
-    ];
-
-    name = [
-        "Bin Bags",
-        "Apple",
-        "Orange"
-    ];
-
-    constructor(private transactionsService: TransactionsService) {
-        let events = [];
-        let now = new Date();
-        let startDate;
-        let endDate;
-        let colors = [new Color(200, 188, 26, 214), new Color(220, 255, 109, 130), new Color(255, 55, 45, 255), new Color(199, 17, 227, 10), new Color(255, 255, 54, 3)];
-       for(let i = 0; i < this.date.length; i++) {
-            startDate = new Date(this.date[i]);
-            endDate = new Date(this.date[i]);
-            let event = new calendarModule.CalendarEvent(this.name[i], startDate, endDate, false, colors[2 * 10 % (colors.length - 1)]);
-            events.push(event);
-            if (2 % 3 == 0) {
-                event = new calendarModule.CalendarEvent(this.name[i], startDate, endDate, true, colors[2 * 5 % (colors.length - 1)]);
-                events.push(event);
-            }
-
-        this.calendarEvents = events;
-       }
-     }
+    dates = [];
+    date = [];
+    names = [];
+    name = [];
+    
+    constructor(private transactionsService: TransactionsService) {}
 
     ngOnInit(): void {
-        this.transactionsService.getItemBoughtDate().subscribe((data) => {
-            this.transactions = data;
+        this.transactionsService.get().subscribe((data) => {
+            this.dates.push(data);
+            this.names.push(data);
+            for(let i = 0; i < this.dates.length; i++) {
+                this.date.push(this.dates[0][i]["date"]);
+                this.name.push(this.names[0][i]["name"]);
+               console.log("NAME: " + this.name[i]);
+            }
+            let events = [];
+            let startDate;
+            let endDate;
+            let colors = [new Color(200, 188, 26, 214), new Color(220, 255, 109, 130), new Color(255, 55, 45, 255), new Color(199, 17, 227, 10), new Color(255, 255, 54, 3)];
+            for(let i = 1; i < this.name.length; i++) {
+                startDate = new Date(this.date[i]);
+                endDate = new Date(this.date[i]);
+                let event = new calendarModule.CalendarEvent(this.name[i], startDate, endDate, false, colors[2 * 10 % (colors.length - 1)]);
+                events.push(event);
+                if (2 % 3 == 0) {
+                    event = new calendarModule.CalendarEvent(this.name[i], startDate, endDate, true, colors[2 * 5 % (colors.length - 1)]);
+                    events.push(event);
+                }
+            this.calendarEvents = events;
+           }
         }, () => {
             alert({
                 title: "Transactions",
@@ -82,14 +77,6 @@ export class CalendarComponent implements OnInit {
         this.itemDate = date;
         return this.itemDate;
     }
-
-    /*getTransactionsDate() {
-        for(let i = 0; i < this.transactions.length; i++) {
-            if(this.transactions[i].includes("-")) {
-                this.dates.push(this.transactions[i]);
-            }
-        }
-    }*/
 
     monthViewStyle() {
         const monthViewStyle = new CalendarMonthViewStyle();

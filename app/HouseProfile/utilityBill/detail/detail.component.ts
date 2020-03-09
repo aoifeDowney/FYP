@@ -26,7 +26,7 @@ export class DetailComponent {
     constructor(private transactionsService: TransactionsService, private datePipe: DatePipe) {}
 
     ngOnInit(): void {
-        this.transactionsService.getUtilityBillDue().subscribe((data) => {
+        this.transactionsService.getAllUtilityBills().subscribe((data) => {
             this.transactions = data;
             if(this.transactions.length > 0) {
                 //this.dueDate = true;

@@ -25,10 +25,12 @@ export class ShoppingComponent implements OnInit{
     boughtBy: string;
     dividedPrice: number;
     price: number;
-    houseMember = 4;
+    houseMember: number;
     transactions = [];
     houseMembers = [];
     itemDetail = false;
+    users = [];
+    names = [];
     name: string;
 
     itemID: string;
@@ -76,14 +78,24 @@ export class ShoppingComponent implements OnInit{
             });
         });
 
-        this.transactionsService.getIcon().subscribe((data) => {
-            this.icons.push(data);
-            for(let i = 0; i < this.icons.length; i++) {
-              this.icon = this.icons[0][i]["icon"];
-            }
+        this.transactionsService.getUsersIcon().subscribe((data) => {
+            this.icons = data;
             
         }, () => {
             console.log("Unable to retrive list of transactions");
+        });
+
+        this.transactionsService.getHouseMembers().subscribe((data) => {
+            this.users.push(data);
+            //this.users = data;
+            for(let i = 0; i < this.users.length; i++) {
+               this.houseMember = this.users.length + 1;
+            }
+        }, () => {
+            alert({
+                title: "Transactions",
+                message: "An error occurred retrieving your data"
+            });
         });
     }
 

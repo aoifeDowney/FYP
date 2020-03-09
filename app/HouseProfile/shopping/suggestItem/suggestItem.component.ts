@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { EventData } from "tns-core-modules/data/observable";
 import { Switch } from "tns-core-modules/ui/switch";
 import * as dialogs from "tns-core-modules/ui/dialogs";
+import { DatePicker } from "tns-core-modules/ui/date-picker";
+import { DatePipe } from '@angular/common';
 import * as Kinvey from "kinvey-nativescript-sdk";
 
 import { TransactionsService } from "../../../shared/transactions/transactions.service";
@@ -16,6 +18,10 @@ import { TransactionsService } from "../../../shared/transactions/transactions.s
     providers: [TransactionsService]
 })
 export class SuggestItemComponent implements OnInit {
+
+    now: Date = new Date();
+    minDate: Date = new Date(this.now.getFullYear(), this.now.getMonth(), 1);
+    maxDate: Date = new Date();
 
     transactions = [];
     itemDetail = false;
@@ -30,16 +36,14 @@ export class SuggestItemComponent implements OnInit {
     activeUser = Kinvey.User.getActiveUser();
     userData = ​Kinvey.User.getActiveUser().data;
 
+    member: number;
+
     //don't have the active user on this list if they are the ones to buy the item???
     users = [];
     name = [];
-    userName = [
-        "Aoife",
-        "aoife"
-    ];
     names: string;
 
-    constructor(private transactionsService: TransactionsService, private router: Router) {}
+    constructor(private transactionsService: TransactionsService, private router: Router, private datePipe: DatePipe) {}
 
     ngOnInit(): void {
         this.transactionsService.getSuggestedItem().subscribe((data) => {
@@ -55,13 +59,15 @@ export class SuggestItemComponent implements OnInit {
             this.users.push(data);
             //this.users = data;
             for(let i = 0; i < this.users.length; i++) {
-                console.log("----------------------------------------------------");
+                this.member  = this.users.length;
+                console.log("Length: " + this.member);
+                //console.log("----------------------------------------------------");
                 //console.log("Name: " + this.users[0][i].userName);
                 this.name.push(this.users[0][i]["userName"]);
                 //console.log(this.users[0][i]["userName"]);
                 for(let j = 1; j < this.name.length; j++) {
-                    console.log("NAME: " + this.name[j]);
-                    console.log("----------------------------------------------------");
+                    //console.log("NAME: " + this.name[j]);
+                    //console.log("----------------------------------------------------");
                 }
  
             }
@@ -144,8 +150,15 @@ export class SuggestItemComponent implements OnInit {
         });
     }
 
+    onDateChanged(args) {
+        console.log("Date New value: " + args.value);
+        this.itemDateValue = this.datePipe.transform(args.value,"yyyy-MM-dd");
+    }
+
     back() {
         this.itemDetail = false;
+        this.toogleName = "No";
+        this.toogled = false;
     }
 
     onDrawerButtonTap(): void {

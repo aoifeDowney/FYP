@@ -14,13 +14,12 @@ import { ShoppingComponent } from "./HouseProfile/shopping/shopping.component";
 import { AddBillComponent } from "./HouseProfile/utilityBill/addBill/addBill.component";
 import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.component";
 import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
-import { HouseLoginComponent } from "./HouseProfile/houseLogin/houseLogin.component";
 import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.component";
 
 import { BackendService } from "./shared/backend.service";
 
 const routes: Routes = [
-    { path: "", redirectTo: BackendService.isUserLoggedIn() ? "/Profile" : "/login", pathMatch: "full" },
+    { path: "", redirectTo: BackendService.isUserLoggedIn() ? "/IndividualProfile" : "/login", pathMatch: "full" },
     { path: "login", component: LoginComponent },
     { path: "IndividualProfile", component: IndividualProfileComponent },
     { path: "Profile", component: ProfileComponent },
@@ -33,7 +32,6 @@ const routes: Routes = [
     { path: "SuggestItem", component: SuggestItemComponent },
     { path: "AddBill", component: AddBillComponent },
     { path: "AddItem", component: AddItemComponent },
-    { path: "HouseLogin", component: HouseLoginComponent },
     { path: "Detail", component: DetailComponent }
 ];
 

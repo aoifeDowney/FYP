@@ -46,13 +46,18 @@ export class LoginComponent implements OnInit {
                             message: "Please check your login details",
                             okButtonText: "Okay"
                         });
-                    } 
+                    }
                 }
             );
     }
 
     signUp() {
         this.userService.register(this.user)
+            .then(
+                () => {
+                    this.userService.addHousehold(this.user);
+                }
+            )
             .then(
                 () => {
                     this.router.navigate(["/IndividualProfile"]);

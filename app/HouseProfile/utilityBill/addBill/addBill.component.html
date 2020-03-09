@@ -9,28 +9,29 @@
                     <Label text="Select Category" class="category-drawer__title"></Label>
                 </FlexboxLayout>
             </StackLayout>
-    
+
             <ScrollView tkMainContent id="scrollContainer">
-    
+
                 <StackLayout width="100%" class="default-container">
                     <FlexboxLayout flexDirection="row" class="form-row">
+                        <Image id="selectCategoryIcon" src="~/images/bill.png" class="form-icon category"></Image>
+                        <Label id="selectCategoryText" class="form-control" text="Utility Bill" flexGrow="1"></Label>
+                    </FlexboxLayout>
+                    <FlexboxLayout flexDirection="row" class="form-row">
                         <Image src="~/images/description-icon.png" class="form-icon"></Image>
-                        <TextField class="form-control" hint="Input title here" [(ngModel)]="nameValue"
-                            flexGrow="1"></TextField>
+                        <TextField class="form-control" hint="Input title here" [(ngModel)]="nameValue" flexGrow="1">
+                        </TextField>
                     </FlexboxLayout>
                     <FlexboxLayout flexDirection="row" class="form-row">
                         <Label text="Rp" class="price-detail"></Label>
                         <TextField class="form-control price" hint="Input price here" [(ngModel)]="priceValue"
                             flexGrow="1" keyboardType="number"></TextField>
                     </FlexboxLayout>
+                    <Label text="Please enter the due date" class="dueDateText"></Label>
                     <FlexboxLayout flexDirection="row" class="form-row">
                         <Image src="~/images/date-icon.png" class="form-icon"></Image>
-                        <DatePicker year="1980" month="4" day="20" class="date-picker" (dateChange)="onDateChanged($event)"></DatePicker>
-                    </FlexboxLayout>
-                    <FlexboxLayout flexDirection="row" class="form-row">
-                        <Image id="selectCategoryIcon" src="~/images/bill.png"
-                            class="form-icon category"></Image>
-                        <Label id="selectCategoryText" class="form-control" text="Utility Bill" flexGrow="1"></Label>
+                        <DatePicker year="1980" month="4" day="20" [minDate]="minDate" [maxDate]="maxDate"
+                            (dateChange)="onDateChanged($event)"></DatePicker>
                     </FlexboxLayout>
                 </StackLayout>
             </ScrollView>
