@@ -78,11 +78,8 @@ export class ShoppingComponent implements OnInit{
             });
         });
 
-        this.transactionsService.getIcon().subscribe((data) => {
-            this.icons.push(data);
-            for(let i = 0; i < this.icons.length; i++) {
-              this.icon = this.icons[0][i]["icon"];
-            }
+        this.transactionsService.getUsersIcon().subscribe((data) => {
+            this.icons = data;
             
         }, () => {
             console.log("Unable to retrive list of transactions");

@@ -194,4 +194,14 @@ export class TransactionsService {
         return this.dataStore.find(query.and(secondQuery));
         
     }
+
+    getUsersIcon() {
+        const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
+
+        query.notEqualTo('userName', this.activeUser.username);
+        secondQuery.equalTo('houseName', this.userData["household"]);
+
+        return this.dataStore.find(query.and(secondQuery));
+    }
 }
