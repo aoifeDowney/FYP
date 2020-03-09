@@ -79,10 +79,9 @@ export class DetailComponent {
         var task = {
             _id: this.itemID,
             name: this.itemName,
-            date: this.itemDate,
+            date: new Date(),
             price: this.price / this.houseMember,
             boughtBy: this.activeUser.username,
-            boughtDate: new Date(),
             type: "Utility Bill",
             houseName: this.userData["household"],
             bought: true,

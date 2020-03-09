@@ -23,6 +23,7 @@ export class AddBillComponent {
     minDate: Date = new Date();
     maxDate: Date = new Date(2045, 4, 12);
 
+    houseMember: number;
     nameValue = "";
     priceValue: number;
     dateValue = "";
@@ -35,6 +36,8 @@ export class AddBillComponent {
     ngOnInit(): void {
         this.transactionsService.getHouseMembersBill().subscribe((data) => {
             this.users.push(data);
+            this.houseMember = this.users[0].length;
+            console.log(this.houseMember);
             let number = this.users[0].length;
             for(let i = 0; i < number; i++) {
                 if(this.name.includes(this.users[0][i]["userName"])){
