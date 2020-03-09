@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import * as dialogs from "tns-core-modules/ui/dialogs";
 
 import { TransactionsService } from "../../shared/transactions/transactions.service";
 
@@ -24,22 +25,12 @@ export class RentComponent {
             this.transactions = data;
             if(this.transactions.length > 0) {
                 this.paid = true;
+            } else {
+                this.paid = false;
             }
         }, () => {
             alert({
                 title: "Transactions",
-                message: "An error occurred retrieving your data"
-            });
-        });
-
-        this.transactionsService.getRentNotPaid().subscribe((data) => {
-            this.transactionsNotPaid = data;
-            if(this.transactionsNotPaid.length > 0) {
-                this.notPaid = true;
-            }
-        }, () => {
-            alert({
-                title: "Transactions Not Paid",
                 message: "An error occurred retrieving your data"
             });
         });

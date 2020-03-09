@@ -57,13 +57,14 @@ export class TransactionsService {
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
 
-    getRentNotPaid() {
+    getRentForUser() {
         const query = new Kinvey.Query();
         query.equalTo('type', 'Rent');
         const secondQuery = new Kinvey.Query();
         secondQuery.equalTo('complete', false);
         const thirdQuery = new Kinvey.Query();
         thirdQuery.equalTo('houseName', this.userData["household"]);
+        const fourthQuery = new Kinvey.Query();
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }

@@ -5,7 +5,6 @@ import { Router } from "@angular/router";
 import { EventData } from "tns-core-modules/data/observable";
 import { Switch } from "tns-core-modules/ui/switch";
 import * as dialogs from "tns-core-modules/ui/dialogs";
-import { DatePicker } from "tns-core-modules/ui/date-picker";
 import { DatePipe } from '@angular/common';
 import * as Kinvey from "kinvey-nativescript-sdk";
 

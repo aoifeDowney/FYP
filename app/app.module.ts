@@ -27,6 +27,7 @@ import { AddBillComponent } from "./HouseProfile/utilityBill/addBill/addBill.com
 import { AddItemComponent } from "./HouseProfile/shopping/addItem/addItem.component";
 import { SuggestItemComponent } from "./HouseProfile/shopping/suggestItem/suggestItem.component";
 import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.component";
+import { AddRentComponent } from "./HouseProfile/rent/addrent/addrent.component";
 
 @NgModule({
   imports: [
@@ -59,7 +60,8 @@ import { DetailComponent } from "./HouseProfile/utilityBill/detail/detail.compon
     AddBillComponent,
     AddItemComponent,
     SuggestItemComponent,
-    DetailComponent
+    DetailComponent,
+    AddRentComponent
   ],
   bootstrap: [AppComponent]
 })

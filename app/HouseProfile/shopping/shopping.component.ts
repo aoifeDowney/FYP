@@ -87,7 +87,6 @@ export class ShoppingComponent implements OnInit{
 
         this.transactionsService.getHouseMembers().subscribe((data) => {
             this.users.push(data);
-            //this.users = data;
             for(let i = 0; i < this.users.length; i++) {
                this.houseMember = this.users.length + 1;
             }
