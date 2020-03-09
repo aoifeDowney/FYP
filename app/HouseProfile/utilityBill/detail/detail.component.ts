@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { DatePipe } from '@angular/common';
+import * as dialogs from "tns-core-modules/ui/dialogs";
 import * as Kinvey from "kinvey-nativescript-sdk";
 
 import { TransactionsService } from "../../../shared/transactions/transactions.service";
@@ -65,6 +66,30 @@ export class DetailComponent {
         this.itemDate = date;
         this.dividedPrice = this.price / this.houseMember;
         this.itemDetail = true;
+    }
+
+    makePayment() {
+        var task = {
+            _id: this.itemID,
+            name: this.itemName,
+            date: this.itemDate,
+            price: this.price,
+            boughtBy: this.activeUser.username,
+            boughtDate: new Date(),
+            type: "Utility Bill",
+            houseName: this.userData["household"],
+            bought: true,
+            complete: true
+        };
+
+        this.transactionsService.save(task).then((newTask) => {
+            this.items.unshift(newTask);
+        });
+        dialogs.alert({
+            title: "Payment Successful!",
+            message: "This bill has been paid for",
+            okButtonText: "Okay"
+        });
     }
 
     onDrawerButtonTap(): void {

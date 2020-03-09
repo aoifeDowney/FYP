@@ -42,10 +42,7 @@ export class AddBillComponent {
                 } else {
                     this.name.push(this.users[0][i]["userName"]);
                 }
- 
-            }
-            for(let j = 0; j < this.name.length; j++) {
-                console.log("NAME: " + this.name[j]);
+
             }
         }, () => {
             console.log("Unable to retrive list of transactions");
@@ -76,8 +73,6 @@ export class AddBillComponent {
         })
     }
 
-        //this.boughtByCurrentUser();
-
         this.nameValue = "";
         this.priceValue = null;
         this.dateValue = "";
@@ -88,24 +83,6 @@ export class AddBillComponent {
             okButtonText: "Okay"
         });
     }
-
-    boughtByCurrentUser() {
-        var task = {
-            name: this.nameValue,
-            date: this.datePipe.transform(this.now,"yyyy-MM-dd"),
-            price: this.priceValue,
-            houseName: this.userData["household"],
-            boughtBy: this.activeUser.username,
-            type: "Utility Bill",
-            bought: true,
-            complete: true
-        };
-
-        this.transactionsService.save(task).then((newTask) => {
-            this.items.unshift(newTask);
-        });
-    }
-
 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();

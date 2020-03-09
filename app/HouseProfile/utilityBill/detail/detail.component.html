@@ -47,7 +47,7 @@
             <Image src="~/images/total-indicator.png" style="width:15em; height:40em;" class="divisionIcon"></Image>
             <Label text="The price to be paid by each house member is €{{dividedPrice | number:'1.2-2'}}" class="priceInfo" textWrap="true"></Label>
             <Label text="If you wish to pay your share of this bill, press the button below to make your payment." class="payInfo" textWrap="true"></Label>
-            <Button  text="Make Payment" fontSize="20" class="payButton"></Button>
+            <Button  text="Make Payment" fontSize="20" class="payButton" (tap)="makePayment()"></Button>
         </GridLayout>
     </GridLayout>
     <GridLayout verticalAlignment="bottom">

@@ -36,8 +36,6 @@ export class SuggestItemComponent implements OnInit {
     userData = ​Kinvey.User.getActiveUser().data;
 
     member: number;
-
-    //don't have the active user on this list if they are the ones to buy the item???
     users = [];
     name = [];
     names: string;
@@ -56,22 +54,15 @@ export class SuggestItemComponent implements OnInit {
 
         this.transactionsService.getHouseMembers().subscribe((data) => {
             this.users.push(data);
-            //console.log(data);
             let number = this.users[0].length;
             for(let i = 0; i < number; i++) {
                 this.member  = this.users[0].length;
-                console.log("----------------------------------------------------");
-                console.log("Length: " + this.member);
                 if(this.name.includes(this.users[0][i]["userName"])){
                     return;
                 } else {
                     this.name.push(this.users[0][i]["userName"]);
-                    //console.log(this.users[0][i]["userName"]);
                 }
- 
-            }
-            for(let j = 0; j < this.name.length; j++) {
-                console.log("NAME: " + this.name[j]);
+
             }
         }, () => {
             alert({
