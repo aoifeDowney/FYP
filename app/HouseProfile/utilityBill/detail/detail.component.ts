@@ -49,6 +49,13 @@ export class DetailComponent {
         }, () => {
             console.log("Unable to retrive list of transactions");
         });
+
+        this.transactionsService.getHouseMembers().subscribe((data) => {
+            this.users.push(data);
+               this.houseMember = this.users[0].length + 1;
+        }, () => {
+            console.log("Unable to retrive list of transactions");
+        });
     }
 
     sendAlert(): boolean {
