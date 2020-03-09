@@ -1,7 +1,7 @@
 <ActionBar title="Utility Bill Detail" class="action-bar">
 </ActionBar>
 <GridLayout class="page">
-    <GridLayout rows="*" height="1500px">
+    <GridLayout rows="*" height="1500px" *ngIf="!itemDetail">
         <GridLayout row="0">
             <Image src="~/images/utilityBill.png" style="width:15em; height:40em;" class="icon"></Image>
             <Label text="Household Utility Bills which are due" class="title"></Label>
@@ -14,7 +14,7 @@
                 <ListView [items]="transactions">
                     <ng-template nsTemplateKey="transaction" let-item="item">
                         <FlexboxLayout flexDirection="column" class="owe-list"
-                            (tap)="getItemDetail(item.name, item.boughtBy, item.price)">
+                            (tap)="getItemDetail(item.name, item._id, item.boughtBy, item.price, item.date)">
                             <StackLayout id="item1" orientation="vertical" class="owe-list-item" width="100%"
                                 (tap)="onNavigate()">
                                 <GridLayout columns="auto, *, auto" rows="auto" width="100%" height="auto"
@@ -39,6 +39,16 @@
                 </ListView>
             </StackLayout>
         </AbsoluteLayout>
+    </GridLayout>
+    <GridLayout *ngIf="itemDetail">
+        <GridLayout row="0">
+            <Image src="~/images/owed-indicator.png" style="width:15em; height:40em;" class="priceIcon"></Image>
+            <Label text="Total Price: € {{price}}" class="priceTitle"></Label>
+            <Image src="~/images/total-indicator.png" style="width:15em; height:40em;" class="divisionIcon"></Image>
+            <Label text="The price to be paid by each house member is €{{dividedPrice | number:'1.2-2'}}" class="priceInfo" textWrap="true"></Label>
+            <Label text="If you wish to pay your share of this bill, press the button below to make your payment." class="payInfo" textWrap="true"></Label>
+            <Button  text="Make Payment" fontSize="20" class="payButton"></Button>
+        </GridLayout>
     </GridLayout>
     <GridLayout verticalAlignment="bottom">
         <GridLayout columns="*, *, *" class="bottom-navigation">

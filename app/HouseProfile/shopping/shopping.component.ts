@@ -32,7 +32,6 @@ export class ShoppingComponent implements OnInit{
     users = [];
     names = [];
     name: string;
-
     itemID: string;
     suggestedBy: string;
     itemDate = "";

@@ -16,8 +16,10 @@ import { TransactionsService } from "../../../shared/transactions/transactions.s
 })
 export class AddBillComponent {
     
+    activeUser = Kinvey.User.getActiveUser();
     userData = ​Kinvey.User.getActiveUser().data;
 
+    now: Date = new Date();
     minDate: Date = new Date();
     maxDate: Date = new Date(2045, 4, 12);
 
@@ -25,11 +27,29 @@ export class AddBillComponent {
     priceValue: number;
     dateValue = "";
     items = [];
-    activeUser = Kinvey.User.getActiveUser();
+    name = [];
+    users = [];
 
     constructor(private transactionsService: TransactionsService, private datePipe: DatePipe) {}
 
     ngOnInit(): void {
+        this.transactionsService.getHouseMembersBill().subscribe((data) => {
+            this.users.push(data);
+            let number = this.users[0].length;
+            for(let i = 0; i < number; i++) {
+                if(this.name.includes(this.users[0][i]["userName"])){
+                    return;
+                } else {
+                    this.name.push(this.users[0][i]["userName"]);
+                }
+ 
+            }
+            for(let j = 0; j < this.name.length; j++) {
+                console.log("NAME: " + this.name[j]);
+            }
+        }, () => {
+            console.log("Unable to retrive list of transactions");
+        });
     }
 
     onDateChanged(args) {
@@ -39,20 +59,25 @@ export class AddBillComponent {
 
 
     saveBill() {
+        for (let i = 0; i < this.name.length; i++) {
         var task = {
             name: this.nameValue,
             price: this.priceValue,
             date: this.dateValue,
             type: "Utility Bill",
-            boughtBy: this.activeUser.username,
+            toPay: this.name[i],
             houseName: this.userData["household"],
-            bought: false,
+            bought: true,
             complete: false
         };
 
         this.transactionsService.save(task).then((newTask) => {
             this.items.unshift(newTask);
         })
+    }
+
+        //this.boughtByCurrentUser();
+
         this.nameValue = "";
         this.priceValue = null;
         this.dateValue = "";
@@ -63,6 +88,24 @@ export class AddBillComponent {
             okButtonText: "Okay"
         });
     }
+
+    boughtByCurrentUser() {
+        var task = {
+            name: this.nameValue,
+            date: this.datePipe.transform(this.now,"yyyy-MM-dd"),
+            price: this.priceValue,
+            houseName: this.userData["household"],
+            boughtBy: this.activeUser.username,
+            type: "Utility Bill",
+            bought: true,
+            complete: true
+        };
+
+        this.transactionsService.save(task).then((newTask) => {
+            this.items.unshift(newTask);
+        });
+    }
+
 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();

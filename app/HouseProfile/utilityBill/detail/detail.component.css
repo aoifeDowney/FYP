@@ -277,3 +277,32 @@
     border-width: 1;
     border-color: #bf97df;
 }
+
+.priceIcon {
+    margin-bottom: 520;
+    margin-right: 320;
+  }
+
+  .divisionIcon {
+    margin-bottom: 470;
+    margin-right: 320;
+  }
+
+  .priceTitle {
+    margin-bottom: 520;
+    margin-left: 40;
+  }
+
+  .priceInfo {
+    margin-bottom: 460;
+    margin-left: 40;
+  }
+
+  .payInfo {
+      margin-bottom: 320;
+      margin-left: 40;
+  }
+
+  .payButton {
+    margin-bottom: 200;
+  }

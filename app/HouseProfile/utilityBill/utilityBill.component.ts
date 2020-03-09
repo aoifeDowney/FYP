@@ -26,22 +26,7 @@ export class UtilityBillComponent {
                 this.paid = true;
             }
         }, () => {
-            alert({
-                title: "Transactions",
-                message: "An error occurred retrieving your data"
-            });
-        });
-
-        this.transactionsService.getUtilityBillNotPaid().subscribe((data) => {
-            this.transactionsNotPaid = data;
-            if(this.transactionsNotPaid.length > 0) {
-                this.notPaid = true;
-            }
-        }, () => {
-            alert({
-                title: "Transactions Not Paid",
-                message: "An error occurred retrieving your data"
-            });
+            console.log("Unable to retrive list of transactions");
         });
     }
 

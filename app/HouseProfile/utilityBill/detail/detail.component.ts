@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { DatePipe } from '@angular/common';
+import * as Kinvey from "kinvey-nativescript-sdk";
 
 import { TransactionsService } from "../../../shared/transactions/transactions.service";
 
@@ -13,15 +14,28 @@ import { TransactionsService } from "../../../shared/transactions/transactions.s
 })
 export class DetailComponent {
 
-    @Input()
-    dates: string[];
+    now: Date = new Date();
 
     transactions = [];
     dueDate = false;
     billDue: boolean;
-    now: Date = new Date();
-    varr= new Array();
-        //arr= this.now.split(" ");
+    activeUser = Kinvey.User.getActiveUser();
+    userData = ​Kinvey.User.getActiveUser().data;
+    itemName: string;
+    boughtBy: string;
+    dividedPrice: number;
+    price: number;
+    houseMember: number;
+    houseMembers = [];
+    itemDetail = false;
+    users = [];
+    names = [];
+    name: string;
+    itemID: string;
+    suggestedBy: string;
+    itemDate = "";
+    items = [];
+    itemDateValue = "";
 
     constructor(private transactionsService: TransactionsService, private datePipe: DatePipe) {}
 
@@ -29,23 +43,11 @@ export class DetailComponent {
         this.transactionsService.getAllUtilityBills().subscribe((data) => {
             this.transactions = data;
             if(this.transactions.length > 0) {
-                //this.dueDate = true;
                this.sendAlert();
             }
         }, () => {
-            alert({
-                title: "Transactions",
-                message: "An error occurred retrieving your data"
-            });
+            console.log("Unable to retrive list of transactions");
         });
-
-        console.log(this.datePipe.transform(this.now,"yyyy-MM-dd"));
-        /*for(let i = 0; i < this.dates.length; i++) {
-        console.log(this.dates[i]);
-        }
-        if(this.transactions.includes(this.now)) {
-            console.log("Due today!");
-        }*/
     }
 
     sendAlert(): boolean {
@@ -53,6 +55,16 @@ export class DetailComponent {
             console.log("Due today!");
             return this.billDue = true;
        // }
+    }
+
+    getItemDetail(name: string, id: string, boughtBy: string, price: number, date: string): void {
+        this.itemName = name;
+        this.itemID = id;
+        this.boughtBy = boughtBy;
+        this.price = price;
+        this.itemDate = date;
+        this.dividedPrice = this.price / this.houseMember;
+        this.itemDetail = true;
     }
 
     onDrawerButtonTap(): void {
