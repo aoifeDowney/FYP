@@ -56,7 +56,7 @@ export class SuggestItemComponent implements OnInit {
             this.users.push(data);
             let number = this.users[0].length;
             for(let i = 0; i < number; i++) {
-                this.member  = this.users[0].length;
+                this.member  = this.users[0].length + 1;
                 if(this.name.includes(this.users[0][i]["userName"])){
                     return;
                 } else {
@@ -97,7 +97,7 @@ export class SuggestItemComponent implements OnInit {
             var task = {
                 name: this.itemName,
                 date: this.itemDateValue,
-                price: this.itemPriceValue,
+                price: this.itemPriceValue / this.member,
                 houseName: this.userData["household"],
                 toPay: this.name[i],
                 type: "House Shop",
@@ -130,7 +130,7 @@ export class SuggestItemComponent implements OnInit {
             _id: this.itemID,
             name: this.itemName,
             date: this.itemDateValue,
-            price: this.itemPriceValue,
+            price: this.itemPriceValue / this.member,
             houseName: this.userData["household"],
             boughtBy: this.activeUser.username,
             type: "House Shop",

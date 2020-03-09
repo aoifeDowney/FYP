@@ -121,7 +121,7 @@ export class ShoppingComponent implements OnInit{
             _id: this.itemID,
             name: this.itemName,
             date: this.itemDate,
-            price: this.price,
+            price: this.price / this.houseMember,
             boughtBy: this.activeUser.username,
             boughtDate: new Date(),
             type: "House Shop",
