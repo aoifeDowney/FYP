@@ -18,6 +18,7 @@ export class DetailComponent {
     now: Date = new Date();
 
     transactions = [];
+    date = [];
     dueDate = false;
     billDue: boolean;
     activeUser = Kinvey.User.getActiveUser();
@@ -43,7 +44,13 @@ export class DetailComponent {
     ngOnInit(): void {
         this.transactionsService.getAllUtilityBills().subscribe((data) => {
             this.transactions = data;
-            if(this.transactions.length > 0) {
+        }, () => {
+            console.log("Unable to retrive list of transactions");
+        });
+
+        this.transactionsService.getUtilityBillDue().subscribe((data) => {
+            this.date = data;
+            if(this.date.length > 0) {
                this.sendAlert();
             }
         }, () => {
@@ -59,10 +66,16 @@ export class DetailComponent {
     }
 
     sendAlert(): boolean {
-        //if(this.dueDate == true) {
             console.log("Due today!");
             return this.billDue = true;
-       // }
+    }
+
+    alert() {
+        dialogs.alert({
+            title: "Bill Due Today",
+            message: "A bill is due today! Please pay the bill which is due.",
+            okButtonText: "Okay"
+        });
     }
 
     getItemDetail(name: string, id: string, boughtBy: string, price: number, date: string): void {

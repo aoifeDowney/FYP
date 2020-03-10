@@ -64,7 +64,6 @@ export class TransactionsService {
         secondQuery.equalTo('complete', false);
         const thirdQuery = new Kinvey.Query();
         thirdQuery.equalTo('houseName', this.userData["household"]);
-        const fourthQuery = new Kinvey.Query();
 
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
@@ -89,11 +88,16 @@ export class TransactionsService {
         const query = new Kinvey.Query();
         const secondQuery = new Kinvey.Query();
         const thirdQuery = new Kinvey.Query();
+        const fourthQuery = new Kinvey.Query();
+        const fifthQuery = new Kinvey.Query();
         query.equalTo('type', 'Utility Bill');
         secondQuery.equalTo('houseName', this.userData["household"]);
-        thirdQuery.equalTo('date', date);
+        thirdQuery.equalTo('complete', false);
+        fourthQuery.equalTo('toPay', this.activeUser.username);
+        fifthQuery.equalTo('date', date);
+    
 
-        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery).and(fifthQuery));
     }
 
     getUtilityBill() {

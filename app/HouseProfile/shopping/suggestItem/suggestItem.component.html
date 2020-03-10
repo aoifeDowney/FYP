@@ -86,7 +86,7 @@
             <Label text="Please enter the bought date" class="boughtDateText"></Label>
             <FlexboxLayout flexDirection="row" class="form-row">
                 <Image src="~/images/date-icon.png" class="form-icon"></Image>
-                <DatePicker year="1980" month="4" day="20" [minDate]="minDate" [maxDate]="maxDate"
+                <DatePicker [minDate]="minDate" [maxDate]="maxDate"
                     (dateChange)="onDateChanged($event)"></DatePicker>
             </FlexboxLayout>
         </StackLayout>
