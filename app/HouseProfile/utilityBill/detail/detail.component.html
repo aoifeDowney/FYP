@@ -1,4 +1,5 @@
 <ActionBar title="Utility Bill Detail" class="action-bar">
+    <ActionItem *ngIf="billDue" (tap)="alert()" text="Urgent!" ios.position="left" class="fa"></ActionItem>
 </ActionBar>
 <GridLayout class="page">
     <GridLayout rows="*" height="1500px" *ngIf="!itemDetail">
