@@ -39,6 +39,7 @@
     "nativescript-geolocation": "5.1.0",
     "nativescript-image": "2.2.5",
     "nativescript-imagepicker": "7.1.0",
+    "nativescript-inappbrowser": "^2.2.0",
     "nativescript-intl": "3.0.0",
     "nativescript-iqkeyboardmanager": "1.5.1",
     "nativescript-social-share": "1.5.2",
