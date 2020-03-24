@@ -85,13 +85,6 @@ export class ShoppingComponent implements OnInit{
             });
         });
 
-        this.transactionsService.getUsersIcon().subscribe((data) => {
-            this.icons = data;
-            
-        }, () => {
-            console.log("Unable to retrive list of transactions");
-        });
-
         this.transactionsService.getHouseMembers().subscribe((data) => {
             this.users.push(data);
                this.houseMember = this.users[0].length + 1;
@@ -170,7 +163,7 @@ export class ShoppingComponent implements OnInit{
             console.log("inside if");
             const result = await InAppBrowser.open(url, {
               // iOS Properties
-              dismissButtonStyle: 'cancel',
+              dismissButtonStyle: 'done',
               preferredBarTintColor: '#8f91de',
               preferredControlTintColor: 'white',
               readerMode: false,

@@ -4,6 +4,10 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { DatePipe } from '@angular/common';
 import * as dialogs from "tns-core-modules/ui/dialogs";
 import * as Kinvey from "kinvey-nativescript-sdk";
+import { openUrl } from 'tns-core-modules/utils/utils';
+import { alert } from 'tns-core-modules/ui/dialogs';
+import InAppBrowser from 'nativescript-inappbrowser';
+import { android } from "tns-core-modules/application";
 
 import { TransactionsService } from "../../../shared/transactions/transactions.service";
 
@@ -38,8 +42,17 @@ export class DetailComponent {
     itemDate = "";
     items = [];
     itemDateValue = "";
+    paymentMade = false;
 
-    constructor(private transactionsService: TransactionsService, private datePipe: DatePipe) {}
+    private _url: string;
+
+    get url(): string {
+        return this._url;
+      }
+
+    constructor(private transactionsService: TransactionsService, private datePipe: DatePipe) {
+        this._url = 'https://www.paypal.com/ie/webapps/mpp/send-money-online';
+    }
 
     ngOnInit(): void {
         this.transactionsService.getAllUtilityBills().subscribe((data) => {
@@ -109,10 +122,90 @@ export class DetailComponent {
             message: "This bill has been paid for",
             okButtonText: "Okay"
         });
+        this.paymentMade = true;
     }
 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
     }
+
+    sleep (timeout) {
+        return new Promise(resolve => setTimeout(resolve, timeout));
+      }
+    
+      
+      openLink = async () => {
+          console.log("inside method");
+        try {
+            console.log("inside try");
+          const { url } = this;
+          if (await InAppBrowser.isAvailable()) {
+            console.log("inside if");
+            const result = await InAppBrowser.open(url, {
+              // iOS Properties
+              dismissButtonStyle: 'done',
+              preferredBarTintColor: '#8f91de',
+              preferredControlTintColor: 'white',
+              readerMode: false,
+              animated: true,
+              modalPresentationStyle: 'fullScreen',
+              modalTransitionStyle: 'partialCurl',
+              modalEnabled: true,
+              enableBarCollapsing: false,
+              // Android Properties
+              showTitle: true,
+              toolbarColor: '#8f91de',
+              secondaryToolbarColor: 'black',
+              enableUrlBarHiding: true,
+              enableDefaultShare: true,
+              forceCloseOnRedirection: true,
+              // Specify full animation resource identifier(package:anim/name)
+              // or only resource name(in case of animation bundled with app).
+              animations: {
+                startEnter: 'slide_in_right',
+                startExit: 'slide_out_left',
+                endEnter: 'slide_in_left',
+                endExit: 'slide_out_right'
+              },
+              headers: {
+                'my-custom-header': 'my custom header value'
+              }
+            });
+            await this.sleep(800);
+          }
+          else {
+            openUrl(url);
+          }
+        }
+        catch (error) {
+          alert({
+            title: 'Error',
+            message: error.message,
+            okButtonText: 'Ok'
+          });
+        }
+        this.makePayment();
+      }
+    
+      getDeepLink = (path = '') => {
+        const scheme = 'my-demo';
+        const prefix = android ? `${scheme}://demo/` : `${scheme}://`;
+        return prefix + path;
+      }
+    
+      tryDeepLinking = async () => {
+        const loginUrl = `https://proyecto26.github.io/react-native-inappbrowser/`;
+        const redirectUrl = this.getDeepLink('home');
+        const url = `${loginUrl}?redirect_url=${encodeURIComponent(redirectUrl)}`;
+        if (await InAppBrowser.isAvailable()) {
+          const result = await InAppBrowser.openAuth(url, redirectUrl);
+          await this.sleep(800);
+          alert({
+            title: 'Response',
+            message: JSON.stringify(result),
+            okButtonText: 'Ok'
+          });
+        }
+      }
 }
