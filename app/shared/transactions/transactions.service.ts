@@ -31,13 +31,6 @@ export class TransactionsService {
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery));
     }
 
-    getHouseShopPrice() {
-        const query = new Kinvey.Query();
-        query.equalTo('type', 'House Shop');
-
-        return this.dataStore.find(query);
-    }
-
     getItemBoughtDate() {
         const query = new Kinvey.Query();
         const secondQuery = new Kinvey.Query();
@@ -57,17 +50,54 @@ export class TransactionsService {
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
     }
 
-    getRentForUser() {
+    getRentPrice() {
         const query = new Kinvey.Query();
-        query.equalTo('type', 'Rent');
         const secondQuery = new Kinvey.Query();
-        secondQuery.equalTo('complete', false);
         const thirdQuery = new Kinvey.Query();
-        thirdQuery.equalTo('houseName', this.userData["household"]);
+        const fourthQuery = new Kinvey.Query();
+        const fifthQuery = new Kinvey.Query();
+        // Sort by descending “entity created time” to put new items on top.
+        query.descending("_kmd.ect");
+        secondQuery.equalTo('complete', true);
+        thirdQuery.equalTo("boughtBy", this.activeUser.username);
+        fourthQuery.equalTo('houseName', this.userData["household"]);
+        fifthQuery.equalTo('type', 'Rent');
 
-        return this.dataStore.find(query.and(secondQuery).and(thirdQuery));
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery).and(fifthQuery));
     }
 
+    getUtilityBillPrice() {
+        const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
+        const thirdQuery = new Kinvey.Query();
+        const fourthQuery = new Kinvey.Query();
+        const fifthQuery = new Kinvey.Query();
+        // Sort by descending “entity created time” to put new items on top.
+        query.descending("_kmd.ect");
+        secondQuery.equalTo('complete', true);
+        thirdQuery.equalTo("boughtBy", this.activeUser.username);
+        fourthQuery.equalTo('houseName', this.userData["household"]);
+        fifthQuery.equalTo('type', 'Utility Bill');
+
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery).and(fifthQuery));
+    }
+
+    getHouseShopPrice() {
+        const query = new Kinvey.Query();
+        const secondQuery = new Kinvey.Query();
+        const thirdQuery = new Kinvey.Query();
+        const fourthQuery = new Kinvey.Query();
+        const fifthQuery = new Kinvey.Query();
+        // Sort by descending “entity created time” to put new items on top.
+        query.descending("_kmd.ect");
+        secondQuery.equalTo('complete', true);
+        thirdQuery.equalTo("boughtBy", this.activeUser.username);
+        fourthQuery.equalTo('houseName', this.userData["household"]);
+        fifthQuery.equalTo('type', 'House Shop');
+
+        return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery).and(fifthQuery));
+    }
+  
 
     getAllUtilityBills() {
         const query = new Kinvey.Query();

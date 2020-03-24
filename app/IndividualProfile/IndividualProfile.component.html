@@ -16,7 +16,6 @@
 					<GridLayout columns="auto, *, auto" class="transactions-list-item">
 						<StackLayout col="0" class="mr-10" height="36" width="36">
 							<Image [src]="getIcon(item.type)" style="width:15em; height:40em;"></Image>
-							<Label [text]= "calculatePrice(item.type, item.price)" class="calculatingPrice"></Label>
 						</StackLayout>
 						<StackLayout col="1" verticalAlignment="center">
 							<Label [text]="item.name" class="title"></Label>
