@@ -24,7 +24,7 @@
 						<Label col="2" horizontal="right" class="ammount">
 							<FormattedString>
 								<Span text="Amount: €"></Span>
-								<Span [text]="item.price"></Span>
+								<Span [text]="item.price | number:'1.2-2'"></Span>
 							</FormattedString>
 						</Label>
 					</GridLayout>

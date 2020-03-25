@@ -126,7 +126,6 @@ export class TransactionsService {
         fourthQuery.equalTo('toPay', this.activeUser.username);
         fifthQuery.equalTo('date', date);
     
-
         return this.dataStore.find(query.and(secondQuery).and(thirdQuery).and(fourthQuery).and(fifthQuery));
     }
 
