@@ -7,7 +7,7 @@
 		</StackLayout>
 		<GridLayout row="1" class="balance-summary">
 		<StackLayout col="1">
-			<Label text="Expenses Total" class="expensesTotal"></Label>
+			<Label text="List of Expenses" class="expensesTotal"></Label>
 		</StackLayout>
 		</GridLayout>
 		<StackLayout row="2" *ngIf="dataToShow">
@@ -16,7 +16,6 @@
 					<GridLayout columns="auto, *, auto" class="transactions-list-item">
 						<StackLayout col="0" class="mr-10" height="36" width="36">
 							<Image [src]="getIcon(item.type)" style="width:15em; height:40em;"></Image>
-							<Label [text]= "calculatePrice(item.type, item.price)" class="calculatingPrice"></Label>
 						</StackLayout>
 						<StackLayout col="1" verticalAlignment="center">
 							<Label [text]="item.name" class="title"></Label>
@@ -25,7 +24,7 @@
 						<Label col="2" horizontal="right" class="ammount">
 							<FormattedString>
 								<Span text="Amount: €"></Span>
-								<Span [text]="item.price"></Span>
+								<Span [text]="item.price | number:'1.2-2'"></Span>
 							</FormattedString>
 						</Label>
 					</GridLayout>

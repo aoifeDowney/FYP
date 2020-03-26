@@ -48,7 +48,7 @@ export class IndividualProfileComponent implements OnInit {
                 this.dataToShow = false;
             }
         }, () => {
-            console.log("Unable to retrive list of transactions");
+            console.log("Unable to retrieve list of transactions");
         });        
     }
 
