@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
     ccEmail;
     bccEmail;
     subject = " HouseShare App Invitation"
-    message = " Hello,\n\n" + "You have been invited to join a HouseShare group! The invitation was sent to you by your housemate "
+    message = " Hello,\nhtr\n" + "You have been invited to join a HouseShare group! The invitation was sent to you by your housemate "
                 + this.userName + ". If you wish to join the group please download the HouseShare app from the App Store.\n\n"
                 + "When registering make sure to register with your specific house group name which was"
                 + " created. The house group name is: " + this.houseName + ".\nWe look forward to welcoming you to the HouseShare Team!"
