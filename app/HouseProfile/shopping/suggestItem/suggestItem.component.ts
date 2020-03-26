@@ -97,7 +97,7 @@ export class SuggestItemComponent implements OnInit {
             var task = {
                 name: this.itemName,
                 date: this.itemDateValue,
-                price: this.itemPriceValue,
+                price: this.itemPriceValue / this.member,
                 houseName: this.userData["household"],
                 toPay: this.name[i],
                 type: "House Shop",
