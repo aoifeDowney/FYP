@@ -30,3 +30,20 @@ TextField {
 .signup-text {
   color: rgb(112, 0, 203);
 }
+
+.login-field-label {
+  color: #3DB7D8;
+}
+
+.input-field-error {
+  border-width: 2;
+  border-color: rgba(253, 60, 67, .8);
+}
+
+.submit-container {
+  padding-top: 40;
+}
+
+.color-danger {
+  color: rgba(253, 60, 67, .8);
+}

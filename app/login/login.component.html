@@ -1,16 +1,20 @@
 <FlexboxLayout>
 	<StackLayout class="form" [class.dark]="!isLoggingIn">
 		<Image src="~/images/logo.png"></Image>
-		<TextField hint="Email for account verification" keyboardType="email" autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.email"
+		<TextField hint="Email" keyboardType="email" autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.email"
 		 class="input input-border"></TextField>
 		<TextField hint="User Name" keyboardType="email" autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.username"
 		 class="input input-border"></TextField>
-		 <TextField hint="Household name"  autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.household"
+		 <TextField hint="Household Name"  autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.household"
 		 class="input input-border"></TextField>
 		<TextField hint="Password" secure="true" [(ngModel)]="user.password" class="input input-border"></TextField>
 		<Button [text]="isLoggingIn ? 'Sign in' : 'Register'" class="btn btn-primary" (tap)="submit()"></Button>
 		<Button [text]="isLoggingIn ? 'Register' : 'Back to login'" class="signup-text" (tap)="toggleDisplay()"></Button>
 		<Label *ngIf="!isLoggingIn" text="Regiser with a new household name or with the household name you were given with your invitation email." 
 			   textWrap="true"></Label>
+		<Label *ngIf="emailError" class="eloha-font-semibold color-danger" row="1" text="{{errorMessage}}" textWrap="true"></Label>
+		<Label *ngIf="usernameError" class="eloha-font-semibold color-danger" row="1" text="{{usernameMessage}}" textWrap="true"></Label>
+		<Label *ngIf="passError" class="eloha-font-semibold color-danger" row="1" text="{{passMessage}}" textWrap="true"></Label>
+		<Label *ngIf="householdError" class="eloha-font-semibold color-danger" row="1" text="{{householdMessage}}" textWrap="true"></Label>
 	</StackLayout>
 </FlexboxLayout>
