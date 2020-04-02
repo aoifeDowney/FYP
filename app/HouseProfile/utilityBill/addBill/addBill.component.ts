@@ -44,6 +44,7 @@ export class AddBillComponent {
                     return;
                 } else {
                     this.name.push(this.users[0][i]["userName"]);
+                    this.name.push(this.activeUser.username);
                 }
 
             }
