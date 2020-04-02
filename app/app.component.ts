@@ -3,9 +3,6 @@ import * as app from "application";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 import { Router } from "@angular/router";
-
-import * as Kinvey from "kinvey-nativescript-sdk";
-
 import { UserService } from "../app/shared/user/user.service";
 import { TransactionsService } from "../app/shared/transactions/transactions.service";
 
@@ -18,30 +15,14 @@ export class AppComponent implements OnInit {
   private _sideDrawerTransition: DrawerTransitionBase;
 
   loggedIn = true;
-  activeUser = Kinvey.User.getActiveUser();
-  username: string;
 
   icons = [];
   icon: string;
 
-  constructor(private routerExtensions: RouterExtensions, private router: Router, private userService: UserService, private transactionsService: TransactionsService) {
-    if (this.loggedIn) {
-      this.username = this.activeUser.username;
-    }
-  }
+  constructor(private routerExtensions: RouterExtensions, private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
     this._sideDrawerTransition = new SlideInOnTopTransition();
-
-    this.transactionsService.getIcon().subscribe((data) => {
-      this.icons.push(data);
-      for (let i = 0; i < this.icons.length; i++) {
-        this.icon = this.icons[0][i]["icon"];
-      }
-
-    }, () => {
-      console.log("Unable to retrive list of transactions");
-    });
   }
 
   logout() {
